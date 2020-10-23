@@ -1,0 +1,181 @@
+.content {
+  padding: 32upx;
+}
+
+.toptitle {
+  width: 100%;
+  margin-bottom: 20upx;
+  overflow: hidden;
+  zoom: 1;
+
+  .leftimg {
+    width: 160upx;
+    margin-right: 32upx;
+    float: left;
+
+    .docimg {
+      width: 160upx;
+      height: 174upx;
+    }
+  }
+
+  .rightext {
+    width: 70%;
+    float: left;
+
+    .title {
+      color: #333333;
+      font-size: 28upx;
+      font-weight: bold;
+
+      .small {
+        font-size: 26upx;
+        padding-left: 15upx;
+        font-weight: normal;
+      }
+    }
+
+    .alltext {
+      margin-top: 16upx;
+      font-size: 24upx;
+      color: #666666;
+    }
+  }
+}
+
+.itemlist {
+  width: 100%;
+  margin: 10upx auto;
+
+  .title {
+    overflow: hidden;
+    zoom: 1;
+
+    .icon {
+      float: left;
+      width: 8upx;
+      height: 32upx;
+      background: #07CC86;
+    }
+
+    .caption {
+      width: 90%;
+      float: left;
+      text-indent: 10upx;
+      font-size: 32upx;
+      line-height: 32upx;
+      font-weight: bold;
+      color: #333333;
+    }
+  }
+
+  .details {
+    padding: 15upx;
+    color: #666666;
+    font-size: 26upx;
+    text-indent: 20upx;
+    line-height: 40upx;
+  }
+}
+
+.pixbuttom {
+  position: fixed;
+  bottom: 10upx;
+  width: 686upx;
+  height: 100upx;
+  background: rgba(7, 204, 134, 1);
+  border-radius: 8upx;
+  font-size: 32upx;
+  font-weight: 500;
+  color: #fff;
+  line-height: 32upx;
+  text-align: center;
+  line-height: 100upx;
+  z-index: 999;
+}
+
+.classitem {
+  width: 100%;
+  white-space: nowrap; // 滚动必须加的属性
+
+  .item {
+    color: #9DA6A3;
+    padding: 0 10upx;
+    text-align: center;
+    min-width: 128upx;
+    margin: 0 20upx;
+    display: inline-block;
+    vertical-align: top;
+
+    .tesc {
+      font-size: 40upx;
+      text-align: center;
+    }
+  }
+
+  .on {
+    color: #07CC86;
+  }
+
+  .green {
+    color: #07CC86;
+  }
+}
+
+.doclist {
+  padding: 0 32upx;
+  overflow: hidden;
+  zoom: 1;
+  margin-bottom: 20upx;
+  .teacherimg {
+    width: 160upx;
+    height: 174upx;
+    float: left;
+  }
+
+  .rightext {
+    width: 70%;
+    float: left;
+    margin-left: 20upx;
+    .title {
+      color: #333333;
+      font-size: 28upx;
+      font-weight: bold;
+
+      .small {
+        font-size: 26upx;
+        padding-left: 15upx;
+        font-weight: normal;
+      }
+    }
+
+    .alltext {
+      margin-top: 16upx;
+      font-size: 24upx;
+      color: #666666;
+    }
+    .cost{
+      margin-top: 25upx;
+      color: #999999;
+      font-size: 24upx;
+      .green{
+        color: #07CC86;
+        font-size: 28upx;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.vieolist {
+  width: 600upx;
+  margin: auto;
+
+  .list_data {
+    width: 600upx;
+    height: 360upx;
+    margin: 20upx auto;
+    background: rgba(221, 221, 221, 1);
+    border-radius: 9upx;
+  }
+}

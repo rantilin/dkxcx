@@ -3,14 +3,58 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "中童康复",
+				"navigationStyle": "custom"
 			}
-		}
+		},
+		{
+			"path": "pages/health/index",
+			"style": {
+			  "navigationBarTitleText": "健康讲堂"
+			  
+		  }
+		 },
+		 {
+			"path": "pages/user/index",
+			"style": {
+			  "navigationBarTitleText": "个人中心"
+			  
+		  }
+		 }
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+		"navigationBarTitleText": "中童康复",
+		"navigationBarBackgroundColor": "#fff",
+		"backgroundColor": "#f8f8f8"
+	},
+	"tabBar": {
+		"color": "#999",
+		"selectedColor": "#333",
+		"backgroundColor": "#fff",
+		"list": [
+		  {
+			"pagePath": "pages/index/index",
+			"text": "首页",
+			"iconPath": "static/images/icon-tabbar-home2.png",
+			"selectedIconPath": "static/images/icon-tabbar-home.png"
+		  },
+
+		  {
+			"pagePath": "pages/health/index",
+			"text": "健康讲堂",
+			"iconPath": "static/images/icon-tabbar-2.png",
+			"selectedIconPath": "static/images/icon-tabbar-2-on.png"
+		  },
+		  {
+			"pagePath": "pages/user/index",
+			"text": "个人中心",
+			"iconPath": "static/images/icon-tabbar-3.png",
+			"selectedIconPath": "static/images/icon-tabbar-3-on.png"
+		  }
+		]
+	  },
+	  "easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	 }
 }

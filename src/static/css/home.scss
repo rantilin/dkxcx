@@ -1,0 +1,254 @@
+.page-index{
+    .main {
+        width: 710rpx;
+        margin: 0 auto;
+        padding-top: 30rpx;
+    }
+    .banner-item {
+        width: 100%;
+        height: 100%;
+    }
+    .znzl {
+        height: 116rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 58rpx;
+        margin-top: 20rpx;
+        background-image: url('/static/images/user_arrow.png');
+        background-repeat: no-repeat;
+        background-size: 20rpx 20rpx;
+        background-position: 648rpx center;
+        .t1 {
+            font-size: 29rpx;
+            font-family: PingFang SC;
+            font-weight: bold;
+            color: rgba(51,51,51,1);
+        }
+        .t2 {
+            font-size: 23rpx;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: rgba(161,161,161,1);
+        }
+    }
+    .znzl-img {
+        width: 58rpx;
+        height: 70rpx;
+        margin-left: 37rpx;
+        margin-right: 20rpx;
+    }
+    .ecard {
+        width: 671rpx;
+        margin: 0 auto;
+        height: 110rpx;
+        background: url('/static/images/bg-page-index-ecard.png') no-repeat center center;
+        background-size: 100%;
+        padding: 20rpx 0 20rpx 25rpx;
+        box-sizing: border-box;
+        margin-top: 25rpx;
+        .t1 {
+            font-size: 49rpx;
+            font-family: PangMenZhengDao;
+            font-weight: 400;
+            color: rgba(255,255,255,1);
+        }
+        .t2 {
+            font-size: 22rpx;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: rgba(255,255,255,1);
+        }
+        .btn {
+            width: 145rpx;
+            height: 54rpx;
+            line-height: 54rpx;
+            text-align: center;
+            background: rgba(255,255,255,1);
+            border-radius: 27rpx;
+            font-size: 24rpx;
+            font-family: PingFang SC;
+            font-weight: bold;
+            color: rgba(82,127,254,1);
+        }
+    }
+    .service {
+        height: 269rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 10rpx;
+        margin-top: 20rpx;
+        .img {
+            width: 103rpx;
+            height: 103rpx;
+        }
+        .t1 {
+            font-size: 26rpx;
+            font-family: PingFang SC;
+            font-weight: 800;
+            color: rgba(51,51,51,1);
+            margin: 20rpx 0 10rpx 0;
+        }
+        .t2 {
+            font-size: 20rpx;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: rgba(161,161,161,1);
+            text-align: center;
+        }
+    }
+    .service-item {
+        width: 33%;
+        padding-left: 20rpx;
+        padding-right: 20rpx;
+        padding-top: 30rpx;
+        justify-content: center;
+    }
+    .sec-title {
+        color: #292929;
+        font-size: 42rpx;
+        font-weight: 800;
+        padding-left: 10rpx;
+        padding-top: 33rpx;
+        padding-bottom: 33rpx;
+    }
+    .sec-more-icon {
+        width: 19rpx;
+        height: 19rpx;
+    }
+    .sec-more {
+        font-size: 24rpx;
+        font-weight: bold;
+        color: rgba(41,41,41,1);
+    }
+    .tszq {
+        height: 141rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 10rpx;
+    }
+    .tszq-item {
+        font-size: 24rpx;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: rgba(255,255,255,1);
+        width: 33%;
+        height: 140rpx;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 262rpx 141rpx;
+        line-height: 140rpx;
+    }
+    .jkfw {
+        height: 365rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 10rpx;
+        flex-wrap: wrap;
+    }
+    .jkfw-item {
+        width: 25%;
+        image {
+            width: 48rpx;
+            height: 48rpx;
+        }
+        .t1 {
+            font-size: 24rpx;
+            font-family: PingFang SC;
+            font-weight: bold;
+            color: rgba(51,51,51,1);
+            margin-top: 10rpx;
+        }
+        .t2 {
+            font-size: 20rpx;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: rgba(161,161,161,1);
+            margin-top: 5rpx;
+        }
+    }
+    .tools {
+        height: 157rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 10rpx;
+    }
+    .tools-item{
+        image{
+            width: 48rpx;
+            height: 48rpx;
+        }
+        .t {
+            font-size: 24rpx;
+            font-family: PingFang SC;
+            font-weight: 500;
+            color: rgba(51,51,51,1);
+            margin-top: 10rpx;
+        }
+    }
+    .yyks {
+        height: 164rpx;
+        background: rgba(255,255,255,1);
+        border-radius: 10rpx;
+    }
+    .yyks-item {
+        width: 50%;
+        height: 100%;
+        background-size: 369rpx 164rpx;
+      }
+    
+      .list-item {
+        background-color: #fff;
+        color: #4F4F4F;
+        font-size: 24rpx;
+        padding: 30rpx 20rpx;
+        border-radius: 10rpx;
+      }
+    
+      .doctor-name {
+        color: #292929;
+        font-size: 36rpx;
+      }
+    
+      .thumb {
+        width: 90rpx;
+        height: 90rpx;
+        border-radius: 50%;
+      }
+    
+      .p-1-right {
+        flex: 1;
+        padding-left: 23rpx;
+      }
+    
+      .p-1-right-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    
+      .hos-icon {
+        width: 31rpx;
+        height: 31rpx;
+        margin-right: 9rpx;
+        vertical-align: middle;
+      }
+    
+      .jzl {
+        background: #fef6e1;
+        border-radius: 5px;
+        color: #FF8A00;
+        padding: 3rpx 8rpx;
+      }
+    
+      .service-icon {
+        width: 36rpx;
+        height: 36rpx;
+        margin-left: 10rpx;
+      }
+    
+      .notice-box {
+        padding-left: 60rpx;
+        padding-right: 60rpx;
+        padding-bottom: 40rpx;
+      }
+    
+      .notice-bar {
+        border-radius: 10rpx;
+      }
+    
+}
