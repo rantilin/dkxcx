@@ -1,8 +1,8 @@
 <template>
 	<view v-if="visibleSync" :style="[customStyle, {
 		zIndex: uZindex - 1
-	}]" :class="{ 'u-drawer-visible': showDrawer }" class="u-drawer">
-		<u-mask :maskClickAble="maskCloseAble" :z-index="uZindex - 2" :show="showDrawer && mask" @click="maskClick"></u-mask>
+	}]" class="u-drawer" hover-stop-propagation>
+		<u-mask :duration="duration" :custom-style="maskCustomStyle" :maskClickAble="maskCloseAble" :z-index="uZindex - 2" :show="showDrawer && mask" @click="maskClick"></u-mask>
 		<view
 			class="u-drawer-content"
 			@tap="modeCenterClose(mode)"
@@ -33,10 +33,9 @@
 			<scroll-view class="u-drawer__scroll-view" scroll-y="true" v-else>
 				<slot />
 			</scroll-view>
-			<view class="u-close" :class="['u-close--' + closeIconPos]">
+			<view @tap="close" class="u-close" :class="['u-close--' + closeIconPos]">
 				<u-icon
 					v-if="mode != 'center' && closeable"
-					@click="close"
 					:name="closeIcon"
 					:color="closeIconColor"
 					:size="closeIconSize"
@@ -182,6 +181,18 @@ export default {
 		negativeTop: {
 			type: [String, Number],
 			default: 0
+		},
+		// 遮罩的样式，一般用于修改遮罩的透明度
+		maskCustomStyle: {
+			type: Object,
+			default() {
+				return {}
+			}
+		},
+		// 遮罩打开或收起的动画过渡时间，单位ms
+		duration: {
+			type: [String, Number],
+			default: 250
 		}
 	},
 	data() {
@@ -189,6 +200,7 @@ export default {
 			visibleSync: false,
 			showDrawer: false,
 			timer: null,
+			closeFromInner: false, // value的值改变，是发生在内部还是外部
 		};
 	},
 	computed: {
@@ -230,6 +242,7 @@ export default {
 				// 不加可能圆角无效
 				style.overflow = 'hidden';
 			}
+			if(this.duration) style.transition = `all ${this.duration / 1000}s linear`;
 			return style;
 		},
 		// 中部弹窗的特有样式
@@ -256,9 +269,10 @@ export default {
 		value(val) {
 			if (val) {
 				this.open();
-			} else {
+			} else if(!this.closeFromInner) {
 				this.close();
 			}
+			this.closeFromInner = false;
 		}
 	},
 	mounted() {
@@ -276,6 +290,9 @@ export default {
 			this.close();
 		},
 		close() {
+			// 标记关闭是内部发生的，否则修改了value值，导致watch中对value检测，导致再执行一遍close
+			// 造成@close事件触发两次
+			this.closeFromInner = true;
 			this.change('showDrawer', 'visibleSync', false);
 		},
 		// 中部弹出时，需要.u-drawer-content将居中内容，此元素会铺满屏幕，点击需要关闭弹窗
@@ -291,7 +308,9 @@ export default {
 		// 打开时，先渲染组件，延时一定时间再让遮罩和弹窗的动画起作用
 		change(param1, param2, status) {
 			// 如果this.popup为false，意味着为picker，actionsheet等组件调用了popup组件
-			if (this.popup == true) this.$emit('input', status);
+			if (this.popup == true) {
+				this.$emit('input', status);
+			}
 			this[param1] = status;
 			if(status) {
 				// #ifdef H5 || MP
@@ -310,7 +329,7 @@ export default {
 				this.timer = setTimeout(() => {
 					this[param2] = status;
 					this.$emit(status ? 'open' : 'close');
-				}, 300);
+				}, this.duration);
 			}
 		}
 	}
@@ -338,7 +357,7 @@ export default {
 	/* #endif */
 	position: absolute;
 	z-index: 1003;
-	transition: all 0.3s linear;
+	transition: all 0.25s linear;
 }
 
 .u-drawer__scroll-view {
@@ -375,10 +394,8 @@ export default {
 }
 
 .u-drawer-center {
-	/* #ifndef APP-NVUE */
-	display: flex;
+	@include vue-flex;
 	flex-direction: column;
-	/* #endif */
 	bottom: 0;
 	left: 0;
 	right: 0;

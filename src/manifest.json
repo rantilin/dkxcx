@@ -80,7 +80,7 @@
         }
     },
     "h5" : {
-        "title" : "西安中童儿童康复医院",
+        "title" : "中童康复",
         "domain" : "http://wx.xianerke120.com",
         "router" : {
             "base" : "",

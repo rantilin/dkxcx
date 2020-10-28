@@ -1,5 +1,6 @@
-export const apiBaseUrl = 'http://yuyue.xnetkfyy.cn'
-
+export const apiBaseUrl = 'http://localhost:8190'
+export const cmsBaseUrl = 'http://xt.xnetyy.com/'
+export const siteId = 1 //站点id
 //export const h5Url = apiBaseUrl + "/wap/" //H5端网站地址,
 
 // #ifdef H5

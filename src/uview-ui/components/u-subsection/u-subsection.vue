@@ -91,11 +91,6 @@
 			vibrateShort: {
 				type: Boolean,
 				default: false
-			},
-			//圆角
-			vradius:{
-				type:[Number],
-				default:5,
 			}
 		},
 		data() {
@@ -110,7 +105,7 @@
 				},
 				currentIndex: this.current,
 				buttonPadding: 3, // mode = button 时，组件的内边距
-				borderRadius: this.vradius, // 圆角值
+				borderRadius: 5, // 圆角值
 				firstTimeVibrateShort: true // 组件初始化时，会触发current变化，此时不应震动
 			};
 		},
@@ -311,7 +306,7 @@
 	@import "../../libs/css/style.components.scss";
 	
 	.u-subsection {
-		display: flex;
+		@include vue-flex;
 		align-items: center;
 		overflow: hidden;
 		position: relative;
@@ -322,13 +317,11 @@
 		text-align: center;
 		font-size: 26rpx;
 		height: 100%;
-		display: flex;
+		@include vue-flex;
 		align-items: center;
 		justify-content: center;
 		color: $u-main-color;
-		display: inline-flex;
 		padding: 0 6rpx;
-		
 	}
 
 	.u-item-bg {
@@ -354,7 +347,7 @@
 	.u-item-text {
 		transition: all 0.35s;
 		color: $u-main-color;
-		display: flex;
+		@include vue-flex;
 		align-items: center;
 		position: relative;
 		z-index: 3;

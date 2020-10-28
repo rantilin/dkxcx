@@ -9,8 +9,8 @@ import store from './store'
 import './common/uni-H5Api'
 import uView from "uview-ui";
 Vue.use(uView);
-
-
+import imgmixin from "./common/mixin/imgurl"
+Vue.use(imgmixin)
 Vue.config.productionTip = false
 Vue.prototype.$api = Api;
 Vue.prototype.$common = Common;

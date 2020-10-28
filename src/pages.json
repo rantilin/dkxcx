@@ -10,17 +10,45 @@
 		{
 			"path": "pages/health/index",
 			"style": {
-			  "navigationBarTitleText": "健康讲堂"
-			  
-		  }
-		 },
-		 {
+				"navigationBarTitleText": "健康讲堂"
+
+			}
+		},
+		{
 			"path": "pages/user/index",
 			"style": {
-			  "navigationBarTitleText": "个人中心"
-			  
-		  }
-		 }
+				"navigationBarTitleText": "个人中心"
+
+			}
+		},
+		{
+			"path": "pages/doctor/list",
+			"style": {
+				"navigationBarTitleText": "预约挂号"
+
+			}
+		},
+		{
+			"path": "pages/doctor/team",
+			"style": {
+				"navigationBarTitleText": "医生团队"
+		
+			}
+		},
+		{
+			"path": "pages/card/add",
+			"style": {
+				"navigationBarTitleText": "增加就诊人"
+		
+			}
+		},
+		{
+			"path": "pages/card/index",
+			"style": {
+				"navigationBarTitleText": "就诊人"
+
+			}
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -32,29 +60,28 @@
 		"color": "#999",
 		"selectedColor": "#333",
 		"backgroundColor": "#fff",
-		"list": [
-		  {
-			"pagePath": "pages/index/index",
-			"text": "首页",
-			"iconPath": "static/images/icon-tabbar-home2.png",
-			"selectedIconPath": "static/images/icon-tabbar-home.png"
-		  },
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "static/image/icon-tabbar-home2.png",
+				"selectedIconPath": "static/image/icon-tabbar-home.png"
+			},
+			{
+				"pagePath": "pages/health/index",
+				"text": "健康讲堂",
+				"iconPath": "static/image/icon-tabbar-2.png",
+				"selectedIconPath": "static/image/icon-tabbar-2-on.png"
+			},
 
-		  {
-			"pagePath": "pages/health/index",
-			"text": "健康讲堂",
-			"iconPath": "static/images/icon-tabbar-2.png",
-			"selectedIconPath": "static/images/icon-tabbar-2-on.png"
-		  },
-		  {
-			"pagePath": "pages/user/index",
-			"text": "个人中心",
-			"iconPath": "static/images/icon-tabbar-3.png",
-			"selectedIconPath": "static/images/icon-tabbar-3-on.png"
-		  }
+			{
+				"pagePath": "pages/user/index",
+				"text": "个人中心",
+				"iconPath": "static/image/icon-tabbar-3.png",
+				"selectedIconPath": "static/image/icon-tabbar-3-on.png"
+			}
 		]
-	  },
-	  "easycom": {
+	},
+	"easycom": {
 		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
-	 }
+	}
 }
