@@ -5,7 +5,31 @@
     <u-dropdown-item v-model="rankval" :title="ranktitle" :options="rankdata"></u-dropdown-item>
   </u-dropdown>
   <template v-if="isqsy">
-    <view class="doclist">
+    <view class="doclist" @click="godetail()">
+      <view class="listone">
+        <u-avatar size="100" src="http://gh.xnetyykf.cn/upload/images/2020/8/92875ab0c9119e73.png"></u-avatar>
+        <view class="textblock">
+          <view class="name">徐磊<text class="zceng">主治医生</text></view>
+          <view>中童儿童康复医院</view>
+        </view>
+        <view class="score">
+          <u-icon label="4.9" label-size="24" label-color="#FFC44D" size="24" name="../../static/image/give.png"></u-icon>
+        </view>
+      </view>
+      <view class="listwo">
+        擅长：从事儿童康复临床、教学及科研十余年，擅长儿童自闭谱系（ASD）、多动症（ADHD）……
+      </view>
+      <view class="listree">
+        <view class="mstext">
+          <u-icon label="电话 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../static/image/cphone.png"></u-icon>
+          <u-icon label="图文 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../static/image/charpic.png"></u-icon>
+        </view>
+        <view class="wybutton">
+          问医生
+        </view>
+      </view>
+    </view>
+    <view class="doclist" @click="godetail()">
       <view class="listone">
         <u-avatar size="100" src="http://gh.xnetyykf.cn/upload/images/2020/8/92875ab0c9119e73.png"></u-avatar>
         <view class="textblock">
@@ -99,7 +123,11 @@ export default {
     }
   },
   methods: {
-
+    godetail() {
+      uni.navigateTo({
+        url: `/pages/doctor/detail`
+      })
+    }
   }
 }
 </script>

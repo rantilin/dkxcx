@@ -300,4 +300,4 @@ export const uploadImage = (num, callback) => {
 //获取列表
 export const contents = (data, callback)=>sitepost('api/v1/contents', data, callback);
 // 科室分类
-export const dotclass = (callback) => get('/api/abteilung/tree?hosid=5', callback);
+export const dotclass = (callback) => get('/api/ys/tree?hosid=5', callback);

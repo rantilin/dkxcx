@@ -41,13 +41,13 @@
       <text>在线测评</text>
     </view>
     <view class="tszq flex-center">
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/images/bg-page-index-tszq-1.png)">
+      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-1.png)">
         IEP个别化康复计划
       </view>
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/images/bg-page-index-tszq-2.png)">
+      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-2.png)">
         格里菲斯评估
       </view>
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/images/bg-page-index-tszq-3.png)">
+      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-3.png)">
         Q博士家长课堂
       </view>
     </view>

@@ -10,15 +10,16 @@
 		{
 			"path": "pages/health/index",
 			"style": {
-				"navigationBarTitleText": "健康讲堂"
-
+				"navigationBarTitleText": "健康"
+ 
 			}
 		},
 		{
 			"path": "pages/user/index",
 			"style": {
-				"navigationBarTitleText": "个人中心"
-
+				"navigationBarTitleText": "我的",
+				"navigationBarBackgroundColor":"#2ed1a4",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
@@ -32,6 +33,13 @@
 			"path": "pages/doctor/team",
 			"style": {
 				"navigationBarTitleText": "医生团队"
+		
+			}
+		},
+		{
+			"path": "pages/doctor/detail",
+			"style": {
+				"navigationBarTitleText": "医生详情"
 		
 			}
 		},
