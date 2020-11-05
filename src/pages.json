@@ -44,6 +44,13 @@
 			}
 		},
 		{
+			"path": "pages/doctor/doclist",
+			"style": {
+				"navigationBarTitleText": "医生列表"
+		
+			}
+		},
+		{
 			"path": "pages/card/add",
 			"style": {
 				"navigationBarTitleText": "增加就诊人"

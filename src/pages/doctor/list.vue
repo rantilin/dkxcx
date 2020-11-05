@@ -49,12 +49,12 @@ export default {
     },
     godoc(docid) {
       uni.navigateTo({
-        url: `/pages/doctor/list?id=${docid}`
+        url: `/pages/doctor/doclist?id=${docid}`
       })
     },
     search(value) {
       uni.navigateTo({
-        url: `/pages/doctor/list?sear=${value}`
+        url: `/pages/doctor/doclist?sear=${value}`
       });
     }
   }
@@ -67,7 +67,7 @@ export default {
 .topsearch {
   width: 100%;
   padding: 20upx 0 20upx 30upx;
-  background: #fafafa;
+  background: #fff;
 
   .search {
     width: 95%;
@@ -120,7 +120,7 @@ export default {
 .rightcontent {
   width: 65%;
   height: 85vh;
-
+  background: #fff;
   .deskitem {
     font-size: 28upx;
     color: #5d5d5d;

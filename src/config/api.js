@@ -96,7 +96,7 @@ const sitepost=(method, data, callback, complete)=>{
 		data: data,
 		header: {
 			'Content-Type': 'application/json',
-		    'X-SS-API-KEY': '37cb1eb8-fe8e-451d-ae86-feba2d2255dd'
+		  'X-SS-API-KEY': '37cb1eb8-fe8e-451d-ae86-feba2d2255dd'
 		},
 		method: 'POST',
 		success: (response) => {
