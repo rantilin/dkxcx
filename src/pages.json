@@ -1,4 +1,7 @@
 {
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -58,6 +61,13 @@
 			}
 		},
 		{
+			"path": "pages/login/choose/index",
+			"style": {
+				"navigationBarTitleText": "授权登录"
+		
+			}
+		},
+		{
 			"path": "pages/card/index",
 			"style": {
 				"navigationBarTitleText": "就诊人"
@@ -95,8 +105,6 @@
 				"selectedIconPath": "static/image/icon-tabbar-3-on.png"
 			}
 		]
-	},
-	"easycom": {
-		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	}
+
 }

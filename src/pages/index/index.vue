@@ -74,6 +74,7 @@ export default {
   },
   methods: {
     getbanner() {
+      console.log(this.$u.config.v);
       let param = {
         channelId: 2,
       }

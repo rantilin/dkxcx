@@ -7,7 +7,7 @@ import * as Db from './config/db.js'
 import * as Config from './config/config.js'
 import store from './store'
 import './common/uni-H5Api'
-import uView from "uview-ui";
+import uView from 'uview-ui';
 Vue.use(uView);
 import imgmixin from "./common/mixin/imgurl"
 Vue.use(imgmixin)

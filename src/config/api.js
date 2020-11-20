@@ -8,6 +8,7 @@ import * as db from './db.js' //引入common
 // 需要登陆的，都写到这里，否则就是不需要登陆的接口
 const methodsToken = [
 	//  '/api/user/getwxuser',
+	//'/api/ys/user',
 ];
 
 const post = (method, data, callback, complete) => {
@@ -18,12 +19,12 @@ const post = (method, data, callback, complete) => {
 	// 判断token是否存在
 	if (methodsToken.indexOf(method) >= 0) {
 	//	获取用户token
-		let userToken = db.get("key");
+		let userToken = db.get("token");
 		if (!userToken) {
-			common.jumpToLogin();
+			common.ToLogin();
 			return false;
 		} else {
-			//data.token = userToken;
+			data.token = userToken;
 		}
 	}
 
@@ -34,8 +35,8 @@ const post = (method, data, callback, complete) => {
 		data: data,
 		header: {
 			'Accept': 'application/json',
-		//	'Content-Type': 'application/json',
-		    'Content-Type': 'application/x-www-form-urlencoded', //自定义请求头信息
+			//'Content-Type': 'application/json; charset=utf-8',
+		  'Content-Type': 'application/x-www-form-urlencoded', //自定义请求头信息
 		},
 		method: 'POST',
 		success: (response) => {
@@ -301,3 +302,11 @@ export const uploadImage = (num, callback) => {
 export const contents = (data, callback)=>sitepost('api/v1/contents', data, callback);
 // 科室分类
 export const dotclass = (callback) => get('/api/ys/tree?hosid=5', callback);
+// 排版时间获取医生
+export const dotocrdtime = (data, callback) => post('/api/ys/pblist', data, callback);
+// 获取个人信息
+export const userdeil = (data, callback) => post('/api/ys/user', data, callback);
+//小程序解析code
+export const login1 = (data, callback) => post('/xcx/onlogin', data, callback);
+//小程序登录
+export const login2 = (data, callback) => post('/xcx/tologin', data, callback);

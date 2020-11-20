@@ -16,7 +16,7 @@ function deepCopy(newobj, obj) {
 }
 
 //跳转到登陆页面
-function jumpToLogin(method) {
+function ToLogin(method) {
 	var now_time = Date.parse(new Date())
 	var value = 0;
 	if (db.get('key')) {
@@ -39,11 +39,10 @@ function jumpToLogin(method) {
 					})
 				}
 				// 获取页面参数信息
-				let pagePath = ''
 				setTimeout(() => {
 					uni.hideToast();
 					uni.navigateTo({
-						url: '/pages/souquan/index',
+						url: '/pages/login/choose/index',
 						animationType: 'pop-in',
 						animationDuration: 200
 					})
@@ -485,7 +484,7 @@ function shareParameterDecode(url) {
 
 export {
 	deepCopy,
-	jumpToLogin,
+	ToLogin,
 	timeToDate,
 	formatMoney,
 	wxpay,

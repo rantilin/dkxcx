@@ -149,7 +149,7 @@ export default {
     width: 686rpx;
     height: 300rpx;
     box-sizing: border-box;
-    background: url(../../static/image/cardbg.png) no-repeat center center/100%;
+    background: url(http://xt.xnetyy.com/sitefiles/library/images/2020/11/d7a6106dc8853c5c.png) no-repeat center center/100%;
     border-radius: 8rpx;
     margin: auto;
     display: flex;
