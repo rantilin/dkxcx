@@ -6,7 +6,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "中童康复",
+				"navigationBarTitleText": "打卡小程序",
 				"navigationStyle": "custom"
 			}
 		},
@@ -26,41 +26,6 @@
 			}
 		},
 		{
-			"path": "pages/doctor/list",
-			"style": {
-				"navigationBarTitleText": "预约挂号"
-
-			}
-		},
-		{
-			"path": "pages/doctor/team",
-			"style": {
-				"navigationBarTitleText": "医生团队"
-		
-			}
-		},
-		{
-			"path": "pages/doctor/detail",
-			"style": {
-				"navigationBarTitleText": "医生详情"
-		
-			}
-		},
-		{
-			"path": "pages/doctor/doclist",
-			"style": {
-				"navigationBarTitleText": "医生列表"
-		
-			}
-		},
-		{
-			"path": "pages/card/add",
-			"style": {
-				"navigationBarTitleText": "增加就诊人"
-		
-			}
-		},
-		{
 			"path": "pages/login/choose/index",
 			"style": {
 				"navigationBarTitleText": "授权登录"
@@ -68,16 +33,18 @@
 			}
 		},
 		{
-			"path": "pages/card/index",
-			"style": {
-				"navigationBarTitleText": "就诊人"
-
-			}
+			"path": "pages/login/login/index",
+			"style": {  
+				"navigationBarTextStyle": "light",  
+				"app-plus": {  
+						"titleNView": false 
+				}  
+		}  
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "中童康复",
+		"navigationBarTitleText": "打卡小程序",
 		"navigationBarBackgroundColor": "#fff",
 		"backgroundColor": "#f8f8f8"
 	},
@@ -93,14 +60,14 @@
 			},
 			{
 				"pagePath": "pages/health/index",
-				"text": "健康讲堂",
+				"text": "健康",
 				"iconPath": "static/image/icon-tabbar-2.png",
 				"selectedIconPath": "static/image/icon-tabbar-2-on.png"
 			},
 
 			{
 				"pagePath": "pages/user/index",
-				"text": "个人中心",
+				"text": "我的",
 				"iconPath": "static/image/icon-tabbar-3.png",
 				"selectedIconPath": "static/image/icon-tabbar-3-on.png"
 			}

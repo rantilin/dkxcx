@@ -80,7 +80,7 @@
         }
     },
     "h5" : {
-        "title" : "中童康复",
+        "title" : "打卡小程序",
         "domain" : "http://wx.xianerke120.com",
         "router" : {
             "base" : "",

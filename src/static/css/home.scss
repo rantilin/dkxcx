@@ -1,260 +1,118 @@
-.page-index{
-    .main {
-        width: 710rpx;
-        margin: 0 auto;
-        padding-top: 30rpx;
-    }
-    .banner-item {
-        width: 100%;
-        height: 100%;
-    }
-    .znzl {
-        height: 116rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 58rpx;
-        margin-top: 20rpx;
-        background-repeat: no-repeat;
-        background-size: 20rpx 20rpx;
-        background-position: 648rpx center;
-        .t1 {
-            font-size: 29rpx;
-            font-family: PingFang SC;
-            font-weight: bold;
-            color: rgba(51,51,51,1);
-        }
-        .t2 {
-            font-size: 23rpx;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(161,161,161,1);
-        }
-    }
-    .znzl-img {
-        width: 58rpx;
-        height: 70rpx;
-        margin-left: 37rpx;
-        margin-right: 20rpx;
-    }
-    .ecard {
-        width: 671rpx;
-        margin: 0 auto;
-        height: 110rpx;
-        background: url('http://xt.xnetyy.com/sitefiles/library/images/2020/11/2a10b273f3797775.png') no-repeat center center;
-        background-size: 100%;
-        padding: 20rpx 0 20rpx 25rpx;
-        box-sizing: border-box;
-        margin-top: 25rpx;
-        .t1 {
-            font-size: 49rpx;
-            font-family: PangMenZhengDao;
-            font-weight: 400;
-            color: rgba(255,255,255,1);
-        }
-        .t2 {
-            font-size: 22rpx;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(255,255,255,1);
-        }
-        .btn {
-            width: 145rpx;
-            height: 54rpx;
-            line-height: 54rpx;
-            text-align: center;
-            background: rgba(255,255,255,1);
-            border-radius: 27rpx;
-            font-size: 24rpx;
-            font-family: PingFang SC;
-            font-weight: bold;
-            color: rgba(82,127,254,1);
-        }
-    }
-    .service {
-        height: 269rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 10rpx;
-        margin-top: 20rpx;
-        .img {
-            width: 103rpx;
-            height: 103rpx;
-        }
-        .t1 {
-            font-size: 26rpx;
-            font-family: PingFang SC;
-            font-weight: 800;
-            color: rgba(51,51,51,1);
-            margin: 20rpx 0 10rpx 0;
-        }
-        .t2 {
-            font-size: 20rpx;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(161,161,161,1);
-            text-align: center;
-        }
-    }
-    .service-item {
-        width: 33%;
-        padding-left: 20rpx;
-        padding-right: 20rpx;
-        padding-top: 30rpx;
-        justify-content: center;
-    }
-    .sec-title {
-        color: #292929;
-        font-size: 42rpx;
-        font-weight: 800;
-        padding-left: 10rpx;
-        padding-top: 33rpx;
-        padding-bottom: 33rpx;
-    }
-    .sec-more-icon {
-        width: 19rpx;
-        height: 19rpx;
-    }
-    .sec-more {
-        font-size: 24rpx;
+.topnav {
+    width: 100%;
+    height: 180rpx;
+    background: #fff;
+    .user {
+      width: 100%;
+      padding: 0 32rpx;
+      display: flex;
+      align-items: center;
+      height: 104rpx;
+      font-size: 28rpx;
+      .username {
+        font-size: 28rpx;
+        margin-left: 20rpx;
         font-weight: bold;
-        color: rgba(41,41,41,1);
-    }
-    .tszq {
-        height: 141rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 10rpx;
-    }
-    .tszq-item {
-        font-size: 24rpx;
-        font-family: PingFang SC;
-        font-weight: 500;
-        color: rgba(255,255,255,1);
-        width: 33%;
-        height: 140rpx;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: 262rpx 141rpx;
-        line-height: 140rpx;
-    }
-    .jkfw {
-        height: 365rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 10rpx;
-        flex-wrap: wrap;
-    }
-    .jkfw-item {
-        width: 25%;
-        image {
-            width: 48rpx;
-            height: 48rpx;
-        }
-        .t1 {
-            font-size: 24rpx;
-            font-family: PingFang SC;
-            font-weight: bold;
-            color: rgba(51,51,51,1);
-            margin-top: 10rpx;
-        }
-        .t2 {
-            font-size: 20rpx;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(161,161,161,1);
-            margin-top: 5rpx;
-        }
-    }
-    .tools {
-        height: 157rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 10rpx;
-    }
-    .tools-item{
-        image{
-            width: 48rpx;
-            height: 48rpx;
-        }
-        .t {
-            font-size: 24rpx;
-            font-family: PingFang SC;
-            font-weight: 500;
-            color: rgba(51,51,51,1);
-            margin-top: 10rpx;
-        }
-    }
-    .yyks {
-        height: 164rpx;
-        background: rgba(255,255,255,1);
-        border-radius: 10rpx;
-    }
-    .yyks-item {
-        width: 50%;
-        height: 100%;
-        background-size: 369rpx 164rpx;
+        color: #333333;
       }
-    
-      .list-item {
-        background-color: #fff;
-        color: #4F4F4F;
-        font-size: 24rpx;
-        padding: 30rpx 20rpx;
-        border-radius: 10rpx;
+    }
+    .tebnav {
+      width: 100%;
+      padding: 0 32rpx;
+      display: flex;
+      justify-content: space-between;
+      .tebleft {
+        width: 60%;
       }
-    
-      .doctor-name {
-        color: #292929;
-        font-size: 36rpx;
-      }
-    
-      .thumb {
-        width: 90rpx;
-        height: 90rpx;
-        border-radius: 50%;
-      }
-    
-      .p-1-right {
-        flex: 1;
-        padding-left: 23rpx;
-      }
-    
-      .p-1-right-top {
+      .tebright {
+        width: 40%;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        .filtrate {
+          width: 44rpx;
+          height: 44rpx;
+          margin-left: 10rpx;
+        }
       }
-    
-      .hos-icon {
-        width: 31rpx;
-        height: 31rpx;
-        margin-right: 9rpx;
-        vertical-align: middle;
+    }
+  }
+  .content {
+    width: 100%;
+    font-family: '微软雅黑';
+    .assignment {
+      width: 686rpx;
+      margin: 30rpx auto;
+      .title {
+        font-size: 36rpx;
+        font-weight: bold;
+        color: #333333;
+        line-height: 40rpx;
+        text-indent: 10rpx;
       }
-    
-      .jzl {
-        background: #fef6e1;
-        border-radius: 5px;
-        color: #FF8A00;
-        padding: 3rpx 8rpx;
+      .task {
+        margin-top: 24rpx;
+        width: 100%;
+        height: 331rpx;
+        background: #ffffff;
+        border-radius: 12rpx;
+        padding: 24rpx;
+        .onetitle {
+          width: 100%;
+          display: flex;
+          .portrait {
+            width: 38rpx;
+            margin: 10rpx 24rpx 0 0;
+          }
+          .introduce {
+            width: 400rpx;
+            .title {
+              font-size: 32rpx;
+              color: #333333;
+              font-weight: bold;
+            }
+            .textinfo {
+              width: 100%;
+              .one {
+                font-size: 28rpx;
+                color: #333333;
+              }
+              .two {
+                color: #666666;
+                font-size: 24rpx;
+                margin: 0 10rpx;
+              }
+              .three {
+                color: #999999;
+                font-size: 24rpx;
+              }
+            }
+          }
+          .datetime {
+            width: 120rpx;
+            padding: 0 0 0 14rpx;
+            height: 32rpx;
+            margin-top: 10rpx;
+            margin-left: auto;
+            font-size: 32rpx;
+            font-weight: bold;
+            color: #333333;
+            line-height: 32rpx;
+            border-left: solid 1px #d8d8d8;
+          }
+        }
+        .twodepartment {
+          color: #666666;
+          font-size: 26rpx;
+          line-height: 80rpx;
+        }
+        .describe {
+          font-size: 28rpx;
+          color: #666666;
+          line-height: 40rpx;
+        }
       }
-    
-      .service-icon {
-        width: 36rpx;
-        height: 36rpx;
-        margin-left: 10rpx;
+      .info{
+        
       }
-    
-      .notice-box {
-        padding-left: 60rpx;
-        padding-right: 60rpx;
-        padding-bottom: 40rpx;
-      }
-    
-      .notice-bar {
-        border-radius: 10rpx;
-      }
-    
-}
-.notice{
-	width: 100%;
-	background-color: #FFFBE8;
-	line-height: 50rpx;
-    border-radius: 8rpx;
-	font-size: 24rpx;
-}
+    }
+  }

@@ -1,122 +1,102 @@
 <template>
-<view class="page page-index">
-  <view class="main">
-    <swiper autoplay circular indicatorDots :duration="500" :interval="5000">
-      <swiper-item v-for="(item, index) in banners" :key="index">
-        <image bindtap="goMiniProgram" class="banner-item" :src="item.imageUrl|imgurl"></image>
-      </swiper-item>
-    </swiper>
-    <view class="mt20">
-      <u-notice-bar class="notice" :border-radius="10" mode="horizontal" :list="tiptitle"></u-notice-bar>
-    </view>
-    <view class="znzl flex box-center">
-      <image class="placeholder-img znzl-img" src="../../static/image/znzl.png"></image>
-      <view>
-        <view class="t1">就诊提醒</view>
-        <view class="t2">您有9月20日预约的挂号,记得按时去..</view>
+  <view class="page">
+    <view class="topnav">
+      <view class="user">
+        <u-avatar
+          size="60"
+          src="../../static/image/doctor.png"
+        ></u-avatar>
+        <text class="username">周泰才家长</text>
+      </view>
+      <view class="tebnav">
+        <view class="tebleft">
+          <u-tabs
+            :list="list"
+            inactive-color="#999999"
+            active-color="#333333"
+            :is-scroll="false"
+            :current="current"
+            @change="change"
+          ></u-tabs>
+        </view>
+        <view class="tebright">
+          <selectSwitch
+            @change="changeSwitch"
+            :switchList="switchList"
+            :defaultSwitch="switchindex"
+          />
+          <image
+            src="../../static/image/saixuan.png"
+            class="filtrate"
+          ></image>
+        </view>
       </view>
     </view>
-    <view class="service flex">
-      <view class="service-item flex dir-top box-center main-start" @click="goyuyue">
-        <image class="placeholder-img img" src="../../static/image/icon-ask.png"></image>
-        <view class="t1">门诊挂号</view>
-        <view class="t2">成都中童康复医院挂号</view>
-      </view>
-      <view class="service-item flex dir-top box-center main-start" @click="goteam">
-        <image class="placeholder-img img" src="../../static/image/icon-guahao.png"></image>
-        <view class="t1">医生团队</view>
-        <view class="t2">院内医生专业团队 为您服务</view>
-      </view>
-      <view class="service-item flex dir-top box-center main-start" data-url="/pages/doctor-list/doctor-list">
-        <image class="placeholder-img img" src="../../static/image/icon-fzxf.png"></image>
-        <view class="t1">在线问诊</view>
-        <view class="t2">院内医生在线 解答</view>
+    <view class="content">
+      <view class="assignment">
+        <view class="title">
+          今天
+        </view>
+        <view class="task">
+          <view class="onetitle">
+            <u-avatar
+              src=""
+              class="portrait"
+              size="76"
+            ></u-avatar>
+            <view class="introduce">
+              <view class="title">
+                多动动日常训练要点
+              </view>
+              <view class="textinfo">
+                <text class="one">张秋</text>
+                <text class="two">医生</text>
+                <text class="three">发布于02-19 10:28</text>
+              </view>
+            </view>
+            <view class="datetime">第1天</view>
+          </view>
+          <view class="twodepartment">
+            科室:多动症
+          </view>
+          <view class="describe">
+            各位家长，由专业医生针对多动症制定了训练…
+          </view>
+          <view class="info">
+              
+          </view>
+        </view>
       </view>
     </view>
-    <view class="ecard flex main-between box-center" @click="gocrad">
-      <view></view>
-      <view class="btn mr35">申领卡片</view>
-    </view>
-    <view class="sec-title flex main-between box-center">
-      <text>在线测评</text>
-    </view>
-    <view class="tszq flex-center">
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-1.png)">
-        IEP个别化康复计划
-      </view>
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-2.png)">
-        格里菲斯评估
-      </view>
-      <view bindtap="goPage" class="tszq-item flex-center" style="background-image: url(/static/image/bg-page-index-tszq-3.png)">
-        Q博士家长课堂
-      </view>
-    </view>
-    <view class="sec-title flex main-between box-center">
-      <text>名医专家</text>
-    </view>
-
   </view>
-</view>
 </template>
 
 <script>
+import selectSwitch from '@/components/xuan-switch/xuan-switch.vue'
+import UIcon from '../../uview-ui/components/u-icon/u-icon.vue'
 export default {
+  components: {
+    selectSwitch,
+    UIcon,
+  },
   data() {
     return {
-      recommendedDoctors: [],
-      banners: [],
-      tiptitle: []
+      list: [
+        {
+          name: '健康打卡',
+          count: 5,
+        },
+        {
+          name: '科室管理',
+        },
+      ],
+      current: 0,
+      switchList: ['全部', '我的'],
+      switchindex: false,
     }
   },
-  onLoad() {
-    this.getbanner()
-    this.getnotice()
-  },
-  methods: {
-    getbanner() {
-      console.log(this.$u.config.v);
-      let param = {
-        channelId: 2,
-      }
-      this.$api.contents(param, res => {
-        this.banners = res.contents
-        //console.log(res.contents);
-      })
-    },
-    getnotice() {
-      let param = {
-        channelId: 8,
-      }
-      this.$api.contents(param, res => {
-        // this.tiptitle = res.contents
-        let list = res.contents;
-        let data = [];
-        for (let key in res.contents) {
-          data.push(list[key].body);
-        }
-        this.tiptitle = data
-      })
-    },
-    goyuyue() {
-      uni.navigateTo({
-        url: `/pages/doctor/list`
-      })
-    },
-    gocrad() {
-      uni.navigateTo({
-        url: `/pages/card/index`
-      })
-    },
-    goteam() {
-      uni.navigateTo({
-        url: `/pages/doctor/team`
-      })
-    }
-  },
-
 }
 </script>
-
 <style lang="scss" scoped>
-@import "../../static/css/home.scss";
+@import '../../static/css/home.scss';
 </style>
