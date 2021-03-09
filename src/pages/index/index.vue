@@ -35,6 +35,38 @@
         </view>
       </view>
     </view>
+    <u-popup v-model="isscreen" mode="top">
+	  	<view class="pop-department">
+		      <view class="title">
+              科室
+          </view>
+          <view class="ment-list">
+              <view class="item on">
+                  多动症
+              </view>
+              <view class="item">
+                  自闭症
+              </view>
+              <view class="item">
+                  抽动症
+              </view>
+          </view>
+          <view class="title mt30">
+               打卡任务
+          </view>
+          <scroll-view class="taskcheckbox" scroll-y>
+             
+          </scroll-view>
+          <view class="bottom">
+              <view class="reset">
+                  重置
+              </view>
+              <view class="confirm">
+                  确认选择
+              </view>
+          </view>
+	  	</view>
+	  </u-popup>
     <scroll-view
       class="content"
       scroll-y
@@ -318,7 +350,7 @@
           </view>
         </view>
       </template>
-
+      
     </scroll-view>
   </view>
 </template>
@@ -345,6 +377,7 @@ export default {
       current: 0,
       switchList: ['全部', '我的'],
       switchindex: true,
+      isscreen: false,
     }
   },
   methods: {
@@ -356,7 +389,7 @@ export default {
     },
     filtrate() {
       if (this.switchindex) {
-        console.log(1)
+         this.isscreen=true;
       }
     },
   },
