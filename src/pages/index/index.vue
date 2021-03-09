@@ -63,7 +63,7 @@
             各位家长，由专业医生针对多动症制定了训练…
           </view>
           <view class="info">
-              
+               
           </view>
         </view>
       </view>
