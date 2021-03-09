@@ -1,118 +1,270 @@
 .topnav {
+  width: 100%;
+  height: 180rpx;
+  background: #fff;
+
+  .user {
     width: 100%;
-    height: 180rpx;
-    background: #fff;
-    .user {
-      width: 100%;
-      padding: 0 32rpx;
+    padding: 0 32rpx;
+    display: flex;
+    align-items: center;
+    height: 104rpx;
+    font-size: 28rpx;
+
+    .username {
+      font-size: 28rpx;
+      margin-left: 20rpx;
+      font-weight: bold;
+      color: #333333;
+
+    }
+  }
+
+  .tebnav {
+    width: 100%;
+    padding: 0 32rpx 0 32rpx;
+    display: flex;
+    justify-content: space-between;
+
+    .tebleft {
+      width: 60%;
+    }
+
+    .tebright {
+      width: 40%;
       display: flex;
       align-items: center;
-      height: 104rpx;
-      font-size: 28rpx;
-      .username {
-        font-size: 28rpx;
-        margin-left: 20rpx;
-        font-weight: bold;
-        color: #333333;
+
+      .filtrate {
+        width: 44rpx;
+        height: 44rpx;
+        margin-left: 10rpx;
       }
     }
-    .tebnav {
+  }
+}
+
+.content {
+  width: 100%;
+  height: 80vh;
+
+  .common {
+    width: 686rpx;
+    margin: 32rpx auto;
+
+    .task {
+      margin-top: 24rpx;
       width: 100%;
-      padding: 0 32rpx;
-      display: flex;
-      justify-content: space-between;
-      .tebleft {
-        width: 60%;
-      }
-      .tebright {
-        width: 40%;
-        display: flex;
-        align-items: center;
-        .filtrate {
-          width: 44rpx;
-          height: 44rpx;
-          margin-left: 10rpx;
-        }
-      }
-    }
-  }
-  .content {
-    width: 100%;
-    font-family: '微软雅黑';
-    .assignment {
-      width: 686rpx;
-      margin: 30rpx auto;
-      .title {
-        font-size: 36rpx;
-        font-weight: bold;
-        color: #333333;
-        line-height: 40rpx;
-        text-indent: 10rpx;
-      }
-      .task {
-        margin-top: 24rpx;
+      background: #ffffff;
+      border-radius: 12rpx;
+      padding: 24rpx;
+
+      .onetitle {
         width: 100%;
-        height: 331rpx;
-        background: #ffffff;
-        border-radius: 12rpx;
-        padding: 24rpx;
-        .onetitle {
-          width: 100%;
-          display: flex;
-          .portrait {
-            width: 38rpx;
-            margin: 10rpx 24rpx 0 0;
-          }
-          .introduce {
-            width: 400rpx;
-            .title {
-              font-size: 32rpx;
-              color: #333333;
-              font-weight: bold;
-            }
-            .textinfo {
-              width: 100%;
-              .one {
-                font-size: 28rpx;
-                color: #333333;
-              }
-              .two {
-                color: #666666;
-                font-size: 24rpx;
-                margin: 0 10rpx;
-              }
-              .three {
-                color: #999999;
-                font-size: 24rpx;
-              }
-            }
-          }
-          .datetime {
-            width: 120rpx;
-            padding: 0 0 0 14rpx;
-            height: 32rpx;
-            margin-top: 10rpx;
-            margin-left: auto;
+        display: flex;
+
+        .portrait {
+          width: 38rpx;
+          margin: 10rpx 24rpx 0 0;
+        }
+
+        .introduce {
+          width: 400rpx;
+          
+          .title {
             font-size: 32rpx;
-            font-weight: bold;
             color: #333333;
-            line-height: 32rpx;
-            border-left: solid 1px #d8d8d8;
+            font-weight: bold;
+          }
+
+          .textinfo {
+            width: 100%;
+            padding: 6rpx 0 10rpx 6rpx;
+
+            .one {
+              font-size: 28rpx;
+              color: #333333;
+            }
+
+            .two {
+              color: #666666;
+              font-size: 24rpx;
+              margin: 0 10rpx;
+            }
+
+            .three {
+              color: #999999;
+              font-size: 24rpx;
+            }
           }
         }
-        .twodepartment {
-          color: #666666;
-          font-size: 26rpx;
-          line-height: 80rpx;
+
+        .clockime {
+          width: 150rpx;
+          height: 46rpx;
+          line-height: 46rpx;
+          background: #F5F6F7;
+          border-radius: 23rpx;
+          font-size: 24rpx;
+          color: #0BC788;
+          text-align: center;
         }
-        .describe {
-          font-size: 28rpx;
-          color: #666666;
-          line-height: 40rpx;
+
+        .on {
+          color: #AAAAAA;
         }
       }
-      .info{
-        
+
+      .carddetail{
+          width: 550rpx;
+          margin-left: 105rpx;
+          .contdetail{
+            width: 100%;
+            font-size: 28rpx;
+            line-height: 40rpx;
+            color: #666666;
+          }
+          .imglist{
+              width: 100%;
+              margin: 24rpx auto;
+              display: flex;
+              .item{
+                 width: 174rpx;
+                 height: 157rpx;
+              }
+              .item:nth-child(2){
+                   margin: 0 10rpx;
+              }
+          }
+          .bottom{
+             width: 95%;
+             margin: auto;
+             display: flex;
+             .d-icon{
+               margin-left: auto;
+             }
+          }
       }
     }
   }
+
+
+  .assignment {
+    width: 686rpx;
+    margin: 32rpx auto;
+
+    .title {
+      font-size: 36rpx;
+      font-weight: bold;
+      color: #333333;
+      line-height: 40rpx;
+      text-indent: 10rpx;
+    }
+
+    .task {
+      margin-top: 24rpx;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 12rpx;
+      padding: 24rpx;
+
+      .onetitle {
+        width: 100%;
+        display: flex;
+
+        .portrait {
+          width: 38rpx;
+          margin: 10rpx 24rpx 0 0;
+        }
+
+        .introduce {
+          width: 400rpx;
+          
+          .title {
+            font-size: 30rpx;
+            color: #333333;
+            font-weight: bold;
+          }
+
+          .textinfo {
+            width: 100%;
+            padding: 6rpx 0 10rpx 6rpx;
+
+            .one {
+              font-size: 28rpx;
+              color: #333333;
+            }
+
+            .two {
+              color: #666666;
+              font-size: 24rpx;
+              margin: 0 10rpx;
+            }
+
+            .three {
+              color: #999999;
+              font-size: 24rpx;
+            }
+          }
+        }
+       
+        .datetime {
+          width: 120rpx;
+          padding: 0 0 0 14rpx;
+          height: 30rpx;
+          margin-top: 10rpx;
+          margin-left: auto;
+          font-size: 30rpx;
+          font-weight: bold;
+          color: #333333;
+          line-height: 30rpx;
+          border-left: solid 1px #d8d8d8;
+        }
+
+        .on {
+          color: #AAAAAA;
+        }
+      }
+
+      .twodepartment {
+        color: #666666;
+        font-size: 26rpx;
+        margin: 15rpx auto 15rpx auto;
+      }
+
+      .describe {
+        font-size: 28rpx;
+        color: #666666;
+        line-height: 40rpx;
+      }
+    }
+
+    .info {
+      margin-top: 30rpx;
+      border-top: solid 1px #EBEBEB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80rpx;
+
+      .d-icon {
+        margin-top: 5rpx;
+        width: 28rpx;
+        height: 28rpx;
+
+      }
+
+      .d-text {
+        color: #999999;
+        font-size: 30rpx;
+        margin-left: 10rpx;
+        font-weight: bold;
+      }
+
+      .on {
+        color: #0BC788;
+      }
+    }
+  }
+
+}
