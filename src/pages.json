@@ -11,6 +11,20 @@
 			}
 		},
 		{
+			"path": "pages/class/add",
+			"style": {
+				"navigationBarTitleText": "加入科室"
+ 
+			}
+		},
+		{
+			"path": "pages/class/list",
+			"style": {
+				"navigationBarTitleText": "科室"
+ 
+			}
+		},
+		{
 			"path": "pages/health/index",
 			"style": {
 				"navigationBarTitleText": "健康"
@@ -32,6 +46,17 @@
 		
 			}
 		},
+		{
+			"path" : "pages/task/index",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#13D696",
+				 "navigationBarTextStyle":"white"
+			}
+			
+  	    },
 		{
 			"path": "pages/login/login/index",
 			"style": {  
