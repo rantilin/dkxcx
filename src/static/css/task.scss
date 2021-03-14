@@ -1,0 +1,213 @@
+.backg {
+  width: 100%;
+  height: 330rpx;
+  padding: 0 32rpx;
+  background: url(../../static/image/taskbg.png) no-repeat center center/100%;
+
+  .title {
+    width: 100%;
+    padding: 50rpx 0;
+    color: #fff;
+    font-size: 36rpx;
+  }
+
+  .emum {
+    font-size: 28rpx;
+    line-height: 45rpx;
+    color: #fff;
+  }
+}
+
+.taskcont {
+  width: 686rpx;
+  padding: 24rpx;
+  min-height: 642rpx;
+  margin: -83rpx auto 30rpx auto;
+  background: #fff;
+  border-radius: 12rpx;
+
+  .content {
+    width: 100%;
+    height: 220rpx;
+    font-size: 28rpx;
+    color: #444444;
+    transition: all 0.5s linear;
+    -webkit-transition: all 0.5s linear;
+    line-height: 44rpx;
+    overflow: hidden;
+  }
+
+  .more {
+    height: auto;
+  }
+
+  .imglist {
+    width: 100%;
+    display: flex;
+    margin: 24rpx auto 41rpx auto;
+    justify-content: center;
+
+    .item {
+      margin: 0 10rpx;
+    }
+  }
+
+  .textnode {
+    width: 100%;
+    display: flex;
+    color: #555555;
+    font-size: 26rpx;
+    margin-bottom: 22rpx;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.tasklist {
+  width: 686rpx;
+  min-height: 1398rpx;
+  background: #FEFFFE;
+  border-radius: 12rpx;
+  margin: 30rpx auto;
+  padding: 24rpx 0;
+
+  .navlist {
+    width: 100%;
+    height: 92rpx;
+    display: flex;
+    padding: 0 24rpx;
+    justify-content: space-between;
+    border-bottom: solid 1px #EBEBEB;
+    align-items: center;
+    .navigation {
+      width: 50%;
+    }
+
+    .carryout {
+      width: 118rpx;
+      line-height: 46rpx;
+      background: #FFF0D9;
+      border-radius: 6rpx;
+      font-size: 26rpx;
+      text-align: center;
+      color: #FFBA4A;
+    }
+  }
+}
+.dakatitle{
+   font-size: 28rpx;
+   color: #333333;
+   font-weight: bold;
+   padding: 32rpx 24rpx 10rpx 32rpx;
+}
+  .common {
+  width: 686rpx;
+  margin: 32rpx auto;
+  border-top:solid 1px #EBEBEB;
+  .task {
+    margin-top: 24rpx;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12rpx;
+    padding: 24rpx;
+    
+    .onetitle {
+      width: 100%;
+      display: flex;
+
+      .portrait {
+        width: 38rpx;
+        margin: 10rpx 24rpx 0 0;
+      }
+
+      .introduce {
+        width: 400rpx;
+
+        .title {
+          font-size: 32rpx;
+          color: #333333;
+          font-weight: bold;
+        }
+
+        .textinfo {
+          width: 100%;
+          padding: 6rpx 0 10rpx 6rpx;
+
+          .one {
+            font-size: 28rpx;
+            color: #333333;
+          }
+
+          .two {
+            color: #666666;
+            font-size: 24rpx;
+            margin: 0 10rpx;
+          }
+
+          .three {
+            color: #999999;
+            font-size: 24rpx;
+          }
+        }
+      }
+
+      .clockime {
+        margin-left: auto;
+        padding: 0 20rpx;
+        height: 46rpx;
+        line-height: 46rpx;
+        background: #F5F6F7;
+        font-size: 24rpx;
+        color: #0BC788;
+        text-align: center;
+      }
+
+      .on {
+        color: #AAAAAA;
+      }
+    }
+
+    .carddetail {
+      width: 550rpx;
+      margin-left: 105rpx;
+
+      .contdetail {
+        width: 100%;
+        font-size: 28rpx;
+        line-height: 40rpx;
+        color: #666666;
+      }
+
+      .imglist {
+        width: 100%;
+        margin: 24rpx auto;
+        display: flex;
+
+        .item {
+          width: 174rpx;
+          height: 157rpx;
+        }
+
+        .item:nth-child(2) {
+          margin: 0 10rpx;
+        }
+      }
+
+      .bottom {
+        width: 95%;
+        margin: auto;
+        display: flex;
+
+        .d-icon {
+          margin-left: auto;
+        }
+      }
+      .comment{
+         margin: 20rpx auto;
+      }
+    }
+  }
+}

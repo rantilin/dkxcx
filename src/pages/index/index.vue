@@ -562,6 +562,7 @@
         </view>
       </template>
     </scroll-view>
+    
     <u-popup
       v-model="isscreen"
       mode="top"
@@ -643,9 +644,8 @@ export default {
     },
     creadcalss() {
       //创建科室
-      ;(this.tiptext =
-        '只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'),
-        (this.iscread = true)
+       this.tiptext ='只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'
+       this.iscread = true
     },
     addclass() {
       uni.navigateTo({
