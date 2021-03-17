@@ -3,14 +3,14 @@
       <view class="user">
         <u-avatar
           size="98"
-          src="../../static/image/doctor.png"
+          :src="userInfo.user_avatar"
         ></u-avatar>
         <view class="name">
              <view class="username">
-               周泰才家长
+               {{userInfo.nicknames+userInfo.type_status_name}}
              </view>
              <view class="phone">
-               15220362648
+               {{userInfo.user_mobile}}
              </view>
         </view>
         <view class="godeil" @click="godeil">
@@ -51,7 +51,7 @@
            </view>
            <view class="listitem" @click="gomydesk">
                 <u-icon name="../../static/image/myadd.png" size="44"></u-icon>
-                <view class="title">我加入的科室</view>
+                <view class="title">我加入的科室</view> 
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>
            <view class="line">
@@ -80,12 +80,33 @@ export default {
     }
   },
   onShow() {
-
-  },
-  onLaunch(){
-      
+      this.initData()
   },
   methods: {
+     initData() {
+      // 获取用户信息
+      var _this = this
+      if (_this.$db.get('key')) {
+        this.$api.user(
+          {
+            key: this.$db.get('key'),
+          },
+          (res) => {
+            this.userInfo = res.datas
+          }
+        )
+      } else {
+        _this.hasLogin = false
+        setTimeout(() => {
+          uni.hideToast()
+          uni.navigateTo({
+            url: '/pages/login/choose/index',
+            animationType: 'pop-in',
+            animationDuration: 200,
+          })
+        }, 500)
+      }
+    },
      gocard(){
        uni.navigateTo({
         url: '/pages/user/cardrecord',

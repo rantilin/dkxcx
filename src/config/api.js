@@ -261,4 +261,4 @@ export const uploadImage = (num, callback) => {
 
 
 //获取用户key
-export const user = (data, callback)=>post('/mobile/index.php', data, callback);
+export const user = (data, callback)=>post('/mobile/index.php?act=member_info&op=index', data, callback);

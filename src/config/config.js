@@ -1,4 +1,4 @@
-export const apiBaseUrl = '172.168.50.20:3333'
+export const apiBaseUrl = 'http://172.168.50.20:3333/'
 //export const h5Url = apiBaseUrl + "/wap/" //H5端网站地址,
 
 // #ifdef H5
