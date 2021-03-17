@@ -34,15 +34,33 @@
 		{
 			"path": "pages/user/index",
 			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationBarBackgroundColor":"#2ed1a4",
-				"navigationBarTextStyle":"white"
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/user/set",
+			"style": {
+				"navigationBarTitleText": "个人信息"
 			}
 		},
 		{
 			"path": "pages/login/choose/index",
 			"style": {
 				"navigationBarTitleText": "授权登录"
+		
+			}
+		},
+		{
+			"path": "pages/user/cardrecord",
+			"style": {
+				"navigationBarTitleText": "打卡记录"
+		
+			}
+		},
+		{
+			"path": "pages/user/mydesk",
+			"style": {
+				"navigationBarTitleText": "我加入的科室"
 		
 			}
 		},

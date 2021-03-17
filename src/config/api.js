@@ -1,7 +1,5 @@
 import {
 	apiBaseUrl,
-	cmsBaseUrl,
-	siteId
 } from './config.js';
 import * as common from './common.js' //引入common
 import * as db from './db.js' //引入common
@@ -88,42 +86,6 @@ const post = (method, data, callback, complete) => {
 	});
 
 }
-//sitesever调用
-const sitepost=(method, data, callback, complete)=>{
-	
-	data.siteId = siteId
-	uni.request({
-		url: cmsBaseUrl + method,
-		data: data,
-		header: {
-			'Content-Type': 'application/json',
-		  'X-SS-API-KEY': '37cb1eb8-fe8e-451d-ae86-feba2d2255dd'
-		},
-		method: 'POST',
-		success: (response) => {
-			const result = response.data
-			callback(result);
-		},
-		complete: (response) => {
-			setTimeout(function() {
-				uni.hideLoading();
-			}, 1000)
-			complete?complete(): "";
-		},
-		fail: (error) => {
-			uni.showLoading({
-				title: '网络开小差了'
-			});
-			if (error && error.response) {
-				showError(error.response);
-			} else {
-				
-			}
-			
-		},
-	});
-}
-
 
 const get = (url, callback) => {
 	uni.showLoading({
@@ -298,15 +260,5 @@ export const uploadImage = (num, callback) => {
 }
 
 
-//获取列表
-export const contents = (data, callback)=>sitepost('api/v1/contents', data, callback);
-// 科室分类
-export const dotclass = (callback) => get('/api/ys/tree?hosid=5', callback);
-// 排版时间获取医生
-export const dotocrdtime = (data, callback) => post('/api/ys/pblist', data, callback);
-// 获取个人信息
-export const userdeil = (data, callback) => post('/api/ys/user', data, callback);
-//小程序解析code
-export const login1 = (data, callback) => post('/xcx/onlogin', data, callback);
-//小程序登录
-export const login2 = (data, callback) => post('/xcx/tologin', data, callback);
+//获取用户key
+export const user = (data, callback)=>post('/mobile/index.php', data, callback);

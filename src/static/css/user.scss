@@ -1,160 +1,107 @@
-.userbg {
-  width: 100%;
-  height: 320rpx;
-  box-sizing: border-box;
-  padding: 30rpx 0 0 0;
-  background: url(http://xt.xnetyy.com/sitefiles/library/images/2020/11/1c551fd45a1bd15b.png) no-repeat center center/100%;
-
-  .userbanner {
-    width: 750rpx;
-  }
-
-  .userdeil {
-    width: 686rpx;
-    margin: auto;
-    display: flex;
-    align-items: center;
-
-    .userimg {
-      width: 130rpx;
-      height: 130rpx;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .signature {
-      width: 400rpx;
-      color: #FFFFFF;
-      line-height: 45rpx;
-      margin: 0 0 0 20rpx;
-
-      .p1 {
-        font-size: 32rpx;
-        font-weight: bold;
-      }
-
-      .p2 {
-        font-size: 30rpx;
-      }
-    }
-  }
-}
-
-.userframe {
+.user {
   width: 686rpx;
-  margin: -120rpx auto 0 auto;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 0 25rpx;
-  height: 190rpx;
+  margin: 56rpx auto;
   display: flex;
-  box-shadow: 0px 0px 10px 0px rgba(105, 119, 114, 0.09);
-  border-radius: 8px;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 99;
-
-  .box {
-    width: 120rpx;
-    display: flex;
-    flex-direction: column;
-
-    .icon {
-      width: 55rpx;
-      margin: auto;
-    }
-
-    .title {
-      color: #333333;
-      font-size: 26rpx;
-      text-align: center;
-      line-height: 60rpx;
-    }
-  }
-}
-
-.usercard {
-  width: 686rpx;
-  height: 130rpx;
-  border-radius: 8rpx;
-  box-sizing: border-box;
-  margin: 40rpx auto;
-  background: url(../../static/image/usercarbg.png) no-repeat center center/100%;
-  padding: 0 40rpx;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
 
-  .leftname {
-    color: #fff;
-    line-height: 50rpx;
+  .name {
+    margin-left: 16rpx;
+    color: #333333;
 
-    .name {
-      font-size: 32rpx;
+    .username {
+      font-size: 30rpx;
+      margin-bottom: 18rpx;
       font-weight: bold;
     }
 
-    .card {
-      font-size: 26rpx;
+    .phone {
+      font-size: 24rpx;
     }
   }
 
-  .rightsys {
-    width: 156rpx;
-    height: 56rpx;
-    background: #FFFFFF;
-    color: #5481FC;
-    font-size: 26rpx;
-    border-radius: 28rpx;
-    line-height: 56rpx;
+  .godeil {
+    margin-left: auto;
+    width: 124rpx;
+    line-height: 48rpx;
+    border-radius: 25rpx;
+    color: #999999;
+    border: 1px solid #999999;
+    font-size: 24rpx;
     text-align: center;
   }
 }
 
-.case {
+.usermenu {
   width: 686rpx;
-  height: 258rpx;
-  background: #FFFFFF;
-  border-radius: 8rpx;
-  margin: auto;
-  box-sizing: border-box;
-  padding: 24rpx;
-  .titletg{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 50rpx;
-    .title{
-       color: #333333;
-       font-weight: bold;
-       font-size: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  margin:0 auto 40rpx auto;
+
+  .item {
+    width: 331rpx;
+    height: 138rpx;
+    padding: 24rpx;
+    background: #FFFFFF;
+    border-radius: 12rpx;
+
+    .title {
+      font-size: 30rpx;
+      color: #333333;
+      font-weight: bold;
     }
-    .rightmore{
-       display: flex;
-       color: #999999;
-       font-size: 24rpx;
-       align-items: center;
-       justify-content: center;
+
+    .block {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 21rpx;
     }
-  }
-  .carenum{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    line-height: 45rpx;
-    color: #666666;
-    font-size: 26rpx;
-    .box1{
-       width: 60%;
-       .num{
-         color: #333333;
-       }
-    }
-    .box2{
-      width: 40%;
-      .num{
-        color: #333333;
+
+    .blocktext {
+      color: #666666;
+      font-size: 26rpx;
+
+      .tip {
+        width: 118rpx;
+        line-height: 36rpx;
+        padding: 0 10rpx;
+        background: #FF834A;
+        border-radius: 18rpx;
+        font-size: 24rpx;
+        text-align: center;
+        color: #FFFFFF;
+        margin-right: 29rpx;
       }
     }
+  }
+}
+
+.listmenu {
+  width: 686rpx;
+  min-height: 613rpx;
+  margin: auto;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  padding: 1rpx 24rpx 1rpx 24rpx;
+  .listitem{
+     width: 100%;
+     display: flex;
+     align-items: center;
+     margin: 60rpx auto;
+     .title{
+        color: #333333;
+        font-size: 30rpx;
+        margin-left: 22rpx;
+        
+      }
+      .more{
+        margin-left: auto;
+        color: #A0A0A0;
+      }
+  }
+  .line{
+    width: 638rpx;
+    margin: 63rpx auto;
+    height: 1px;
+    background: #EBEBEB;
   }
 }

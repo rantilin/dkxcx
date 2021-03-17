@@ -113,6 +113,10 @@
        </view>
 
 		</view>
+		
+		<view class="bottomfix">
+			
+		</view>
 	</view>
 </template>
 

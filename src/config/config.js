@@ -1,6 +1,4 @@
-export const apiBaseUrl = 'https://yy.xnetkfyy.cn'
-export const cmsBaseUrl = 'https://xt.xnetyy.com/'
-export const siteId = 1 //站点id
+export const apiBaseUrl = '172.168.50.20:3333'
 //export const h5Url = apiBaseUrl + "/wap/" //H5端网站地址,
 
 // #ifdef H5
