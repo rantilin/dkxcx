@@ -82,6 +82,7 @@
     justify-content: space-between;
     border-bottom: solid 1px #EBEBEB;
     align-items: center;
+
     .navigation {
       width: 50%;
     }
@@ -97,23 +98,26 @@
     }
   }
 }
-.dakatitle{
-   font-size: 28rpx;
-   color: #333333;
-   font-weight: bold;
-   padding: 32rpx 24rpx 10rpx 32rpx;
+
+.dakatitle {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+  padding: 32rpx 24rpx 10rpx 32rpx;
 }
-  .common {
+
+.common {
   width: 686rpx;
   margin: 32rpx auto;
-  border-top:solid 1px #EBEBEB;
+  border-top: solid 1px #EBEBEB;
+
   .task {
     margin-top: 24rpx;
     width: 100%;
     background: #ffffff;
     border-radius: 12rpx;
     padding: 24rpx;
-    
+
     .onetitle {
       width: 100%;
       display: flex;
@@ -205,16 +209,113 @@
           margin-left: auto;
         }
       }
-      .comment{
-         margin: 20rpx auto;
+
+      .comment {
+        margin: 20rpx auto;
       }
     }
   }
 }
-.bottomfix{
+
+.bottomfix {
   width: 100%;
   height: 92rpx;
   background: #fff;
   position: fixed;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 32rpx;
+  z-index: 999;
+
+  .left {
+    width: 120rpx;
+
+    .iconsamll {
+      margin: auto;
+      width: 40rpx;
+    }
+
+    .name {
+      font-size: 22rpx;
+      color: #9DA0A6;
+      text-align: center;
+    }
+  }
+
+  .botrun {
+    width: 354rpx;
+    line-height: 68rpx;
+    background: #0BC788;
+    border-radius: 35rpx;
+    color: #fff;
+    text-align: center;
+    margin-left: 60rpx;
+  }
+
+  .right {
+    width: 120rpx;
+    margin-left: auto;
+
+    .iconsamll {
+      margin: 0 auto;
+      width: 40rpx;
+    }
+
+    .name {
+      font-size: 22rpx;
+      color: #9DA0A6;
+      text-align: center;
+    }
+  }
+}
+
+.taskpostcont {
+  width: 686rpx;
+  min-height: 392rpx;
+  margin: auto;
+  background: #FEFFFE;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  textarea{
+    font-size: 26rpx;
+  }
+  .listupload{
+     width: 100%;
+     margin: 30rpx auto 24rpx auto;
+     ::v-deep .u-list-item{
+        margin: 5rpx 3rpx;
+     }
+     ::v-deep .u-preview-image{
+       border-radius: 0;
+     }
+  }
+  .listbut{
+    width: 270rpx;
+    margin-left: 14rpx;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.bottomflex{
+  width: 686rpx;
+  margin: 60rpx auto;
+  padding-bottom: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  .btn{
+    width: 322rpx;
+    line-height: 88rpx;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+    text-align: center;
+  }
+  .save{
+    border: 1px solid #BBBBBB;
+    color: #666666;
+  }
+  .post{
+    background: #0BC788;
+    color: #fff;
+  }
 }

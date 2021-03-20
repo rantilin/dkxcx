@@ -71,7 +71,23 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-			
+  	},
+		{
+			"path" : "pages/task/dakadd",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+  	},
+		{
+			"path" : "pages/task/ranking",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "排行榜",
+				"navigationBarBackgroundColor": "#0BC788",
+				"navigationBarTextStyle": "white"
+			}
   	},
 		{
 			"path": "pages/login/login/index",

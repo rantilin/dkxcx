@@ -40,10 +40,11 @@
     </view>
 
     <scroll-view
-      class="content"
+      class="contentvm"
       scroll-y
     >
-      <template v-if="switchindex && current==0">
+     <!-- 用户端 -->
+      <template v-if="switchindex && current==0 && status == 0">
         <view class="common">
           <view class="task">
             <view class="onetitle">
@@ -219,7 +220,7 @@
         </view>
       </template>
 
-      <template v-if="switchindex == false && current==0">
+      <template v-if="switchindex == false && current==0 && status == 0">
         <view class="assignment">
           <view class="title">
             今天
@@ -370,6 +371,150 @@
           </view>
         </view>
       </template>
+    <!-- 用户端结束 -->
+     <!-- 医生端 -->
+      <template v-if="switchindex && current==0 && status == 1"> 
+        <view class="assignment">
+          <view class="title">
+            今天
+          </view>
+          <view class="task" @click="docedit">
+            <view class="onetitle">
+              <u-avatar
+                src=""
+                class="portrait"
+                size="76"
+              ></u-avatar>
+              <view class="introduce">
+                <view class="title">
+                  多动动日常训练要点
+                </view>
+                <view class="textinfo">
+                  <text class="one">张秋</text>
+                  <text class="two">医生</text>
+                  <text class="three">发布于02-19 10:28</text>
+                </view>
+              </view>
+              <view class="datetime">第1天</view>
+            </view>
+          
+            <view class="describe">
+              各位家长，由专业医生针对多动症制定了训练…
+            </view>
+            <view class="listbox">
+              <view class="itembox">
+                <view class="textone">
+                  18
+                </view>
+                <view class="textwo">
+                  已加入(人)
+                </view>
+              </view>
+              <view class="itembox">
+                <view class="textone">
+                  20
+                </view>
+                <view class="textwo">
+                  预设人数
+                </view>
+              </view>
+              <view class="itembox">
+                <u-circle-progress
+                  class="circle"
+                  active-color="#0BC788"
+                  width="79"
+                  :percent="33"
+                  border-width="3"
+                >
+                  33%
+                </u-circle-progress>
+                <view class="textwo">
+                  打卡率
+                </view>
+              </view>
+            </view>
+            <view class="line"></view>
+            <view class="docbottom">
+                 <view class="box1">
+                     科室:多动症
+                 </view>
+                  <view class="box2">
+                     <div class="status">进行中</div>
+                        <u-icon name="more-dot-fill" color="#666666" size="28"></u-icon>
+                  </view>
+            </view>
+          </view>
+          
+          <view class="task" @click="docedit">
+            <view class="onetitle">
+              <u-avatar
+                src=""
+                class="portrait"
+                size="76"
+              ></u-avatar>
+              <view class="introduce">
+                <view class="title">
+                  多动动日常训练要点
+                </view>
+                <view class="textinfo">
+                  <text class="one">张秋</text>
+                  <text class="two">医生</text>
+                  <text class="three">发布于02-19 10:28</text>
+                </view>
+              </view>
+              <view class="datetime">第1天</view>
+            </view>
+          
+            <view class="describe">
+              各位家长，由专业医生针对多动症制定了训练…
+            </view>
+            <view class="listbox">
+              <view class="itembox">
+                <view class="textone">
+                  18
+                </view>
+                <view class="textwo">
+                  已加入(人)
+                </view>
+              </view>
+              <view class="itembox">
+                <view class="textone">
+                  20
+                </view>
+                <view class="textwo">
+                  预设人数
+                </view>
+              </view>
+              <view class="itembox">
+                <u-circle-progress
+                  class="circle"
+                  active-color="#0BC788"
+                  width="79"
+                  :percent="33"
+                  border-width="3"
+                >
+                  33%
+                </u-circle-progress>
+                <view class="textwo">
+                  打卡率
+                </view>
+              </view>
+            </view>
+            <view class="line"></view>
+            <view class="docbottom">
+                 <view class="box1">
+                     科室:多动症
+                 </view>
+                  <view class="box2">
+                     <div class="status on">已结束</div>
+                        <u-icon name="more-dot-fill" color="#666666" size="28"></u-icon>
+                  </view>
+            </view>
+          </view>
+          
+        </view>
+      </template>
+       <!-- 医生端结束 -->
 
       <template v-if="current == 1">
         <view class="classment">
@@ -561,6 +706,7 @@
 
         </view>
       </template>
+      
     </scroll-view>
     
     <u-popup
@@ -601,6 +747,21 @@
         </view>
       </view>
     </u-popup>
+
+    <u-popup v-model="docbottom" mode="bottom" border-radius="12">
+        <view class="docbottom">
+           <view class="checkbox">
+               编辑
+           </view>
+           <view class="checkbox">
+               删除
+           </view>
+           <view class="line"></view>
+           <view class="checkbox">
+               结束此打卡
+           </view>
+        </view>
+    </u-popup>
   </view>
 </template>
 
@@ -608,14 +769,13 @@
 import selectSwitch from '@/components/xuan-switch/xuan-switch.vue'
 export default {
   components: {
-    selectSwitch,
+    selectSwitch
   },
   data() {
     return {
       list: [
         {
           name: '健康打卡',
-          count: 5,
         },
         {
           name: '科室管理',
@@ -628,6 +788,8 @@ export default {
       //提示框配置
       iscread: false,
       tiptext: '',
+      status: 1, //0用户，1医生
+      docbottom: false,
     }
   },
   methods: {
@@ -644,8 +806,16 @@ export default {
     },
     creadcalss() {
       //创建科室
-       this.tiptext ='只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'
-       this.iscread = true
+      //  this.tiptext ='只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'
+      //  this.iscread = true
+      
+    },
+    docedit(){
+       if (this.docbottom) {
+         this.docbottom = false
+      }else{
+         this.docbottom = true
+      }
     },
     addclass() {
       uni.navigateTo({

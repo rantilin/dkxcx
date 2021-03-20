@@ -41,7 +41,7 @@
 						:bar-style="{background: '#0BC788'}" :is-scroll="false" :current="current" bar-height="6"
 						@change="change"></u-tabs>
 				</view>
-				<view class="carryout">
+				<view class="carryout" @click="goranking">
 					   排行榜
 				</view>
 			</view>
@@ -115,7 +115,21 @@
 		</view>
 		
 		<view class="bottomfix">
-			
+			   <view class="left">
+					   <view class="iconsamll">
+							  <u-icon name="../../static/image/mycard.png" size="40" ></u-icon>
+						 </view>
+							<view class="name">我的打卡</view>
+				 </view>
+				 <view class="botrun" @click="godaka()">
+					   立即打卡
+				 </view>
+				 <view class="right">
+					   <view class="iconsamll">
+							  <u-icon name="../../static/image/sharecard.png" size="40" ></u-icon>
+						 </view>
+							<view class="name">分享家长</view>
+				 </view>
 		</view>
 	</view>
 </template>
@@ -151,6 +165,16 @@ import comments from '@/components/comment/index'
 				} else {
 					this.contmore = true
 				}
+			},
+			godaka(){
+				uni.navigateTo({
+					url:'/pages/task/dakadd'
+				})
+			},
+			goranking(){
+				uni.navigateTo({
+					url:'/pages/task/ranking'
+				})
 			}
 		}
 	}

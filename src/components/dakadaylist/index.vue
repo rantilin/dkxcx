@@ -55,7 +55,7 @@ export default {
            icon: 'none',
 		       duration: 1000,
          })
-      }else{
+      } else {
         this.dateActive = index;
       }
       //  this.selectDate = `${this.dateArr[index]['date']}`;
