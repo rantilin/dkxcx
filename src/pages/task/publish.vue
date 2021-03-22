@@ -26,6 +26,53 @@
             <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
         </view>
      </view>
+     <view class="config">
+        <view class="listinput">
+           <view class="label">
+               基础打卡(积分)
+           </view>
+            <view class="rightcont">
+            <text>30</text>
+            <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
+        </view>
+        </view>
+        <view class="listinput">
+           <view class="label">
+               额外奖励(积分)
+           </view>
+            <view class="rightcont">
+            <text>暂不奖励</text>
+            <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
+        </view>
+        </view>
+        <view class="listinput">
+           <view class="label">
+               设置连续打卡(天数)
+           </view>
+            <view class="rightcont">
+            <text>暂不设置</text>
+            <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
+        </view>
+        </view>
+        <view class="listinput">
+           <view class="label">
+               开始时间
+           </view>
+            <view class="rightcont">
+            <text>请选择开始时间</text>
+            <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
+        </view>
+        </view>
+        <view class="listinput">
+           <view class="label">
+               结束时间
+           </view>
+            <view class="rightcont">
+            <text>请选择结束时间</text>
+            <u-icon name="arrow-right" size="24" color="##A0A0A0"></u-icon>
+        </view>
+        </view>
+     </view>
     <view class="bottomflex">
          <view class="btn save">
               保存草稿
@@ -50,82 +97,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.postform {
-  width: 686rpx;
-  min-height: 507rpx;
-  background: #fefffe;
-  border-radius: 12rpx;
-  margin:40rpx auto;
-  .title{
-    padding:10rpx 20rpx;
-    border-bottom: solid 1px #EBEBEB;
-  }
-}
-.taskpostcont {
-  width: 686rpx;
-  min-height: 392rpx;
-  margin: auto;
-  border-radius: 12rpx;
-  padding: 24rpx;
-  textarea{
-    font-size: 26rpx;
-  }
-  .listupload{
-     width: 100%;
-     margin: 30rpx auto 24rpx auto;
-     ::v-deep .u-list-item{
-        margin: 5rpx 3rpx;
-     }
-     ::v-deep .u-preview-image{
-       border-radius: 0;
-     }
-  }
-  .listbut{
-    width: 270rpx;
-    margin-left: 14rpx;
-    display: flex;
-    justify-content: space-between;
-  }
-}
-.bottomflex{
-  width: 686rpx;
-  margin: 60rpx auto;
-  padding-bottom: 100rpx;
-  display: flex;
-  justify-content: space-between;
-  .btn{
-    width: 322rpx;
-    line-height: 88rpx;
-    border-radius: 44rpx;
-    font-size: 30rpx;
-    text-align: center;
-  }
-  .save{
-    border: 1px solid #BBBBBB;
-    color: #666666;
-  }
-  .post{
-    background: #0BC788;
-    color: #fff;
-  }
-}
-.boxlist{
-   width: 686rpx;
-   line-height: 92rpx;
-   margin: 30rpx auto;
-   background: #fefffe;
-   display: flex;
-   padding: 0 24rpx;
-   border-radius: 12rpx;
-   justify-content: space-between;
-   .label{
-      color: #666666;
-      font-size: 32rpx;
-   }
-   .rightcont{
-       color: #333333;
-       font-size: 28rpx;
-       display: flex;
-   }
-}
+  @import '../../static/css/publish.scss'
 </style>

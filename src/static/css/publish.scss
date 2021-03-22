@@ -1,0 +1,118 @@
+.postform {
+  width: 686rpx;
+  min-height: 507rpx;
+  background: #fefffe;
+  border-radius: 12rpx;
+  margin: 40rpx auto;
+
+  .title {
+    padding: 10rpx 20rpx;
+    border-bottom: solid 1px #EBEBEB;
+  }
+}
+
+.taskpostcont {
+  width: 686rpx;
+  min-height: 392rpx;
+  margin: auto;
+  border-radius: 12rpx;
+  padding: 24rpx;
+
+  textarea {
+    font-size: 26rpx;
+  }
+
+  .listupload {
+    width: 100%;
+    margin: 30rpx auto 24rpx auto;
+
+    ::v-deep .u-list-item {
+      margin: 5rpx 3rpx;
+    }
+
+    ::v-deep .u-preview-image {
+      border-radius: 0;
+    }
+  }
+
+  .listbut {
+    width: 270rpx;
+    margin-left: 14rpx;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.bottomflex {
+  width: 686rpx;
+  margin: 60rpx auto;
+  padding-bottom: 100rpx;
+  display: flex;
+  justify-content: space-between;
+
+  .btn {
+    width: 322rpx;
+    line-height: 88rpx;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+    text-align: center;
+  }
+
+  .save {
+    border: 1px solid #BBBBBB;
+    color: #666666;
+  }
+
+  .post {
+    background: #0BC788;
+    color: #fff;
+  }
+}
+
+.boxlist {
+  width: 686rpx;
+  line-height: 92rpx;
+  margin: 30rpx auto;
+  background: #fefffe;
+  display: flex;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  justify-content: space-between;
+
+  .label {
+    color: #666666;
+    font-size: 32rpx;
+  }
+
+  .rightcont {
+    color: #333333;
+    font-size: 28rpx;
+    display: flex;
+  }
+}
+
+.config {
+  width: 686rpx;
+  min-height: 500rpx;
+  margin: auto;
+  padding: 0 24rpx;
+  border-radius: 12rpx;
+  background: #fefffe;
+  .listinput {
+    width: 100%;
+    display: flex;
+    padding: 24rpx 0;
+    border-bottom: solid 1px #EBEBEB;
+    justify-content: space-between;
+    .label {
+      color: #666666;
+      font-size: 32rpx;
+    }
+
+    .rightcont {
+      color: #333333;
+      font-size: 28rpx;
+      display: flex;
+    }
+  }
+}
