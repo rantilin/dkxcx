@@ -90,6 +90,13 @@
 			}
   	},
 		{
+			"path" : "pages/task/publish",
+			"style" :                                                                                    
+			{
+				"navigationBarTitleText": "发布打卡任务"
+			}
+  	},
+		{
 			"path": "pages/login/login/index",
 			"style": {  
 				"navigationBarTextStyle": "light",  

@@ -72,21 +72,21 @@
               <view class="imglist">
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
@@ -130,21 +130,21 @@
               <view class="imglist">
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
@@ -188,21 +188,21 @@
               <view class="imglist">
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
                 </view>
                 <view class="item">
                   <u-image
-                    src="https://cdn.uviewui.com/uview/example/fade.jpg"
+                    src=""
                     width="174"
                     height="157"
                   ></u-image>
@@ -762,6 +762,9 @@
            </view>
         </view>
     </u-popup>
+    <view class="fixed" @click="addpub">
+         <u-icon name="plus" color="#fff" size="38"></u-icon>
+    </view>
   </view>
 </template>
 
@@ -788,7 +791,7 @@ export default {
       //提示框配置
       iscread: false,
       tiptext: '',
-      status: 1, //0用户，1医生
+      status: 0, //0用户，1医生
       docbottom: false,
     }
   },
@@ -808,7 +811,7 @@ export default {
       //创建科室
       //  this.tiptext ='只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'
       //  this.iscread = true
-      
+
     },
     docedit(){
        if (this.docbottom) {
@@ -830,6 +833,11 @@ export default {
     gotask(){
       uni.navigateTo({
         url: '/pages/task/index',
+      })
+    },
+    addpub(){
+       uni.navigateTo({
+        url: '/pages/task/publish',
       })
     }
   },

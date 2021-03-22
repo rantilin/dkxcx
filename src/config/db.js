@@ -71,7 +71,7 @@ function userToken(callback) {
         callback(token);
     }else{
         //如果没有登陆，就去登陆
-        common.jumpToLogin();
+        common.ToLogin();
     }
 }
 
