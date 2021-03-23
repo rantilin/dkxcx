@@ -177,7 +177,7 @@ export const uploadFiles = (callback) => {
 			});
 			const tempFilePaths = chooseImageRes.tempFilePaths;
 			const uploadTask = uni.uploadFile({
-				url: apiBaseUrl + '/api/file/upload', //仅为示例，非真实的接口地址
+				url: apiBaseUrl + '/mobile/index.php?act=task&op=image_header', //仅为示例，非真实的接口地址
 				filePath: tempFilePaths[0],
 				fileType: 'image',
 				name: 'file',
@@ -186,8 +186,7 @@ export const uploadFiles = (callback) => {
 					'Content-Type': 'multipart/form-data',
 				},
 				formData: {
-					'method': 'images.upload',
-					'file': tempFilePaths[0]
+          'key' : db.get('key'),
 				},
 				success: (uploadFileRes) => {
 					callback(JSON.parse(uploadFileRes.data));
@@ -268,3 +267,7 @@ export const calsscreat = (data, callback)=>post('/mobile/index.php?act=departme
 export const mycalss = (data, callback)=>post('/mobile/index.php?act=task&op=depart_doctor', data, callback);
 //科室详情
 export const calssdeil = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart_one', data, callback);
+//发布科室
+export const classpubic = (data, callback)=>post('/mobile/index.php?act=task&op=depart_doctor', data, callback);
+//删除图片
+export const imgdel = (data, callback)=>post('/mobile/index.php?act=task&op=del_file_uploads', data, callback);

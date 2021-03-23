@@ -1,7 +1,19 @@
 .health {
   padding: 26rpx 0;
   box-sizing: border-box;
-  
+	.swiper{
+		width: 686rpx;
+		height: 350rpx;
+		margin: auto;
+		.swiper-item{
+			width: 686rpx;
+			height: 350rpx;
+			image{
+				width: 686rpx;
+				height: 350rpx;
+			}
+		}
+	}
 }
 .banner {
   width: 698rpx;
@@ -11,6 +23,57 @@
   width: 100%;
   margin: 20rpx auto;
 }
+.video{
+	  width: 686rpx;
+	  height: 350rpx;
+	  margin: auto;
+	  margin-top: 24rpx;
+	  position: relative;
+	  .time{
+		  font-size: 24rpx;
+		  font-family: zcoolqingkehuangyouti-Regular, zcoolqingkehuangyouti;
+		  font-weight: 400;
+		  color: #FFFFFF;
+		  position: absolute;
+		  left: 24rpx;
+		  bottom: 24rpx;
+		  z-index: 2;
+	  }
+	  image{
+		  width: 686rpx;
+		  height: 350rpx;
+		  border-radius: 10rpx;
+	  }
+  }
+  .title-button{
+	  display: flex;
+	  width: 750rpx;
+	  padding: 0 56rpx;
+	  justify-content: space-between;
+	  align-items: center;
+	  margin: 20rpx 0 56rpx 0;
+	  image{
+		  width: 64rpx;
+		  height: 64rpx;
+		  border-radius: 50%;
+		  box-shadow: 0px 2px 8px 0px rgba(7, 42, 2, 0.12);
+	  }
+  }
+  .video-title{
+	  width: 544rpx;
+	  font-size: 32rpx;
+	  color: #333333;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  text-overflow: ellipsis;
+	  .detail{
+		  width: 528rpx;
+		  font-size: 24rpx;
+		  color: #666666;
+		  line-height: 24rpx;
+		  margin-top: 16rpx;
+	  }
+  }
 .funcs {
   display: flex;
   padding: 36rpx 0;
@@ -36,18 +99,30 @@
 }
 .tip-more {
   display: flex;
-  padding: 0 44rpx;
+  padding: 0 32rpx;
   align-items: center;
   box-sizing: border-box;
   justify-content: space-between;
-  .tip {
-    font-size: 36rpx;
-    color: #292929;
-    font-weight: bold;
+  .shu-title{
+	  display: flex;
+	  align-items: center;
+	  .shu{
+		width: 8rpx;
+		height: 32rpx;
+		background: #0BC788;
+		border-radius: 4rpx;
+		margin-right: 12rpx;
+	  }
+	  .tip {
+		font-size: 36rpx;
+		color: #292929;
+		font-weight: bold;
+	  }
   }
   .more {
     display: flex;
     align-items: center;
+	
     .text {
       font-size: 24rpx;
       color: #8e8e8e;
@@ -66,27 +141,32 @@
   margin-top: 30rpx;
   .items {
     display: flex;
-    width: 3248rpx;
+    // width: 3248rpx;
     height: 348rpx;
-    padding: 0 26rpx;
+    padding: 0 32rpx;
     box-sizing: border-box;
     justify-content: space-between;
     .item {
       width: 448rpx;
       height: 348rpx;
       border-radius: 10rpx;
-      background: #ffffff;
+      // background: #ffffff;
+	  margin-right: 24rpx;
       .pic {
-        width: 448rpx;
-        height: 244rpx;
+        width: 370rpx;
+        height: 234rpx;
         border-top-left-radius: 10rpx;
         border-top-right-radius: 10rpx;
       }
       .title {
-        font-size: 26rpx;
+		  width: 370rpx;
+        font-size: 32rpx;
         color: #333333;
-        font-weight: bold;
-        margin: 10rpx 20rpx;
+        line-height: 32rpx;
+		margin-top: 20rpx;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
       }
       .num-desc {
         display: flex;
@@ -114,6 +194,52 @@
       }
     }
   }
+}
+.knowledge-warp{
+	width: 750rpx;
+	padding: 0 32rpx;
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 24rpx;
+	.knowledge{
+		width: 331rpx;
+		height: 400rpx;
+		background: #FFFFFF;
+		border-radius: 12rpx;
+		image{
+			width: 331rpx;
+			height: 237rpx;
+			border-radius: 10rpx 10rpx 0 0 ;
+		}
+		.title{
+			width: 301rpx;
+			font-size: 30rpx;
+			color: #333333;
+			line-height: 44rpx;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			overflow: hidden;
+			margin: auto;
+		}
+		.foot{
+			display: flex;
+			margin-top: 20rpx;
+			padding: 0 15rpx;
+			justify-content: space-between;
+			.left{
+				display: flex;
+			}
+			.time{
+				font-size: 24rpx;
+				color: #999999;
+				line-height: 24rpx;
+				margin-left: 10rpx;
+			}
+		}
+	}
 }
 .article-part {
   margin: 36rpx 0 0 0;

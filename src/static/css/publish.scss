@@ -33,6 +33,23 @@
     ::v-deep .u-preview-image {
       border-radius: 0;
     }
+	.warp{
+		width: 153rpx; height: 138rpx;margin-right: 20rpx;
+		position: relative;
+	}
+	.warp:hover{
+		
+	}
+	.del{
+		width: 30rpx; height: 30rpx;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 2;
+	}
+	.img{
+		width: 153rpx; height: 138rpx
+	}
   }
 
   .listbut {
