@@ -19,16 +19,14 @@
         :key="index"
       >
         <u-index-anchor :index="item" />
-        <view class="list-cell">
-           <u-avatar url="" size="60"></u-avatar>
-           <text class="name">卞永*家长</text>
+        <view  v-for="(item1,index1) in listdata" :key="index1">
+          <view class="list-cell" v-if="item1.letter == item">
+           <u-avatar :url="item1.user_avatar" size="60"></u-avatar>
+           <text class="name">{{item1.user_name}}</text>
+         </view>
         </view>
-        <view class="list-cell">
-          列表2
-        </view>
-        <view class="list-cell">
-          列表3
-        </view>
+        
+        
       </view>
     </u-index-list>
 
@@ -40,20 +38,32 @@ export default {
   components: { uAvatar },
   data() {
     return {
-      list: [
-        {
-          name: '家长(18)',
-        },
-        {
-          name: '医生(3)',
-        },
-      ],
+      doctornum: 0,
+      parentnum: 0,
       current: 0,
       scrollTop: 0,
-			indexList: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-					"V", "W", "X", "Y", "Z"
+			indexList: [
 			],
+      doctor: [],
+      parent: [],
+      listdata: []
     }
+  },
+  computed:{
+       list(){
+          let datalist = [
+        {
+          name: '家长('+this.doctornum+')',
+        },
+        {
+          name: '医生('+this.parentnum+')',
+        },
+      ]
+       return datalist
+       },
+  },
+  onLoad(op){
+     this.getclass(op.id)
   },
   onPageScroll(e) {
 			this.scrollTop = e.scrollTop;
@@ -61,7 +71,40 @@ export default {
   methods:{
     change(index) {
       this.current = index
+      if(index == 0){
+        this.indexList = this.baselist(this.parent)
+        this.listdata=this.parent
+      }
+      if(index == 1){
+        this.indexList = this.baselist(this.doctor)
+         this.listdata=this.doctor
+      }
     },
+    getclass(id){
+      let _this=this
+      _this.$api.calssdeil({
+         key:_this.$db.get('key'),
+         ID: id
+      },res=>{
+         if(res.code == 200){
+             _this.doctor = res.datas.depart_num.doctor
+             _this.doctornum = res.datas.depart_num.doctor_num
+             _this.parent = res.datas.depart_num.parent
+             _this.parentnum = res.datas.depart_num.parent_num
+             _this.indexList = _this.baselist(_this.parent)
+             _this.listdata = _this.parent
+         }else{
+            _this.$common.errorToShow(res.datas.error)
+         }
+      })
+    },
+    baselist(data){
+      let listdata = []
+      for (let index = 0; index < data.length; index++) {
+         listdata.push(data[index].letter)
+      }
+      return Array.from(new Set(listdata))
+    }
   }
 }
 </script>

@@ -777,9 +777,9 @@ export default {
         url: '/pages/class/add',
       })
     },
-    golist() {
+    golist(id) {
       uni.navigateTo({
-        url: '/pages/class/list',
+        url: '/pages/class/list?id='+ id,
       })
     },
     gotask(){
