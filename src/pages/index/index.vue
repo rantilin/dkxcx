@@ -4,9 +4,9 @@
       <view class="user">
         <u-avatar
           size="60"
-          src="../../static/image/doctor.png"
+          :src="userInfo.user_avatar"
         ></u-avatar>
-        <text class="username">周泰才家长</text>
+        <text class="username"> {{userInfo.nicknames+userInfo.type_status_name}}</text>
       </view>
       <view class="tebnav">
         <view class="tebleft">
@@ -559,18 +559,18 @@
             </view>
           </view>
 
-          <view class="classitem">
+          <view class="classitem" v-for="(item,index) in docmyclass" :key="index">
             <view
               class="title"
-              @click="golist"
+              @click="golist(item.ID)"
             >
               <view class="deil">
                 <u-avatar
-                  src=""
+                  :src="item.user_avatar"
                   class="portrait"
                   size="60"
                 ></u-avatar>
-                <text class="name">多动症科室</text>
+                <text class="name">{{item.app_name}}</text>
               </view>
               <u-icon
                 name="arrow-right"
@@ -579,7 +579,7 @@
               ></u-icon>
             </view>
             <view class="command">
-              <text class="crad">科室口令:2021010230</text>
+              <text class="crad">科室口令:{{item.app_watchword}}</text>
               <u-icon
                 name="../../static/image/copy.png"
                 size="20"
@@ -588,7 +588,7 @@
             <view class="listbox">
               <view class="itembox">
                 <view class="textone">
-                  18
+                  {{item.depart_num == 0? '0':item.depart_num.parent_num}}
                 </view>
                 <view class="textwo">
                   已加入(人)
@@ -596,7 +596,7 @@
               </view>
               <view class="itembox">
                 <view class="textone">
-                  20
+                  {{item.people_num}}
                 </view>
                 <view class="textwo">
                   预设人数
@@ -610,7 +610,7 @@
                   :percent="33"
                   border-width="3"
                 >
-                  33%
+                   {{item.depart_num == 0? '0':item.depart_num.rate}}
                 </u-circle-progress>
                 <view class="textwo">
                   加入率
@@ -628,74 +628,6 @@
             </view>
           </view>
 
-          <view class="classitem">
-            <view
-              class="title"
-              @click="golist"
-            >
-              <view class="deil">
-                <u-avatar
-                  src=""
-                  class="portrait"
-                  size="60"
-                ></u-avatar>
-                <text class="name">多动症科室</text>
-              </view>
-              <u-icon
-                name="arrow-right"
-                color="#A0A0A0"
-                size="24"
-              ></u-icon>
-            </view>
-            <view class="command">
-              <text class="crad">科室口令:2021010230</text>
-              <u-icon
-                name="../../static/image/copy.png"
-                size="20"
-              ></u-icon>
-            </view>
-            <view class="listbox">
-              <view class="itembox">
-                <view class="textone">
-                  18
-                </view>
-                <view class="textwo">
-                  已加入(人)
-                </view>
-              </view>
-              <view class="itembox">
-                <view class="textone">
-                  20
-                </view>
-                <view class="textwo">
-                  预设人数
-                </view>
-              </view>
-              <view class="itembox">
-                <u-circle-progress
-                  class="circle"
-                  active-color="#0BC788"
-                  width="79"
-                  :percent="33"
-                  border-width="3"
-                >
-                  33%
-                </u-circle-progress>
-                <view class="textwo">
-                  加入率
-                </view>
-              </view>
-              <view class="itembox">
-                <u-icon
-                  name="../../static/image/add.png"
-                  size="70"
-                ></u-icon>
-                <view class="textwo">
-                  邀请家长
-                </view>
-              </view>
-            </view>
-          </view>
           <!-- 提示框 -->
           <u-modal
             v-model="iscread"
@@ -784,6 +716,7 @@ export default {
           name: '科室管理',
         },
       ],
+      userInfo : this.$db.get('user'),
       current: 0,
       switchList: ['全部', '我的'],
       switchindex: true,
@@ -793,7 +726,11 @@ export default {
       tiptext: '',
       status: 0, //0用户，1医生
       docbottom: false,
+      docmyclass:[],
     }
+  },
+  onLoad(){
+     this.getmyclass()
   },
   methods: {
     change(index) {
@@ -807,11 +744,26 @@ export default {
         this.isscreen = true
       }
     },
+    getmyclass(){
+       let _this = this
+       _this.$api.mycalss({
+          key:_this.$db.get('key'),
+          user_id: _this.$db.get('user').ID
+       },res=>{
+         if(res.code == 200){
+             _this.docmyclass = res.datas
+         }else{
+            _this.$common.errorToShow(res.datas.error)
+         }
+       })
+    },
     creadcalss() {
       //创建科室
       //  this.tiptext ='只有医生角色才可以创建科室。 家长加入科室即可，无需创建科室！'
       //  this.iscread = true
-
+      uni.navigateTo({
+        url: '/pages/class/creat',
+      })
     },
     docedit(){
        if (this.docbottom) {

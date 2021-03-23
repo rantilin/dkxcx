@@ -85,7 +85,7 @@ export default {
   methods: {
      initData() {
       // 获取用户信息
-      var _this = this
+      let _this = this
       if (_this.$db.get('key')) {
         this.$api.user(
           {
@@ -93,6 +93,7 @@ export default {
           },
           (res) => {
             this.userInfo = res.datas
+            this.$db.set('user',res.datas)
           }
         )
       } else {

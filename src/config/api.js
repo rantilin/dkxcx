@@ -262,3 +262,9 @@ export const uploadImage = (num, callback) => {
 
 //获取用户key
 export const user = (data, callback)=>post('/mobile/index.php?act=member_info&op=index', data, callback);
+//创建科室
+export const calsscreat = (data, callback)=>post('/mobile/index.php?act=department&op=add', data, callback);
+//我的科室
+export const mycalss = (data, callback)=>post('/mobile/index.php?act=task&op=depart_doctor', data, callback);
+//科室详情
+export const calssdeil = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart_one', data, callback);

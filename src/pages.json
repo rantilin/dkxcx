@@ -25,6 +25,13 @@
 			}
 		},
 		{
+			"path": "pages/class/creat",
+			"style": {
+				"navigationBarTitleText": "创建科室"
+ 
+			}
+		},
+		{
 			"path": "pages/health/index",
 			"style": {
 				"navigationBarTitleText": "健康"
@@ -96,6 +103,7 @@
 				"navigationBarTitleText": "发布打卡任务"
 			}
   	},
+		
 		{
 			"path": "pages/login/login/index",
 			"style": {  
