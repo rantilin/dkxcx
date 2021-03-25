@@ -120,7 +120,30 @@
       "style": {
         "navigationBarTitleText": "消息"
       }
-    }
+    },
+    {
+			"path": "pages/user/myDepartment",
+			"style": {
+				"navigationBarTitleText": "我创建的科室"
+			}
+		}, {
+			"path": "pages/user/setDepart",
+			"style": {
+				"navigationBarTitleText": "科室设置"
+			}
+		},
+		{
+			"path": "pages/user/myRecord",
+			"style": {
+				"navigationBarTitleText": "打卡记录"
+			}
+		}, {
+			"path": "pages/user/transfer",
+			"style": {
+				"navigationBarTitleText": "科室转让"
+			}
+
+		}
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

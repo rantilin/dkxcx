@@ -1,24 +1,20 @@
 <template>
 	<view>
 		<view class="addtitle" v-if="list.length>0">
-			选择要退出的科室
+			选择要设置的科室
 		</view>
 		<view class="" v-if="list.length>0">
 			<view class="" v-for="(item,index) in list" :key='index'>
 				<view class="list-cell">
 					<u-avatar :src="item.user_avatar" size="60"></u-avatar>
 					<text class="name">{{item.app_name}}</text>
-					<view class="butorn" @click="exit(item.ID)">退出科室</view>
+					<view class="butorn" @click="set(item.ID)">科室设置</view>
 				</view>
 			</view>
 		</view>
 		<view class="" v-else>
 			<defaultPage :status='4' :text='"暂无科室"'></defaultPage>
 		</view>
-		<!-- 提示框 -->
-		<u-modal v-model="config.iscread" :title="config.title" :content="config.tiptext" :show-confirm-button="config.confirm"
-			:show-cancel-button="config.cancel" @confirm="exitOk">
-		</u-modal>
 	</view>
 </template>
 <script>
@@ -26,13 +22,6 @@
  	export default {
 		data() {
 			return {
-				config: {
-					title: '',
-					iscread: false,
-					tiptext: '',
-					confirm: true,
-					cancel: false,
-				},
 				list:[],
 				departmentId:0
 			}
@@ -49,33 +38,17 @@
 					key: this.$db.get('key'),
 					user_id: this.$db.get('user').ID
 				}
-				this.$api.getMyJoinDepart(data,
+				this.$api.getMyCreateDepart(data,
 					(res => {
 						this.list = res.datas
 					})
 				)
 			},
-			exit(id) {
-				this.config.title = '确定要退出多动症科室吗？'
-				this.config.cancel = true
-				this.config.confirm = true
-				this.config.tiptext = '确认此科室是否正确，防止错加乱加 以免造成数据错误！'
-				this.config.iscread = true
-				this.departmentId = id
+			set(id){
+				uni.navigateTo({
+					url:'/pages/user/setDepart?id='+id
+				})
 			},
-			exitOk(){
-				let data = {
-					key: this.$db.get('key'),
-					user_id: this.$db.get('user').ID,
-					department_id:this.departmentId
-				}
-				this.$api.quitDepartment(data,
-					(res => {
-						console.log(res);
-						this.init()
-					})
-				)
-			}
 		},
 	}
 </script>
@@ -108,7 +81,7 @@
 			width: 130rpx;
 			height: 52rpx;
 			line-height: 52rpx;
-			background: #ff834a;
+			background: #0BC788;
 			border-radius: 27rpx;
 			font-size: 24rpx;
 			color: #fff;
