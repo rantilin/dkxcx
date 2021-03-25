@@ -203,7 +203,7 @@ function modelShow(
 }
 
 //时间戳转时间格式
-function timeToDate(date, flag = false) {
+function timeToDate(date, flag = false,staus = 1) {
 	var date = new Date(date * 1000) //如果date为13位不需要乘1000
 	var Y = date.getFullYear() + '-'
 	var M =
@@ -215,10 +215,14 @@ function timeToDate(date, flag = false) {
 	var m =
 		(date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
 	var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
-	if (flag) {
+	if (flag&&staus==1) {
 		return Y + M + D
-	} else {
+	} else if(!flag&&staus==1) {
 		return Y + M + D + h + m + s
+	}else if(staus=2){
+		return M + D
+	}else if(staus=3){
+		return  M + D + h + m + s
 	}
 }
 

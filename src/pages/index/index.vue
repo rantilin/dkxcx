@@ -650,25 +650,40 @@
           科室
         </view>
         <view class="ment-list">
-          <view class="item on">
-            多动症
-          </view>
-          <view class="item">
-            自闭症
-          </view>
-          <view class="item">
-            抽动症
+          <view class="item" :class="calssifyindex == index?'on':''" v-for="(item,index) in classify" :key="index" @click="calssteb(index)">
+            {{item.app_name}}
           </view>
         </view>
         <view class="title mt30">
           打卡任务
         </view>
-        <scroll-view
-          class="taskcheckbox"
-          scroll-y
-        >
-
-        </scroll-view>
+        	<scroll-view class="taskcheckbox" scroll-y>
+					<view class="warp" @tap='checked(index)' v-for="(item,index) in 4" :key="index">
+						<view class="taskcheckboxWarp">
+							<image src="" class="taskcheckboxItem" mode=""></image>
+							<view class="">
+								<view class="taskcheckboxTitle">
+									多动动日常训练要点
+								</view>
+								<view class="taskcheckboxBottomWarp">
+									<view class="name">
+										张秋
+									</view>
+									<view class="position">
+										医生
+									</view>
+									<view class="time">
+										发布于02-19 10:28
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="">
+							<image class="check" v-if="index!==indexOfChecked" src="../../static/image/checked.png" mode=""></image>
+							<image class="check" v-else src="../../static/image/checked1.png" mode=""></image>
+						</view>
+					</view>
+				</scroll-view>
         <view class="bottom">
           <view class="reset">
             重置
@@ -724,13 +739,16 @@ export default {
       //提示框配置
       iscread: false,
       tiptext: '',
-      status: 0, //0用户，1医生
+      status: this.$db.get('user').type_status, //0用户，1医生
       docbottom: false,
       docmyclass:[],
+      classify:[], //科室分类
+      calssifyindex: 0,
     }
   },
   onLoad(){
      this.getmyclass()
+     this.getclasslist()
   },
   methods: {
     change(index) {
@@ -771,6 +789,21 @@ export default {
       }else{
          this.docbottom = true
       }
+    },
+    getclasslist(){
+       this.$api.classpubic(
+        {
+          key: this.$db.get("key"),
+          user_id: this.$db.get("user").ID,
+        },
+        (res) => {
+          if (res.code == 200) {
+            this.classify = res.datas;
+          } else {
+            this.$common.errorToShow(res.datas.error);
+          }
+        }
+      );
     },
     addclass() {
       uni.navigateTo({

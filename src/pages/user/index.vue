@@ -7,7 +7,7 @@
         ></u-avatar>
         <view class="name">
              <view class="username">
-               {{userInfo.nicknames+userInfo.type_status_name}}
+               {{userInfo.user_name+userInfo.type_status_name}}
              </view>
              <view class="phone">
                {{userInfo.user_mobile}}
@@ -28,13 +28,22 @@
                  积分换礼品
               </view>
           </view>
-          <view class="item" @click="gocard">
+          <view class="item" @click="gocard" v-if="userInfo.type_status==2">
               <view class="block">
                    <text class="title">打卡记录</text>
                    <u-icon name="../../static/image/cardre.png" size="69"></u-icon>
               </view>
               <view class="blocktext">
                  查看我的打开记录
+              </view>
+          </view>
+		  <view class="item" @click="setDepartment" v-if="userInfo.type_status==1">
+              <view class="block">
+                   <text class="title">科室设置</text>
+                   <u-icon name="../../static/image/cardre.png" size="69"></u-icon>
+              </view>
+              <view class="blocktext">
+                 科室设置，人员管理
               </view>
           </view>
       </view>
@@ -113,6 +122,11 @@ export default {
         url: '/pages/user/cardrecord',
       })
      },
+	 setDepartment(){
+		 uni.navigateTo({
+		   url: '/pages/user/myDepartment',
+		 })
+	 },
      godeil(){
        uni.navigateTo({
         url: '/pages/user/set',
@@ -120,7 +134,7 @@ export default {
      },
      gomydesk(){
        uni.navigateTo({
-        url: '/pages/user/mydesk',
+        url: '/pages/user/mydesk?type=1',
       })
      }
   },

@@ -264,10 +264,36 @@ export const user = (data, callback)=>post('/mobile/index.php?act=member_info&op
 //创建科室
 export const calsscreat = (data, callback)=>post('/mobile/index.php?act=department&op=add', data, callback);
 //我的科室
-export const mycalss = (data, callback)=>post('/mobile/index.php?act=task&op=depart_doctor', data, callback);
+export const mycalss = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart', data, callback);
 //科室详情
 export const calssdeil = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart_one', data, callback);
 //发布科室
 export const classpubic = (data, callback)=>post('/mobile/index.php?act=task&op=depart_doctor', data, callback);
 //删除图片
 export const imgdel = (data, callback)=>post('/mobile/index.php?act=task&op=del_file_uploads', data, callback);
+//发布打卡任务
+export const taskpub = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_task', data, callback);
+//医生任务打卡
+export const docdakalist = (data, callback)=>post('/mobile/index.php?act=task&op=list_task_doctor', data, callback);
+//修改个人信息
+export const saveUserInfo = (data, callback)=>post('/mobile/index.php?act=member_info&op=member ', data, callback);
+//我加入的科室列表
+export const getMyJoinDepart = (data, callback)=>post('/mobile/index.php?act=department&op=join_depart', data, callback);
+//退出我加入的科室
+export const quitDepartment = (data, callback)=>post('/mobile/index.php?act=department&op=doctor_transfer', data, callback);
+//我创建的科室列表
+export const getMyCreateDepart = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart', data, callback);
+//我的打卡记录
+export const getMyClockInfo = (data, callback)=>post('/mobile/index.php?act=parent&op=clock_info_list', data, callback);
+//打卡记录详情
+export const getRecordDetail = (data, callback)=>post('/mobile/index.php?act=task&op=clock_data', data, callback);
+//科室管理员退出
+export const exit_depart = (data, callback)=>post('/mobile/index.php?act=department&op=exit_depart', data, callback);
+//科室管理员解散科室
+export const doctor_transfer_del = (data, callback)=>post('/mobile/index.php?act=department&op=doctor_transfer_del', data, callback);
+//修改科室信息
+export const saveDepartDetail = (data, callback)=>post('/mobile/index.php?act=department&op=edit_depart', data, callback);
+//科室下的医生
+export const getDoctor = (data, callback)=>post('/mobile/index.php?act=department&op=doctor_depart', data, callback);
+//转让科室
+export const transferDepart = (data, callback)=>post('/mobile/index.php?act=department&op=transfer_depart', data, callback);
