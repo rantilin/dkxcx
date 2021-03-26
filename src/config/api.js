@@ -273,8 +273,12 @@ export const classpubic = (data, callback)=>post('/mobile/index.php?act=task&op=
 export const imgdel = (data, callback)=>post('/mobile/index.php?act=task&op=del_file_uploads', data, callback);
 //发布打卡任务
 export const taskpub = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_task', data, callback);
+//编辑任务
+export const draft = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task', data, callback);
 //医生任务打卡
 export const docdakalist = (data, callback)=>post('/mobile/index.php?act=task&op=list_task_doctor', data, callback);
+//我的医生任务打卡
+export const mydocdakalist = (data, callback)=>post('/mobile/index.php?act=task&op=my_list_task_doctor', data, callback);
 //修改个人信息
 export const saveUserInfo = (data, callback)=>post('/mobile/index.php?act=member_info&op=member ', data, callback);
 //我加入的科室列表
@@ -297,3 +301,10 @@ export const saveDepartDetail = (data, callback)=>post('/mobile/index.php?act=de
 export const getDoctor = (data, callback)=>post('/mobile/index.php?act=department&op=doctor_depart', data, callback);
 //转让科室
 export const transferDepart = (data, callback)=>post('/mobile/index.php?act=department&op=transfer_depart', data, callback);
+//编辑查看任务
+export const exitdeil = (data, callback)=>post('/mobile/index.php?act=task&op=task_info', data, callback);
+//删除任务
+export const delclock = (data, callback)=>post('/mobile/index.php?act=task&op=del_task', data, callback);
+//结束任务
+export const stopclock = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task_status', data, callback);
+

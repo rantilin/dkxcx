@@ -104,22 +104,24 @@ export default {
       selector: [],
       mode: "",
       department: "请选择科室", //科室,
-			deparindex: 0,
+      deparindex: 0,
       basics: 10, //基础积分
       additional: "暂不奖励", //额外积分
       days: "暂不设置", //打卡天数
       index: 0,
       startTime: "请选择开始时间",
-			startTimevalue: 0, //时间戳
+      startTimevalue: 0, //时间戳
       endTime: "请选择结束时间",
-			endTimevalue: 0, //时间戳
+      endTimevalue: 0, //时间戳
       imgList: [],
       docmyclass: [],
+      eidtid: 0,
+      staus: 0, //0新增 1草稿
     };
   },
-	onLoad(){
-      this.getclass();
-	},
+  onLoad() {
+    this.getclass();
+  },
   methods: {
     getclass() {
       let _this = this;
@@ -131,79 +133,146 @@ export default {
         (res) => {
           if (res.code == 200) {
             _this.docmyclass = res.datas;
-            _this.indata()
+            _this.indata();
           } else {
             _this.$common.errorToShow(res.datas.error);
           }
         }
       );
     },
-		indata(){
+    indata() {
       let _this = this;
-      _this.$api.taskpub({
-				 key: _this.$db.get("key"),
-         user_id: _this.$db.get("user").ID,
-			},res=>{
-        if(res.code == 200){
-          _this.$common.successToShow("已获取上次草稿")
-          _this.title = res.datas.task_title
-          _this.content = res.datas.describe
-          _this.startTime = _this.$common.timeToDate(res.datas.start_time,true)
-          _this.endTime = _this.$common.timeToDate(res.datas.end_time,true)
-          _this.department = _this.docmyclass.filter(item=> { return item.ID == res.datas.department_id})[0].app_name
-          _this.deparindex = _this.docmyclass.findIndex(item=> { return item.ID == res.datas.department_id})
-          _this.basics = res.datas.task_points
-          _this.additional = res.datas.task_reward
-          _this.days = res.datas.task_days
-          _this.imgList = _this.imgget(res.datas.fileid_route)
-        }
-			})
-		},
-    postserver(val){
-			 let _this = this;
-       if(_this.department == '请选择科室'){
-				   _this.$common.errorToShow('请选择科室');
-					 return false
-			 }
-			 if(_this.startTimevalue > _this.endTimevalue){
-				  _this.$common.errorToShow('开始时间不能大于结束时间！请重新选择');
-					 return false
-			 }
-			 if(_this.startTimevalue == 0){
-				 _this.$common.errorToShow('请选择开始时间');
-					 return false
-			 }
-			 if(_this.endTimevalue == 0){
-				 _this.$common.errorToShow('请选择结束时间');
-					 return false
-			 }
-			 _this.$api.taskpub({
-				  key: _this.$db.get("key"),
-					user_id: _this.$db.get("user").ID,
-					department_id:_this.docmyclass[_this.deparindex].ID,
-					task_title:_this.title,
-					describe:_this.content,
-					task_points:_this.basics,
-					task_days: _this.days,
-					task_reward: _this.additional,
-					start_time: _this.startTimevalue,
-					end_time: _this.endTimevalue,
-					fileid_route:_this.imglistpub(_this.imgList),
-					storage_status: val
-			 },res=>{
+      _this.$api.taskpub(
+        {
+          key: _this.$db.get("key"),
+          user_id: _this.$db.get("user").ID,
+        },
+        (res) => {
           if (res.code == 200) {
-            if(res.datas.msg){
-              _this.$common.successToShow(res.datas.msg)
+            _this.$common.successToShow("已获取上次草稿");
+            _this.staus = 1;
+            _this.title = res.datas.task_title;
+            _this.content = res.datas.describes;
+            _this.startTime = _this.$common.timeToDate(
+              res.datas.start_time,
+              true
+            );
+            _this.eidtid = res.datas.ID
+            _this.startTimevalue = res.datas.start_time;
+            _this.endTime = _this.$common.timeToDate(res.datas.end_time, true);
+            _this.endTimevalue = res.datas.end_time;
+            _this.department = _this.docmyclass.filter((item) => {
+              return item.ID == res.datas.department_id;
+            })[0].app_name;
+            _this.deparindex = _this.docmyclass.findIndex((item) => {
+              return item.ID == res.datas.department_id;
+            });
+            _this.basics = res.datas.task_points;
+            if(res.datas.task_reward == 0){
+              _this.additional='暂不奖励'
             }else{
-              _this.$common.successToShow("任务发布成功")
+              _this.additional = res.datas.task_reward;
             }
-            
-          } else {
-            _this.$common.errorToShow(res.datas.error);
+            if(res.datas.task_days == 0){
+               _this.days = '暂不设置'
+            }else{
+              _this.days = res.datas.task_days;
+            }
+            _this.imgList = _this.imgget(res.datas.fileid_route);
           }
-			 })
-			 
-		},
+        }
+      );
+    },
+    postserver(val) {
+      let _this = this;
+      if (_this.department == "请选择科室") {
+        _this.$common.errorToShow("请选择科室");
+        return false;
+      }
+      if (_this.startTimevalue > _this.endTimevalue) {
+        _this.$common.errorToShow("开始时间不能大于结束时间！请重新选择");
+        return false;
+      }
+      if (_this.startTimevalue == 0) {
+        _this.$common.errorToShow("请选择开始时间");
+        return false;
+      }
+      if (_this.endTimevalue == 0) {
+        _this.$common.errorToShow("请选择结束时间");
+        return false;
+      }
+      if (_this.staus == 0) {
+        _this.$api.taskpub(
+          {
+            key: _this.$db.get("key"),
+            user_id: _this.$db.get("user").ID,
+            department_id: _this.docmyclass[_this.deparindex].ID,
+            task_title: _this.title,
+            describes: _this.content,
+            task_points: _this.basics,
+            task_days: _this.days,
+            task_reward: _this.additional,
+            start_time: _this.startTimevalue,
+            end_time: _this.endTimevalue,
+            fileid_route: _this.imglistpub(_this.imgList),
+            storage_status: val,
+          },
+          (res) => {
+            if (res.code == 200) {
+              if (res.datas.msg) {
+                _this.$common.successToShow(res.datas.msg);
+              } else {
+               if (val == 1) {
+                  uni.navigateTo({
+                    url: "/pages/success/release/release",
+                  });
+                }else if(val == 2){
+                    _this.$common.successToShow('保存草稿成功');
+                    uni.navigateBack(-1)
+                }
+              }
+            } else {
+              _this.$common.errorToShow(res.datas.error);
+            }
+          }
+        );
+      } else if (_this.staus == 1) {
+        _this.$api.draft(
+          {
+            ID: _this.eidtid,
+            key: _this.$db.get("key"),
+            department_id: _this.docmyclass[_this.deparindex].ID,
+            task_title: _this.title,
+            describes: _this.content,
+            task_points: _this.basics,
+            task_days: _this.days,
+            task_reward: _this.additional,
+            start_time: _this.startTimevalue,
+            end_time: _this.endTimevalue,
+            fileid_route: _this.imglistpub(_this.imgList),
+            storage_status: val,
+          },
+          (res) => {
+            if (res.code == 200) {
+              if (res.datas.msg) {
+                _this.$common.successToShow(res.datas.msg);
+              } else {
+                if (val == 1) {
+                  uni.navigateTo({
+                    url: "/pages/success/release/release",
+                  });
+                }else if(val == 2){
+                    _this.$common.successToShow('保存草稿成功');
+                    uni.navigateBack(-1)
+                }
+              }
+            } else {
+              _this.$common.errorToShow(res.datas.error);
+            }
+          }
+        );
+      }
+    },
     checkedImg() {
       let _this = this;
       _this.$api.uploadFiles((res) => {
@@ -258,7 +327,7 @@ export default {
     close(e) {
       if (this.index == 0) {
         this.department = this.selector[e[0]];
-				this.deparindex = e[0]
+        this.deparindex = e[0];
       }
       if (this.index == 1) {
         this.basics = this.selector[e[0]];
@@ -271,39 +340,39 @@ export default {
       }
       if (this.index == 4) {
         this.startTime = e.year + "-" + e.month + "-" + e.day;
-				this.startTimevalue = e.timestamp;
+        this.startTimevalue = e.timestamp;
       }
       if (this.index == 5) {
         this.endTime = e.year + "-" + e.month + "-" + e.day;
-				this.endTimevalue = e.timestamp;
+        this.endTimevalue = e.timestamp;
       }
     },
-		classlistdata(array){
-			let listdata =[]
-			for (let index = 0; index < array.length; index++) {
-				listdata.push(array[index].app_name)
-			}
-			return listdata
-		},
-		imglistpub(array){
-			let listdata =[]
-			for (let index = 0; index < array.length; index++) {
-				listdata.push(array[index].file)
-			}
-			return listdata
-		},
-    imgget(array){
-			let listdata =[]
-			for (let index = 0; index < array.length; index++) {
-        let dataimg = array[index].fileid_route.split('/')
+    classlistdata(array) {
+      let listdata = [];
+      for (let index = 0; index < array.length; index++) {
+        listdata.push(array[index].app_name);
+      }
+      return listdata;
+    },
+    imglistpub(array) {
+      let listdata = [];
+      for (let index = 0; index < array.length; index++) {
+        listdata.push(array[index].file);
+      }
+      return listdata;
+    },
+    imgget(array) {
+      let listdata = [];
+      for (let index = 0; index < array.length; index++) {
+        let dataimg = array[index].fileid_route.split("/");
         let datas = {
-           file: array[index].fileid_route,
-           name: dataimg[dataimg.length-1]
-        }
-        listdata.push(datas)
-			}
-			return listdata
-		}
+          file: array[index].fileid_route,
+          name: dataimg[dataimg.length - 1],
+        };
+        listdata.push(datas);
+      }
+      return listdata;
+    },
   },
 };
 </script>
