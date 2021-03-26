@@ -2,7 +2,7 @@
 	<view>
 		<view class="backg">
 			<view class="title">
-				多动症日常训练要点
+				{{headInfo.task_title}}
 			</view>
 			<view class="emum">
 				科室：多动症
@@ -152,10 +152,38 @@ import comments from '@/components/comment/index'
 						name: '其他家长',
 					},
 				],
+				info:{},
 				current: 0,
+				headInfo:{}
 			}
 		},
+		onLoad(o) {
+			console.log(o);
+			this.info = {
+				key: this.$db.get("key"),
+				department_id:1,
+				//o.department_id
+				task_id:2,
+				//o.task_id
+				clock_time:'2021-03-04'
+				//o.time
+			}
+			this.init()
+		},
 		methods: {
+			init(){
+				this.$api.parentSignDetail(this.info,(res=>{
+					console.log(res);
+				}))
+				let data = {
+					key:this.info.key,
+					task_id:this.info.task_id,
+				}
+				this.$api.getTaskInfoTitle(data,(res=>{
+					this.headInfo = res.datas
+				}))
+				
+			},
 			change(index) {
 				this.current = index
 			},

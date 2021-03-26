@@ -143,6 +143,12 @@
 				"navigationBarTitleText": "科室转让"
 			}
 
+		}, {
+			"path": "pages/news/newsDetail",
+			"style": {
+				"navigationBarTitleText": "消息"
+			}
+
 		}
   ],
   "globalStyle": {

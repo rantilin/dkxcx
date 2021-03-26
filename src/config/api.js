@@ -297,3 +297,21 @@ export const saveDepartDetail = (data, callback)=>post('/mobile/index.php?act=de
 export const getDoctor = (data, callback)=>post('/mobile/index.php?act=department&op=doctor_depart', data, callback);
 //转让科室
 export const transferDepart = (data, callback)=>post('/mobile/index.php?act=department&op=transfer_depart', data, callback);
+//首页家长加入的科室
+export const ParentClass = (data, callback)=>post('/mobile/index.php?act=parent&op=my_depart_join', data, callback);
+//某个科室的所有任务
+export const getDepartTask = (data, callback)=>post('/mobile/index.php?act=parent&op=depart_task', data, callback);
+//首页家长数据，选择任务接口
+export const getParentIndexDetail = (data, callback)=>post('/mobile/index.php?act=parent&op=parent_index', data, callback);
+//首页家长任务
+export const getParentTask = (data, callback)=>post('/mobile/index.php?act=parent&op=parent_task', data, callback);
+//家长科室管理
+export const getParentClass = (data, callback)=>post('/mobile/index.php?act=department&op=my_depart_parent', data, callback);
+//点赞打卡
+export const fabulous = (data, callback)=>post('/mobile/index.php?act=task&op=clock_give', data, callback);
+//查找科室
+export const lookup = (data, callback)=>post('/mobile/index.php?act=parent&op=add_depart', data, callback);
+//打卡记录详情
+export const parentSignDetail = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_clock_info', data, callback);
+//查看任务信息
+export const getTaskInfoTitle = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_clock_details', data, callback);
