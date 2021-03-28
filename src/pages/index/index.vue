@@ -93,7 +93,6 @@
       </view>
     </u-popup>
 
-
     <view class="fixed" @click="addpub" v-if="status == 1">
       <u-icon name="plus" color="#fff" size="38"></u-icon>
     </view>
@@ -101,12 +100,12 @@
 </template>
 
 <script>
-import selectSwitch from "@/components/xuan-switch/xuan-switch.vue";
-import doclist from "@/components/indexcom/doclist.vue";
-import useralltask from "@/components/indexcom/useralltask.vue";
-import usermytask from "@/components/indexcom/usermytask.vue";
-import Classmanage from "@/components/indexcom/classmanage.vue";
-import defaultPage from "@/components/default.vue";
+import selectSwitch from '@/components/xuan-switch/xuan-switch.vue'
+import doclist from '@/components/indexcom/doclist.vue'
+import useralltask from '@/components/indexcom/useralltask.vue'
+import usermytask from '@/components/indexcom/usermytask.vue'
+import Classmanage from '@/components/indexcom/classmanage.vue'
+import defaultPage from '@/components/default.vue'
 
 export default {
   components: {
@@ -115,25 +114,25 @@ export default {
     useralltask,
     usermytask,
     Classmanage,
-    defaultPage
+    defaultPage,
   },
   data() {
     return {
       list: [
         {
-          name: "健康打卡",
+          name: '健康打卡',
         },
         {
-          name: "科室管理",
+          name: '科室管理',
         },
       ],
-      userInfo: this.$db.get("user"),
+      userInfo: this.$db.get('user'),
       current: 0,
-      switchList: ["全部", "我的"],
+      switchList: ['全部', '我的'],
       isscreen: false,
       indexOfChecked: 0,
-      status: this.$db.get("user").type_status, //2用户，1医生
-      switchindex: this.status == 2 ,
+      status: this.$db.get('user').type_status, //2用户，1医生
+      switchindex: this.status == 2,
       docmyclass: [],
       classify: [], //科室分类
       classid: 0, //默认科室id
@@ -142,288 +141,333 @@ export default {
       dotaskclist: [], //医生任务列表
       //合并用户
       indexOfChecked: 0, //设置选择任务初始下标
-      key: "",
+      key: '',
       taskList: [], //任务列表
       taskId: 0, //选中任务id
       indexList: [],
-      departmentName: "",
+      departmentName: '',
       signTaskList: [],
-    };
+    }
   },
 
   onLoad() {
-   this.key = uni.getStorageSync("key");
-   if (this.status == 1) {
-      this.docgetclasslist();
-    } 
-    if(this.status == 2){
-       this.usermytask()
+    if (this.$db.get('key')) {
+      this.key = uni.getStorageSync('key')
+      this.$api.user(
+        {
+          key: this.$db.get('key'),
+        },
+        (res) => {
+          this.userInfo = res.datas
+          this.$db.set('user', res.datas)
+        }
+      )
+    } else {
+      setTimeout(() => {
+        uni.hideToast()
+        uni.navigateTo({
+          url: '/pages/login/choose/index',
+          animationType: 'pop-in',
+          animationDuration: 200,
+        })
+      }, 500)
+    }
+    if (this.status == 1) {
+      this.docgetclasslist()
+    }
+    if (this.status == 2) {
+      this.usermytask()
     }
   },
   methods: {
-    change(index) {
-      this.current = index;
-      if (this.current == 1 && this.status == 1) {
-        this.docgetmyclass();
+    initData() {
+      // 获取用户信息
+      let _this = this
+      if (_this.$db.get('key')) {
+        this.$api.user(
+          {
+            key: this.$db.get('key'),
+          },
+          (res) => {
+            this.userInfo = res.datas
+            this.$db.set('user', res.datas)
+          }
+        )
+      } else {
+        _this.hasLogin = false
+        setTimeout(() => {
+          uni.hideToast()
+          uni.navigateTo({
+            url: '/pages/login/choose/index',
+            animationType: 'pop-in',
+            animationDuration: 200,
+          })
+        }, 500)
       }
-      if (this.current == 1 && this.status == 2){
+    },
+    change(index) {
+      this.current = index
+      if (this.current == 1 && this.status == 1) {
+        this.docgetmyclass()
+      }
+      if (this.current == 1 && this.status == 2) {
         this.usergetmyclass()
       }
     },
     changeSwitch(is) {
-      this.switchindex = is;
+      this.switchindex = is
       if (is && this.status == 1) {
-        this.doclisttask(this.classify[this.calssifyindex].ID);
+        this.doclisttask(this.classify[this.calssifyindex].ID)
       }
-      if(!is && this.status == 1){
-          this.mydoclisttask();
+      if (!is && this.status == 1) {
+        this.mydoclisttask()
       }
       if (is && this.status == 2) {
-         this.usergetclass();
+        this.usergetclass()
       }
-      if(!is && this.status == 2){
-         
+      if (!is && this.status == 2) {
       }
     },
     filtrate() {
       if (this.switchindex) {
-        this.isscreen = true;
+        this.isscreen = true
       }
       if (this.status == 2) {
-        this.calssteb(0, true);
+        this.calssteb(0, true)
       }
     },
-    docgetmyclass() { //医生加入科室渲染
-      let _this = this;
+    docgetmyclass() {
+      //医生加入科室渲染
+      let _this = this
       _this.$api.mycalss(
         {
-          key: _this.$db.get("key"),
-          user_id: _this.$db.get("user").ID,
+          key: _this.$db.get('key'),
+          user_id: _this.$db.get('user').ID,
         },
         (res) => {
           if (res.code == 200) {
-            _this.docmyclass = res.datas;
+            _this.docmyclass = res.datas
           } else {
-            _this.$common.errorToShow(res.datas.error);
+            _this.$common.errorToShow(res.datas.error)
           }
         }
-      );
+      )
     },
-    usergetclass(){
+    usergetclass() {
       let data = {
-        key: this.$db.get("key"),  //用户加入科室分类
-        user_id: this.$db.get("user").ID,
-      };
+        key: this.$db.get('key'), //用户加入科室分类
+        user_id: this.$db.get('user').ID,
+      }
       this.$api.ParentClass(data, (res) => {
         if (res.code == 200) {
-          this.classify = res.datas;
-          this.departmentName = res.datas[0].app_name;
-          this.calssteb(0, true);
+          this.classify = res.datas
+          this.departmentName = res.datas[0].app_name
+          this.calssteb(0, true)
         } else {
-          this.$common.errorToShow(res.datas.error);
+          this.$common.errorToShow(res.datas.error)
         }
-      });
+      })
     },
-    usergetmyclass() {  //用户加入科室渲染
+    usergetmyclass() {
+      //用户加入科室渲染
       let data = {
-        key: this.$db.get("key"),
-        user_id: this.$db.get("user").ID,
-      };
-       this.$api.getParentClass(data, (res) => {
-          if (res.code == 200) {
-            this.docmyclass = res.datas;
-          } else {
-            this.$common.errorToShow(res.datas.error);
-          }
-        });
+        key: this.$db.get('key'),
+        user_id: this.$db.get('user').ID,
+      }
+      this.$api.getParentClass(data, (res) => {
+        if (res.code == 200) {
+          this.docmyclass = res.datas
+        } else {
+          this.$common.errorToShow(res.datas.error)
+        }
+      })
     },
-    usermytask(){  //用户我的任务渲染
+    usermytask() {
+      //用户我的任务渲染
       let data = {
-          key: this.key,
-          user_id: this.userInfo.ID,
-        };
+        key: this.key,
+        user_id: this.userInfo.ID,
+      }
       this.$api.getParentTask(data, (res) => {
-          for (let item of res.datas) {
-            item.time = item.issue_time
-            item.i_time = this.$common.timeToDate(
-              new Date(item.issue_time).getTime(),
-              false,
-              3
-            );
-            item.issue_time = this.$common.timeToDate(
-              new Date(item.issue_time).getTime(),
-              false,
-              2
-            );
-          }
-          this.signTaskList = res.datas;
-        });
+        for (let item of res.datas) {
+          item.time = item.issue_time
+          item.i_time = this.$common.timeToDate(
+            new Date(item.issue_time).getTime(),
+            false,
+            3
+          )
+          item.issue_time = this.$common.timeToDate(
+            new Date(item.issue_time).getTime(),
+            false,
+            2
+          )
+        }
+        this.signTaskList = res.datas
+      })
     },
     docgetclasslist() {
       this.$api.classpubic(
         {
-          key: this.$db.get("key"),
-          user_id: this.$db.get("user").ID,
+          key: this.$db.get('key'),
+          user_id: this.$db.get('user').ID,
         },
         (res) => {
           if (res.code == 200) {
-            this.classify = res.datas;
-            this.doclisttask(this.classify[this.calssifyindex].ID);
+            this.classify = res.datas
+            this.doclisttask(this.classify[this.calssifyindex].ID)
           } else {
-            this.$common.errorToShow(res.datas.error);
+            this.$common.errorToShow(res.datas.error)
           }
         }
-      );
+      )
     },
     doclisttask(id) {
       let _this = this
       _this.$api.docdakalist(
         {
-          key: _this.$db.get("key"),
+          key: _this.$db.get('key'),
           department_id: id,
         },
         (res) => {
           if (res.code == 200) {
-            let datalist = [];
-            datalist = res.datas;
+            let datalist = []
+            datalist = res.datas
             _this.doctodaylist = datalist.filter((item) => {
               return (
                 new Date(item.issue_time * 1000).toDateString() ==
                 new Date().toDateString()
-              );
-            });
+              )
+            })
             _this.dotaskclist = datalist.filter((item) => {
               return (
                 new Date(item.issue_time * 1000).toDateString() !=
                 new Date().toDateString()
-              );
-            });
-           
+              )
+            })
           } else {
-            _this.$common.errorToShow(res.datas.error);
+            _this.$common.errorToShow(res.datas.error)
           }
         }
-      );
+      )
     },
     mydoclisttask() {
-      let _this = this;
+      let _this = this
       _this.$api.mydocdakalist(
         {
-          key: _this.$db.get("key"),
-          user_id: _this.$db.get("user").ID,
+          key: _this.$db.get('key'),
+          user_id: _this.$db.get('user').ID,
         },
         (res) => {
           if (res.code == 200) {
-            let datalist = [];
-            datalist = res.datas;
+            let datalist = []
+            datalist = res.datas
             _this.doctodaylist = datalist.filter((item) => {
               return (
                 new Date(item.issue_time * 1000).toDateString() ==
                 new Date().toDateString()
-              );
-            });
+              )
+            })
             _this.dotaskclist = datalist.filter((item) => {
               return (
                 new Date(item.issue_time * 1000).toDateString() !=
                 new Date().toDateString()
-              );
-            });
+              )
+            })
           } else {
-            _this.$common.errorToShow(res.datas.error);
+            _this.$common.errorToShow(res.datas.error)
           }
         }
-      );
+      )
     },
     // calssteb(index) {
     //   this.calssifyindex = index;
     //   this.classid = this.classify[this.calssifyindex].ID;
     // },
     taskstatus() {
-      if(this.switchindex){
-          this.doclisttask(this.classify[this.calssifyindex].ID);
-      }else{
-          this.mydoclisttask()
+      if (this.switchindex) {
+        this.doclisttask(this.classify[this.calssifyindex].ID)
+      } else {
+        this.mydoclisttask()
       }
     },
     //cxb开始
     checked(i) {
-      this.indexOfChecked = i;
-      this.taskId = this.taskList[this.indexOfChecked].ID;
+      this.indexOfChecked = i
+      this.taskId = this.taskList[this.indexOfChecked].ID
     },
     calssteb(i, type) {
       //点击科室
-      this.indexOfChecked = 0; //将选项默认重置为第一个
-      this.calssifyindex = i; //将科室选择为点击那一项
-      this.taskList = []; //清空任务列表，避免出错
-      console.log(this.classify, 7);
+      this.indexOfChecked = 0 //将选项默认重置为第一个
+      this.calssifyindex = i //将科室选择为点击那一项
+      this.taskList = [] //清空任务列表，避免出错
+      console.log(this.classify, 7)
       let data = {
         key: this.key,
         department_id: this.classify[i].department_id,
-      };
+      }
       this.$api.getDepartTask(data, (res) => {
         if (res.code == 200) {
-          this.taskList = res.datas;
-          this.taskId = this.taskList[this.indexOfChecked].ID; //任务列表默认选项的id
+          this.taskList = res.datas
+          this.taskId = this.taskList[this.indexOfChecked].ID //任务列表默认选项的id
         }
         // if(type&&res.code==0){//type:点击筛选类型，如果该选项下没有任务，跳转下一个选项
         //     i++
         //     this.calssifyindex=i
         //     this.calssteb(i,type)
         //   }
-      });
+      })
     },
-     saveTask() {
+    saveTask() {
       //选择任务
       let data = {
         key: this.key,
         user_id: this.userInfo.ID,
         task_id: this.taskId,
-      };
+      }
       this.$api.getParentIndexDetail(data, (res) => {
         if (res.code == 200 && res.datas != null) {
-          
           for (let item of res.datas) {
-			  item.time = item.app_time
+            item.time = item.app_time
             item.app_time = this.$common.timeToDate(
               new Date(item.app_time).getTime(),
               false,
               2
-            );
+            )
           }
-          this.indexList = res.datas;
+          this.indexList = res.datas
 
-          console.log(this.indexList);
-          this.isscreen = false;
-          this.departmentName = this.classify[this.calssifyindex].app_name;
+          console.log(this.indexList)
+          this.isscreen = false
+          this.departmentName = this.classify[this.calssifyindex].app_name
         } else if (res.datas == null) {
-          this.isscreen = false;
-          console.log(223);
+          this.isscreen = false
+          console.log(223)
           uni.showModal({
-            title: "提示",
-            content: "当前任务无信息",
+            title: '提示',
+            content: '当前任务无信息',
             showCancel: false,
-            confirmText: "知道了",
-          });
+            confirmText: '知道了',
+          })
         }
-      });
+      })
     },
     reset() {
       //重置
-      this.calssteb(0);
+      this.calssteb(0)
     },
     gotask() {
       uni.navigateTo({
-        url: "/pages/task/index",
-      });
+        url: '/pages/task/index',
+      })
     },
     addpub() {
       uni.navigateTo({
-        url: "/pages/task/publish",
-      });
+        url: '/pages/task/publish',
+      })
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
-@import "../../static/css/home.scss";
+@import '../../static/css/home.scss';
 </style>

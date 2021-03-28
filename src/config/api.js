@@ -5,8 +5,8 @@ import * as common from './common.js' //引入common
 import * as db from './db.js' //引入common
 // 需要登陆的，都写到这里，否则就是不需要登陆的接口
 const methodsToken = [
-	//  '/api/user/getwxuser',
-	//'/api/ys/user',
+	  //'/api/user/getwxuser',
+	  //'/api/ys/user',
 ];
 
 const post = (method, data, callback, complete) => {
