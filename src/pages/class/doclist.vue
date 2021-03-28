@@ -1,5 +1,8 @@
 <template>
   <view>
+    <view class="">
+      
+    </view>
     <view class="head">
       <u-tabs
         :list="list"
@@ -12,7 +15,8 @@
         bar-height="6"
         @change="change"
       ></u-tabs>
-    </view>
+    </view>华熙美学8888
+  <scroll-view class="contentvm" scroll-y>
     <u-index-list :scrollTop="scrollTop" offset-top="170" class="ulist">
       <view
         v-for="(item, index) in indexList"
@@ -29,7 +33,7 @@
         
       </view>
     </u-index-list>
-
+   </scroll-view>
   </view>
 </template>
 <script>
@@ -110,19 +114,21 @@ export default {
 </script>
 <style lang="scss" scoped>
 .head {
-  width: 100%;
+  width: 686rpx;
   height: 94rpx;
   background: #fff;
-  position: fixed;
-  top:88rpx;
+  margin: auto;
   z-index: 999;
   .nav {
     width: 45%;
     margin-left: 32rpx;
   }
 }
+.contentvm{
+  width: 100%;
+  height: 80vh;
+}
 .ulist{
-  margin-top: 100rpx;
 }
 .list-cell {
   display: flex;

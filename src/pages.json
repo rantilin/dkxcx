@@ -142,13 +142,18 @@
 			"style": {
 				"navigationBarTitleText": "打卡记录"
 			}
+		},
+    {
+			"path": "pages/class/doclist",
+			"style": {
+				"navigationBarTitleText": "科室管理"
+			}
 		}, 
     {
 			"path": "pages/user/transfer",
 			"style": {
 				"navigationBarTitleText": "科室转让"
 			}
-
 		}
   ],
   "globalStyle": {
