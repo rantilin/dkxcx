@@ -109,7 +109,6 @@
 .common {
   width: 686rpx;
   margin: 32rpx auto;
-  border-top: solid 1px #EBEBEB;
 
   .task {
     margin-top: 24rpx;
@@ -117,6 +116,7 @@
     background: #ffffff;
     border-radius: 12rpx;
     padding: 24rpx;
+  border-top: solid 1px #EBEBEB;
 
     .onetitle {
       width: 100%;
