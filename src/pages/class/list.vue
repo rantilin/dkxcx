@@ -53,10 +53,10 @@ export default {
        list(){
           let datalist = [
         {
-          name: '家长('+this.doctornum+')',
+          name: '家长('+this.parentnum+')',
         },
         {
-          name: '医生('+this.parentnum+')',
+          name: '医生('+this.doctornum+')',
         },
       ]
        return datalist

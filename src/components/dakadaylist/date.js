@@ -26,12 +26,16 @@ export function timeStamp(time) {
 }
 //获取最近相隔天的日期和礼拜天数
 export function dateData(startTime = 1615305600000, endTime = 1616947200000) {
+	if(String(startTime).length==10){
+		startTime=startTime*1000
+		endTime=endTime*1000
+	}
 	const time = []
 	const date = new Date()
 	const now = date.getTime() //获取当前日期的时间戳
 	let nowtime =  endTime - startTime
 	let timeStr = 3600 * 24 * 1000 //一天的时间戳
-	for (let i = 0; i < parseInt(nowtime/timeStr); i++) {
+	for (let i = 0; i <= parseInt(nowtime/timeStr); i++) {
 		const timeObj = {}
 		timeObj.date = timeStamp(startTime + timeStr * i).date //保存日期
 		timeObj.timeStamp = startTime + timeStr * i //保存时间戳

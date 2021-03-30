@@ -204,7 +204,11 @@ function modelShow(
 
 //时间戳转时间格式
 function timeToDate(date, flag = false,staus = 1) {
-	var date = new Date(date * 1000) //如果date为13位不需要乘1000
+	if(String(date).length!=13){
+		date = Number(date)
+		var date = new Date(date * 1000) //如果date为13位不需要乘1000
+	}
+	var date = new Date(date)
 	var Y = date.getFullYear() + '-'
 	var M =
 		(date.getMonth() + 1 < 10 ?
@@ -219,13 +223,25 @@ function timeToDate(date, flag = false,staus = 1) {
 		return Y + M + D
 	} else if(!flag&&staus==1) {
 		return Y + M + D + h + m + s
-	}else if(staus=2){
+	}else if(staus==2){
 		return M + D
-	}else if(staus=3){
-		return  M + D + h + m + s
+	}else if(staus==3){
+		return  M + D + h +(date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
+	}else if(staus==4){
+		return  (date.getMonth() + 1 < 10 ?
+		'0' + (date.getMonth() + 1) :
+		date.getMonth() + 1) + '月' +(date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + '日'
 	}
 }
-
+//计算时间相差
+function getTime2Time(time1, time2)
+{
+    var time1 = arguments[0], time2 = arguments[1];
+    time1 = Date.parse(time1)/1000;
+    time2 = Date.parse(time2)/1000;
+    var time_ = time1 - time2;
+    return (time_/(3600*24));
+}
 function time2date(micro_second) {
 	var time = {}
 	// 总秒数
@@ -498,6 +514,7 @@ export {
 	errorToShow,
 	time2date,
 	isPhoneNumber,
+	getTime2Time,
 	isInArray,
 	loadToShow,
 	loadToHide,

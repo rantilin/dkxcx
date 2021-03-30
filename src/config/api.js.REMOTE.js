@@ -322,12 +322,6 @@ export const lookup = (data, callback)=>post('/mobile/index.php?act=parent&op=ad
 export const parentSignDetail = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_clock_info', data, callback);
 //查看任务信息
 export const getTaskInfoTitle = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_clock_details', data, callback);
-//家长发布打卡任务
-export const parentPelease = (data, callback)=>post('/mobile/index.php?act=task&op=parent_clock', data, callback);
-//家长发布修改草稿
-export const updateParentPelease = (data, callback)=>post('/mobile/index.php?act=task&op=edit_clock', data, callback);
-//排行榜数据
-export const ranking = (data, callback)=>post('/mobile/index.php?act=parent&op=ranking', data, callback);
 //编辑查看任务
 export const exitdeil = (data, callback)=>post('/mobile/index.php?act=task&op=task_info', data, callback);
 //删除任务

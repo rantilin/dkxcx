@@ -1,19 +1,18 @@
 <template>
-  <view class="comment">
-    <view class="title">
+ <view class="">
+    <view class="comment">
+    <view class="title" >
       <u-icon
         size="32"
         name="../../static/image/give.png"
+         
       ></u-icon>
-      <text class="item">恒露*家长</text>
-      <text class="item">恒露*家长</text>
-      <text class="item">恒露*家长</text>
-      <text class="item">恒露*家长</text>
+      <text class="item" v-for="(item,index) in list" :key="index">{{item.user_name}}</text>
     </view>
     <view class="usercom">
       <view class="user">
         <view class="name">
-          点评医生：张秋医生
+          点评医生：{{comList[0].user_name}}医生
         </view>
         <view class="right">
            <view class="but1">
@@ -25,25 +24,41 @@
         </view>
       </view>
       <view class="content">
-           小朋友日常打卡训练表现非常好，坚持每天都打卡哦！
+           {{comList[0].content}}
       </view>
     </view>
-    <view class="nestcontent">
-        <text class="name">周泰才家长</text>回复<text class="name">张秋医生</text>：谢谢张医生的回复
+    <view class="nestcontent"  v-for="(item,index) in comList" :key="index">
+      <view class="" v-if="item.type_status==1&&index!=0">
+        <text class="name">{{item.user_name}}医生</text>回复<text class="name">{{user_name}}{{item.type_status==2?'医生':'家长'}}</text>：{{item.content}}
+      </view>
+      <view class="" v-if="item.type_status==2&&index!=0">
+        <text class="name">{{item.user_name}}家长</text>回复<text class="name">{{comList[0].user_name}}医生</text>：{{item.content}}
+      </view>
     </view>
   </view>
+ </view>
 </template>
 <script>
 export default {
+  props:['list','comList','user_name'],
   data() {
-    return {}
+    return {
+    }
   },
+
+  created(){
+    console.log(this.list);
+  },
+  watch:{
+    list(value){
+      console.log(value,11);
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
 .comment {
   width: 100%;
-  height: 331rpx;
   background: #f8f9fa;
   border-radius: 4px;
   .title {
