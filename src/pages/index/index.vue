@@ -120,18 +120,18 @@ export default {
     return {
       list: [
         {
-          name: "健康打卡",
+          name: '健康打卡',
         },
         {
-          name: "科室管理",
+          name: '科室管理',
         },
       ],
-      userInfo: this.$db.get('user'),
+      userInfo: [],
       current: 0,
       switchList: ['全部', '我的'],
       isscreen: false,
       indexOfChecked: 0,
-      status: this.$db.get('user').type_status, //2用户，1医生
+      status: 0, //2用户，1医生
       switchindex: this.status == 2,
       docmyclass: [],
       classify: [], //科室分类
@@ -149,37 +149,33 @@ export default {
       signTaskList: [],
     }
   },
-  onShow(){
-    console.log(123)
-  },
-  onLoad(){
+  onShow() {
     this.key = this.$db.get('key')
-     // #ifdef MP-WEIXIN
-    if (this.key) {
-      if (this.status == 0) {
-         uni.navigateTo({
-               url: '/pages/login/login/index',
-               animationType: 'pop-in',
-               animationDuration: 200,
-           })
-        }
-    } else {
-      setTimeout(() => {
-        uni.navigateTo({
-          url: '/pages/login/choose/index',
-          animationType: 'pop-in',
-          animationDuration: 200,
-        })
-      }, 500)
-    }
-    // #endif
-    if (this.status == 1) {
-      this.docgetclasslist()
-    }
-    if (this.status == 2) {
-      this.usermytask()
-    }
+    this.initData()
   },
+  // onLoad() {
+    
+  //   // // #ifdef MP-WEIXIN
+  //   // if (this.key) {
+  //   //   if (this.status == 0) {
+  //   //     uni.navigateTo({
+  //   //       url: '/pages/login/login/index',
+  //   //       animationType: 'pop-in',
+  //   //       animationDuration: 200,
+  //   //     })
+  //   //   }
+  //   // } else {
+  //   //   setTimeout(() => {
+  //   //     uni.navigateTo({
+  //   //       url: '/pages/login/choose/index',
+  //   //       animationType: 'pop-in',
+  //   //       animationDuration: 200,
+  //   //     })
+  //   //   }, 500)
+  //   // }
+  //   // // #endif
+    
+  // },
   methods: {
     initData() {
       // 获取用户信息
@@ -191,13 +187,25 @@ export default {
           },
           (res) => {
             this.userInfo = res.datas
+            this.status = res.datas.type_status
             this.$db.set('user', res.datas)
+            if (this.status == 0) {
+              uni.navigateTo({
+                url: '/pages/login/login/index',
+                animationType: 'pop-in',
+                animationDuration: 200,
+              })
+            }
+            if (this.status == 1) {
+              this.docgetclasslist()
+            }
+            if (this.status == 2) {
+              this.usermytask()
+            }
           }
         )
       } else {
-        _this.hasLogin = false
         setTimeout(() => {
-          uni.hideToast()
           uni.navigateTo({
             url: '/pages/login/choose/index',
             animationType: 'pop-in',
@@ -230,12 +238,12 @@ export default {
       }
     },
     filtrate() {
-      console.log(this.status);
+      console.log(this.status)
       if (this.switchindex) {
-        this.isscreen = true;
+        this.isscreen = true
       }
       if (this.status == 2) {
-        this.calssteb(0, true);
+        this.calssteb(0, true)
       }
       if (this.status == 2) {
         this.calssteb(0, true)
@@ -462,95 +470,103 @@ export default {
     },
     gotask() {
       uni.navigateTo({
-        url: "/pages/task/index?department_id="+e.department_id+"&time="+e.time+"&task_id="+task_id+"&type="+type,
-      });
+        url:
+          '/pages/task/index?department_id=' +
+          e.department_id +
+          '&time=' +
+          e.time +
+          '&task_id=' +
+          task_id +
+          '&type=' +
+          type,
+      })
     },
     addpub() {
       uni.navigateTo({
-        url: "/pages/task/publish",
-      });
+        url: '/pages/task/publish',
+      })
     },
     //cxb开始
     checked(i) {
-      this.indexOfChecked = i;
-      this.taskId = this.taskList[this.indexOfChecked].ID;
+      this.indexOfChecked = i
+      this.taskId = this.taskList[this.indexOfChecked].ID
     },
     getParentClass() {
       let data = {
-        key: this.$db.get("key"),
-        user_id: this.$db.get("user").ID,
-      };
+        key: this.$db.get('key'),
+        user_id: this.$db.get('user').ID,
+      }
       this.$api.ParentClass(data, (res) => {
         if (res.code == 200) {
-          this.classify = res.datas;
-          this.departmentName = res.datas[0].app_name;
-          this.calssteb(0, true);
+          this.classify = res.datas
+          this.departmentName = res.datas[0].app_name
+          this.calssteb(0, true)
         } else {
-          this.$common.errorToShow(res.datas.error);
+          this.$common.errorToShow(res.datas.error)
         }
-      });
+      })
     },
     calssteb(i, type) {
       //点击科室
-      this.indexOfChecked = 0; //将选项默认重置为第一个
-      this.calssifyindex = i; //将科室选择为点击那一项
-      this.taskList = []; //清空任务列表，避免出错
-      console.log(this.classify, 7);
+      this.indexOfChecked = 0 //将选项默认重置为第一个
+      this.calssifyindex = i //将科室选择为点击那一项
+      this.taskList = [] //清空任务列表，避免出错
+      console.log(this.classify, 7)
       let data = {
         key: this.key,
         department_id: this.classify[i].department_id,
-      };
+      }
       this.$api.getDepartTask(data, (res) => {
         if (res.code == 200) {
-          this.taskList = res.datas;
-          this.taskId = this.taskList[this.indexOfChecked].ID; //任务列表默认选项的id
+          this.taskList = res.datas
+          this.taskId = this.taskList[this.indexOfChecked].ID //任务列表默认选项的id
         }
         // if(type&&res.code==0){//type:点击筛选类型，如果该选项下没有任务，跳转下一个选项
         //     i++
         //     this.calssifyindex=i
         //     this.calssteb(i,type)
         //   }
-      });
+      })
     },
     saveTask() {
       //选择任务
-      console.log(323);
+      console.log(323)
       let data = {
         key: this.key,
         user_id: this.userInfo.ID,
         task_id: this.taskId,
-      };
+      }
       this.$api.getParentIndexDetail(data, (res) => {
         if (res.code == 200 && res.datas != null) {
-          console.log(123);
+          console.log(123)
           for (let item of res.datas) {
-			  item.time = item.app_time
+            item.time = item.app_time
             item.app_time = timeToDate(
               new Date(item.app_time).getTime(),
               false,
               2
-            );
+            )
           }
-          this.indexList = res.datas;
+          this.indexList = res.datas
 
-          console.log(this.indexList);
-          this.isscreen = false;
-          this.departmentName = this.classify[this.calssifyindex].app_name;
+          console.log(this.indexList)
+          this.isscreen = false
+          this.departmentName = this.classify[this.calssifyindex].app_name
         } else if (res.datas == null) {
-          this.isscreen = false;
-          console.log(223);
+          this.isscreen = false
+          console.log(223)
           uni.showModal({
-            title: "提示",
-            content: "当前任务无信息",
+            title: '提示',
+            content: '当前任务无信息',
             showCancel: false,
-            confirmText: "知道了",
-          });
+            confirmText: '知道了',
+          })
         }
-      });
+      })
     },
     reset() {
       //重置
-      this.calssteb(0);
+      this.calssteb(0)
     },
     giveFabulous(id) {
       //点赞
@@ -558,24 +574,24 @@ export default {
         key: this.key,
         user_id_active: this.userInfo.ID,
         clock_id: id,
-      };
+      }
       this.$api.fabulous(data, (res) => {
         if (res.code == 200) {
           uni.showToast({
-            title: "点赞成功",
-          });
+            title: '点赞成功',
+          })
         }
-      });
+      })
     },
     copy(e) {
       uni.setClipboardData({
         data: e,
         success: function () {
           uni.showToast({
-            title:"复制成功"
+            title: '复制成功',
           })
         },
-      });
+      })
     },
     addpub() {
       uni.navigateTo({
@@ -583,8 +599,8 @@ export default {
       })
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
-@import "../../static/css/home.scss";
+@import '../../static/css/home.scss';
 </style>

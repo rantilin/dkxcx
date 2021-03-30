@@ -106,13 +106,13 @@
 					</view>
 					<view class="foot">
 						<view class="left">
-							<u-icon name="../../static/image/time1.png" size="20"></u-icon>
+							<u-icon name="../../../static/image/time1.png" size="20"></u-icon>
 							<view class="time">
 								2021.02.05
 							</view>
 						</view>
 						<view class="left">
-						<u-icon name="../../static/image/eye.png" size="30"></u-icon>
+						<u-icon name="../../../static/image/eye.png" size="30"></u-icon>
 						<view class="time number">
 							200
 						</view>

@@ -4,7 +4,7 @@
     <view class="title" >
       <u-icon
         size="32"
-        name="../../static/image/give.png"
+        name="../../../static/image/give.png"
          
       ></u-icon>
       <text class="item" v-for="(item,index) in list" :key="index">{{item.user_name}}</text>

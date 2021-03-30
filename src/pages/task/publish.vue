@@ -17,10 +17,10 @@
           </view>
         </scroll-view>
         <view class="listbut">
-          <u-icon name="../../static/image/picture.png" label="图片" size="56" label-pos="bottom" @tap='checkedImg'
+          <u-icon name="../../../static/image/picture.png" label="图片" size="56" label-pos="bottom" @tap='checkedImg'
             label-size="26"></u-icon>
-          <u-icon name="../../static/image/audio.png" label="语音" size="56" label-pos="bottom" label-size="26"></u-icon>
-          <u-icon name="../../static/image/video.png" label="视频" size="56" label-pos="bottom" label-size="26"></u-icon>
+          <u-icon name="../../../static/image/audio.png" label="语音" size="56" label-pos="bottom" label-size="26"></u-icon>
+          <u-icon name="../../../static/image/video.png" label="视频" size="56" label-pos="bottom" label-size="26"></u-icon>
         </view>
       </view>
     </view>

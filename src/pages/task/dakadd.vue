@@ -20,7 +20,7 @@
         <u-image :src="item.fileid_route" width="206" height="186" class="item"></u-image>
       </view>
       <view class="textnode">
-        <u-icon name="../../static/image/time.png" size="28"></u-icon>
+        <u-icon name="../../../static/image/time.png" size="28"></u-icon>
         <text>时间周期:{{headInfo.start_time1}}-{{headInfo.end_time1}}</text>
       </view>
       <view class="bottom" @click="taskmore">
@@ -36,10 +36,10 @@
           width="206" height="186" class="item"></u-image>
       </view>
       <view class="listbut">
-        <u-icon name="../../static/image/picture.png" label="图片" @tap='upload' size="56" label-pos="bottom"
+        <u-icon name="../../../static/image/picture.png" label="图片" @tap='upload' size="56" label-pos="bottom"
           label-size="26"></u-icon>
-        <!-- <u-icon name="../../static/image/audio.png" label="语音" size="56" label-pos="bottom" label-size="26"></u-icon>
-        <u-icon name="../../static/image/video.png" label="视频" size="56" label-pos="bottom" label-size="26"></u-icon> -->
+        <!-- <u-icon name="../../../static/image/audio.png" label="语音" size="56" label-pos="bottom" label-size="26"></u-icon>
+        <u-icon name="../../../static/image/video.png" label="视频" size="56" label-pos="bottom" label-size="26"></u-icon> -->
       </view>
 
     </view>

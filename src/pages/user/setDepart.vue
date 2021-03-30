@@ -29,7 +29,7 @@
 					<view class="number topCardItemLeft">
 						{{app_watchword}}
 					</view>
-					<u-icon class="copy" name="../../static/image/copyIcon.png" size="28"></u-icon>
+					<u-icon class="copy" name="../../../static/image/copyIcon.png" size="28"></u-icon>
 				</view>
 			</view>
 		</view>
