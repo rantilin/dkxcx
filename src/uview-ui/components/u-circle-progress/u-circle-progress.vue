@@ -50,7 +50,7 @@ export default {
 	props: {
 		// 圆环进度百分比值
 		percent: {
-			type: Number,
+			type: [Number, String],
 			default: 0,
 			// 限制值在0到100之间
 			validator: val => {

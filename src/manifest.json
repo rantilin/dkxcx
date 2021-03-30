@@ -66,7 +66,7 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        "appid" : "wxf81b2ad64f0ff0a0",
+        "appid" : "wx041d76cb2a6486e6",
         "setting" : {
             "urlCheck" : true,
             "postcss" : true,
@@ -81,7 +81,7 @@
     },
     "h5" : {
         "title" : "打卡小程序",
-        "domain" : "http://wx.xianerke120.com",
+        "domain" : "",
         "router" : {
             "base" : "",
             "mode" : "history"

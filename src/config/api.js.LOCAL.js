@@ -5,8 +5,8 @@ import * as common from './common.js' //引入common
 import * as db from './db.js' //引入common
 // 需要登陆的，都写到这里，否则就是不需要登陆的接口
 const methodsToken = [
-	  //'/api/user/getwxuser',
-	  //'/api/ys/user',
+	//  '/api/user/getwxuser',
+	//'/api/ys/user',
 ];
 
 const post = (method, data, callback, complete) => {
@@ -17,12 +17,12 @@ const post = (method, data, callback, complete) => {
 	// 判断token是否存在
 	if (methodsToken.indexOf(method) >= 0) {
 	//	获取用户token
-		let userToken = db.get("key");
+		let userToken = db.get("token");
 		if (!userToken) {
 			common.ToLogin();
 			return false;
 		} else {
-			data.key = userToken;
+			data.token = userToken;
 		}
 	}
 
@@ -258,10 +258,7 @@ export const uploadImage = (num, callback) => {
 	});
 }
 
-//小程序解析code
-export const login1 = (data, callback) => post('/mobile/index.php?act=wx_auto_xcx&op=login', data, callback);
-//小程序登录
-export const login2 = (data, callback) => post('/mobile/index.php?act=wx_auto_xcx&op=getWxLogin', data, callback);
+
 //获取用户key
 export const user = (data, callback)=>post('/mobile/index.php?act=member_info&op=index', data, callback);
 //创建科室
@@ -276,12 +273,8 @@ export const classpubic = (data, callback)=>post('/mobile/index.php?act=task&op=
 export const imgdel = (data, callback)=>post('/mobile/index.php?act=task&op=del_file_uploads', data, callback);
 //发布打卡任务
 export const taskpub = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_task', data, callback);
-//编辑任务
-export const draft = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task', data, callback);
 //医生任务打卡
 export const docdakalist = (data, callback)=>post('/mobile/index.php?act=task&op=list_task_doctor', data, callback);
-//我的医生任务打卡
-export const mydocdakalist = (data, callback)=>post('/mobile/index.php?act=task&op=my_list_task_doctor', data, callback);
 //修改个人信息
 export const saveUserInfo = (data, callback)=>post('/mobile/index.php?act=member_info&op=member ', data, callback);
 //我加入的科室列表
@@ -328,9 +321,3 @@ export const parentPelease = (data, callback)=>post('/mobile/index.php?act=task&
 export const updateParentPelease = (data, callback)=>post('/mobile/index.php?act=task&op=edit_clock', data, callback);
 //排行榜数据
 export const ranking = (data, callback)=>post('/mobile/index.php?act=parent&op=ranking', data, callback);
-//编辑查看任务
-export const exitdeil = (data, callback)=>post('/mobile/index.php?act=task&op=task_info', data, callback);
-//删除任务
-export const delclock = (data, callback)=>post('/mobile/index.php?act=task&op=del_task', data, callback);
-//结束任务
-export const stopclock = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task_status', data, callback);

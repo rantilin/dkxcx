@@ -9,7 +9,7 @@
 		<view class="button">
 			分享到家长
 		</view>
-		<view class="back">
+		<view class="back" @tep="back">
 			返回首页
 		</view>
 	</view>
@@ -23,7 +23,11 @@
 			}
 		},
 		methods: {
-			
+			 back(){
+         uni.navigateTo({
+					 url:'/pages/index/index'
+				 })
+			 }
 		}
 	}
 </script>
