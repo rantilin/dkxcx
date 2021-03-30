@@ -102,7 +102,6 @@ export default {
       }, 1000);
     },
     getUserInfo: function(e) {
-      console.log(e);
       let _this = this
       //return false;
       if (e.detail.errMsg == 'getUserInfo:fail auth deny') {
@@ -128,15 +127,16 @@ export default {
     toLogin: function(data) {
 			let _this = this
       _this.$api.login2(data, function(res) {
-				if (typeof res.token == 'undefined') {
-            _this.$common.errorToShow('登录失败，请重试')
-          } else {
-            //登陆成功，设置token，并返回上一页
-            _this.$db.set('token', res.token)
+				console.log(res)
+				if (res.code == 200) {
+					 //登陆成功，设置token，并返回上一页
+            _this.$db.set('key', res.datas.xcx_openId)
             uni.navigateBack({
               delta: 1
             })
             return false
+          } else {
+            _this.$common.errorToShow('登录失败，请重试')
           }
       })
     },

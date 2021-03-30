@@ -45,7 +45,7 @@
        </view>
       </view>
     </view>
-     <u-button class="savebutton" :ripple="true" ripple-bg-color="#909399">保存信息</u-button>
+     <view class="savebutton" :ripple="true" ripple-bg-color="#909399">保存信息</view>
   </view>
 </template>
 <script>
@@ -138,5 +138,7 @@ margin: 80rpx auto;
 background: #0BC788;
 border-radius: 44rpx;
 color: #fff;
+line-height: 88rpx;
+text-align: center;
 }
 </style>

@@ -151,6 +151,7 @@ export default {
   },
 
   onLoad() {
+     // #ifdef MP-WEIXIN
     if (this.$db.get('key')) {
       this.key = uni.getStorageSync('key')
       this.$api.user(
@@ -160,6 +161,16 @@ export default {
         (res) => {
           this.userInfo = res.datas
           this.$db.set('user', res.datas)
+          if(this.status == 0){
+             setTimeout(() => {
+        uni.hideToast()
+        uni.navigateTo({
+          url: '/pages/login/login/index',
+          animationType: 'pop-in',
+          animationDuration: 200,
+        })
+      }, 500)
+          }
         }
       )
     } else {
@@ -172,6 +183,7 @@ export default {
         })
       }, 500)
     }
+    // #ifdef MP-WEIXIN
     if (this.status == 1) {
       this.docgetclasslist()
     }
