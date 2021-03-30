@@ -13,7 +13,7 @@
           <view>中童儿童康复医院</view>
         </view>
         <view class="score">
-          <u-icon label="4.9" label-size="24" label-color="#FFC44D" size="24" name="../../../static/image/give.png"></u-icon>
+          <u-icon label="4.9" label-size="24" label-color="#FFC44D" size="24" name="/static/image/give.png"></u-icon>
         </view>
       </view>
       <view class="listwo">
@@ -21,8 +21,8 @@
       </view>
       <view class="listree">
         <view class="mstext">
-          <u-icon label="电话 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../../static/image/cphone.png"></u-icon>
-          <u-icon label="图文 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../../static/image/charpic.png"></u-icon>
+          <u-icon label="电话 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="/static/image/cphone.png"></u-icon>
+          <u-icon label="图文 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="/static/image/charpic.png"></u-icon>
         </view>
         <view class="wybutton">
           问医生
@@ -37,7 +37,7 @@
           <view>中童儿童康复医院</view>
         </view>
         <view class="score">
-          <u-icon label="4.9" label-size="24" label-color="#FFC44D" size="24" name="../../../static/image/give.png"></u-icon>
+          <u-icon label="4.9" label-size="24" label-color="#FFC44D" size="24" name="/static/image/give.png"></u-icon>
         </view>
       </view>
       <view class="listwo">
@@ -45,8 +45,8 @@
       </view>
       <view class="listree">
         <view class="mstext">
-          <u-icon label="电话 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../../static/image/cphone.png"></u-icon>
-          <u-icon label="图文 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="../../../static/image/charpic.png"></u-icon>
+          <u-icon label="电话 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="/static/image/cphone.png"></u-icon>
+          <u-icon label="图文 :￥20" margin-left="15" label-size="26" label-color="#333333" size="38" name="/static/image/charpic.png"></u-icon>
         </view>
         <view class="wybutton">
           问医生

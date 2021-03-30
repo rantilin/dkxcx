@@ -4,7 +4,7 @@
 				<view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view>
 				<view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view>
 				<view class="xm_badge" >
-					<u-icon  name="../../../static/image/dakanull.png" size="20"></u-icon>
+					<u-icon  name="/static/image/dakanull.png" size="20"></u-icon>
 				</view>
 			<view class="week" :class="select?'active':''">{{item.week}}</view>
 		</view>
