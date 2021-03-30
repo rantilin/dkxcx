@@ -28,7 +28,7 @@
 			私信列表
 		</view>
 		<view class="list">
-			<view class="item" :style="index!==4?'border-bottom:1rpx solid #EBEBEB':'border:none'" v-for="(item,index) in 5" :key='index'>
+			<!-- <view class="item" :style="index!==4?'border-bottom:1rpx solid #EBEBEB':'border:none'" v-for="(item,index) in 5" :key='index'>
 				<view class="left">
 					<image class="headImg" src="../../static/image/doctor.png" mode=""></image>
 					<view class="name">
@@ -43,7 +43,7 @@
 						1
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>

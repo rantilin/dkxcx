@@ -147,6 +147,7 @@ export default {
       indexList: [],
       departmentName: '',
       signTaskList: [],
+      shareUrl: '/pages/index/index',
     }
   },
   onShow() {
@@ -176,6 +177,15 @@ export default {
   //   // // #endif
     
   // },
+  //分享
+  onShareAppMessage() {
+    return {
+      title: '医教宝健康管家',
+      imageUrl:
+        'https://yy.xnetkfyy.cn/upload/images/202134/2103041039260007.jpg',
+      path: this.shareUrl,
+    }
+  },
   methods: {
     initData() {
       // 获取用户信息
@@ -302,7 +312,8 @@ export default {
         user_id: this.userInfo.ID,
       }
       this.$api.getParentTask(data, (res) => {
-        for (let item of res.datas) {
+        if(res.code == 200){
+          for (let item of res.datas) {
           item.time = item.issue_time
           item.i_time = this.$common.timeToDate(
             new Date(item.issue_time).getTime(),
@@ -316,6 +327,8 @@ export default {
           )
         }
         this.signTaskList = res.datas
+        }
+        
       })
     },
     docgetclasslist() {
