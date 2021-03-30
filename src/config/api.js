@@ -334,3 +334,5 @@ export const exitdeil = (data, callback)=>post('/mobile/index.php?act=task&op=ta
 export const delclock = (data, callback)=>post('/mobile/index.php?act=task&op=del_task', data, callback);
 //结束任务
 export const stopclock = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task_status', data, callback);
+//获取手机号码
+export const getphone = (data, callback)=>post('/mobile/index.php?act=wx_auto_xcx&op=phone_num', data, callback);

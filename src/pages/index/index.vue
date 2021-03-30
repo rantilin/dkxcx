@@ -3,7 +3,7 @@
     <view class="topnav">
       <view class="user">
         <u-avatar size="60" :src="userInfo.user_avatar"></u-avatar>
-        <text class="username"> {{userInfo.nicknames+userInfo.type_status_name}}</text>
+        <text class="username"> {{userInfo.user_name+userInfo.type_status_name}}</text>
       </view>
       <view class="tebnav">
         <view class="tebleft">
@@ -149,33 +149,22 @@ export default {
       signTaskList: [],
     }
   },
-
-  onLoad() {
+  onShow(){
+    console.log(123)
+  },
+  onLoad(){
+    this.key = this.$db.get('key')
      // #ifdef MP-WEIXIN
-    if (this.$db.get('key')) {
-      this.key = uni.getStorageSync('key')
-      this.$api.user(
-        {
-          key: this.$db.get('key'),
-        },
-        (res) => {
-          this.userInfo = res.datas
-          this.$db.set('user', res.datas)
-          if(this.status == 0){
-             setTimeout(() => {
-        uni.hideToast()
-        uni.navigateTo({
-          url: '/pages/login/login/index',
-          animationType: 'pop-in',
-          animationDuration: 200,
-        })
-      }, 500)
-          }
+    if (this.key) {
+      if (this.status == 0) {
+         uni.navigateTo({
+               url: '/pages/login/login/index',
+               animationType: 'pop-in',
+               animationDuration: 200,
+           })
         }
-      )
     } else {
       setTimeout(() => {
-        uni.hideToast()
         uni.navigateTo({
           url: '/pages/login/choose/index',
           animationType: 'pop-in',
@@ -183,7 +172,7 @@ export default {
         })
       }, 500)
     }
-    // #ifdef MP-WEIXIN
+    // #endif
     if (this.status == 1) {
       this.docgetclasslist()
     }
