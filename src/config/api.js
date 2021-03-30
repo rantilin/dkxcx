@@ -334,3 +334,11 @@ export const exitdeil = (data, callback)=>post('/mobile/index.php?act=task&op=ta
 export const delclock = (data, callback)=>post('/mobile/index.php?act=task&op=del_task', data, callback);
 //结束任务
 export const stopclock = (data, callback)=>post('/mobile/index.php?act=task&op=edit_task_status', data, callback);
+//私信列表
+export const notice_list = (data, callback)=>post('/mobile/index.php?act=parent&op=notice_list', data, callback);
+//私信详情
+export const notice_detail = (data, callback)=>post('/mobile/index.php?act=parent&op=letter_info', data, callback);
+//修改信息为已读
+export const edit_private = (data, callback)=>post('/mobile/index.php?act=department&op=edit_private', data, callback);
+//修改信息为已读
+export const depart_private = (data, callback)=>post('/mobile/index.php?act=department&op=depart_private', data, callback);

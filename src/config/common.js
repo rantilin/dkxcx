@@ -242,6 +242,7 @@ function getTime2Time(time1, time2)
     var time_ = time1 - time2;
     return (time_/(3600*24));
 }
+
 function time2date(micro_second) {
 	var time = {}
 	// 总秒数
@@ -275,7 +276,68 @@ function time2date(micro_second) {
 	}
 	return newtime
 }
+// 时间格式化1
+// function formatDateTimeOne(inputTime) {
+// 	var date = new Date(inputTime);
+// 	var y = date.getFullYear();
+// 	var m = date.getMonth() + 1;
+// 	m = m < 10 ? ('0' + m) : m;
+// 	var d = date.getDate();
+// 	d = d < 10 ? ('0' + d) : d;
+// 	var h = date.getHours();
+// 	h = h < 10 ? ('0' + h) : h;
+// 	var minute = date.getMinutes();
+// 	var second = date.getSeconds();
+// 	minute = minute < 10 ? ('0' + minute) : minute;
+// 	second = second < 10 ? ('0' + second) : second;
+// 	return m + '-' + d + ' ' + h + ':' + minute;
+// };
+// bb// 时间格式化2
+function formatDateTime(inputTime) {
+	// inputTime = 1528788278000;
+	var date = new Date(inputTime);
+	if (date == null || date == undefined) {
+		return;
+	}
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	m = m < 10 ? ('0' + m) : m;
+	var d = date.getDate();
+	d = d < 10 ? ('0' + d) : d;
+	var h = date.getHours();
+	h = h < 10 ? ('0' + h) : h;
+	var minute = date.getMinutes();
+	var second = date.getSeconds();
+	minute = minute < 10 ? ('0' + minute) : minute;
+	second = second < 10 ? ('0' + second) : second;
+	var hours = date.getHours();
+	var timeValue = "" + ((hours >= 12) ? "下午 " : "上午 ")
+	// /
+	// console.log("--y:"+y+"--m:"+m+"--d--:"+d+"--h:"+h+"--minute--:"+minute)
+	var now = new Date();
+	var nowy = now.getFullYear();
+	var nowm = now.getMonth() + 1;
+	var nowd = now.getDate();
+	var nowd_z = nowd - 1;
+	nowm = nowm < 10 ? ('0' + nowm) : nowm;
+	nowd = nowd < 10 ? ('0' + nowd) : nowd;
+	// console.log("--nowy:"+nowy+"--nowmm:"+nowm+"--d--:"+nowd )
+	var returnStr = "";
+	if (nowm == m && nowy == y && nowd == d) {
+		returnStr = timeValue + h + ':' + minute;
+	}
+	if (nowm == m && nowy == y && nowd_z == d) {
+		returnStr = " 昨天  " + h + ':' + minute;
+	}
+	if (nowy == y && nowd_z != d && nowd != d) {
+		returnStr = m + '-' + d;
+	}
+	if (nowy != y) {
+		returnStr = y + '-' + m + '-' + d;
+	}
 
+	return returnStr;
+};
 function timeToDateObj(micro_second) {
 	var time = {}
 	// 总秒数
@@ -530,5 +592,6 @@ export {
 	moneySub,
 	shareParameterEncode,
 	shareParameterDecode,
-	rmoney
+	rmoney,
+	formatDateTime
 }

@@ -21,10 +21,12 @@
     <scroll-view class="contentvm" scroll-y>
       <!-- 用户端 -->
       <template v-if="switchindex && current==0 && status == 2">
+		  <defaultPage v-if="indexList.length==0" :status='4' :text='"暂无数据"' :color="'#999'"></defaultPage>
         <useralltask :indexList="indexList"></useralltask>
       </template>
 
       <template v-if="switchindex == false && current==0 && status == 2">
+		  <defaultPage v-if="signTaskList.length==0" :status='4' :text='"暂无数据"' :color="'#999'"></defaultPage>
         <usermytask :signTaskList="signTaskList"></usermytask>
       </template>
       <!-- 用户端结束 -->
@@ -459,10 +461,11 @@ export default {
       //重置
       this.calssteb(0)
     },
-    gotask() {
-      uni.navigateTo({
-        url: "/pages/task/index?department_id="+e.department_id+"&time="+e.time+"&task_id="+task_id+"&type="+type,
-      });
+    gotask(e) {
+		console.log(e);
+      // uni.navigateTo({
+      //   url: "/pages/task/index?department_id="+e.department_id+"&time="+e.time+"&task_id="+task_id+"&type="+type,
+      // });
     },
     addpub() {
       uni.navigateTo({

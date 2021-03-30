@@ -3,19 +3,19 @@
 		<view class="xm_day" :class="[select?'active':'',item.timeStamp > nowtime?'dashed':'']" v-if=" type == 'date'">
 				<view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view>
 				<view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view>
-				<view class="xm_badge" >
+				<!-- <view class="xm_badge" >
 					<u-icon  name="../../static/image/dakanull.png" size="20"></u-icon>
-				</view>
+				</view> -->
 			<view class="week" :class="select?'active':''">{{item.week}}</view>
 		</view>
 		<view class="xm_day action" v-if="type == 'all'" @click="morecick">
         {{action?'收起':'展开'}}
     </view>
-		<template v-if="type=='date'">
+		<!-- <template v-if="type=='date'">
         <view class="xm_status" >
 					{{item.timeStamp > nowtime?'待打卡':'缺卡'}}
 				</view>
-		</template>
+		</template> -->
 		
 	</view>
 </template>
@@ -56,6 +56,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		margin-top: 10rpx;
 	}
 
 	.xm-dakaday_item .xm_day {
@@ -65,6 +66,7 @@
 		border: 4rpx solid #ededee;
 		position: relative;
 		box-sizing: border-box;
+		margin-top: 10rpx;
 	}
 
 	.xm-dakaday_item .xm_day.action {
