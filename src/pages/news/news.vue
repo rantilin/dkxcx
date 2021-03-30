@@ -44,7 +44,7 @@
 						{{item.private_num}}
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -111,7 +111,6 @@
 				color: #999999;
 			}
 
-			.right {}
 
 			.unread {
 				padding: 5rpx;

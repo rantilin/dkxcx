@@ -342,3 +342,5 @@ export const notice_detail = (data, callback)=>post('/mobile/index.php?act=paren
 export const edit_private = (data, callback)=>post('/mobile/index.php?act=department&op=edit_private', data, callback);
 //修改信息为已读
 export const depart_private = (data, callback)=>post('/mobile/index.php?act=department&op=depart_private', data, callback);
+//获取手机号码
+export const getphone = (data, callback)=>post('/mobile/index.php?act=wx_auto_xcx&op=phone_num', data, callback);

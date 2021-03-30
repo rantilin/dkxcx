@@ -21,7 +21,7 @@
           <view class="item">
               <view class="block">
                    <text class="title">积分商城</text>
-                   <u-icon name="../../static/image/integral.png" size="69"></u-icon>
+                   <u-icon name="/static/image/integral.png" size="69"></u-icon>
               </view>
               <view class="blocktext">
                 <text class="tip">积分:200</text>
@@ -31,7 +31,7 @@
           <view class="item" @click="gocard" v-if="userInfo.type_status==2">
               <view class="block">
                    <text class="title">打卡记录</text>
-                   <u-icon name="../../static/image/cardre.png" size="69"></u-icon>
+                   <u-icon name="/static/image/cardre.png" size="69"></u-icon>
               </view>
               <view class="blocktext">
                  查看我的打开记录
@@ -40,7 +40,7 @@
 		  <view class="item" @click="setDepartment" v-if="userInfo.type_status==1">
               <view class="block">
                    <text class="title">科室设置</text>
-                   <u-icon name="../../static/image/cardre.png" size="69"></u-icon>
+                   <u-icon name="/static/image/cardre.png" size="69"></u-icon>
               </view>
               <view class="blocktext">
                  科室设置，人员管理
@@ -49,29 +49,29 @@
       </view>
       <view class="listmenu">
            <view class="listitem">
-                <u-icon name="../../static/image/recommend.png" size="44"></u-icon>
+                <u-icon name="/static/image/recommend.png" size="44"></u-icon>
                 <view class="title">推荐给其他家长</view>
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>
            <view class="listitem">
-                <u-icon name="../../static/image/mini.png" size="44"></u-icon>
+                <u-icon name="/static/image/mini.png" size="44"></u-icon>
                 <view class="title">添加到我的小程序</view>
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>
            <view class="listitem" @click="gomydesk">
-                <u-icon name="../../static/image/myadd.png" size="44"></u-icon>
+                <u-icon name="/static/image/myadd.png" size="44"></u-icon>
                 <view class="title">我加入的科室</view> 
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>
            <view class="line">
            </view>
            <view class="listitem">
-                <u-icon name="../../static/image/clear.png" size="44"></u-icon>
+                <u-icon name="/static/image/clear.png" size="44"></u-icon>
                 <view class="title">清除缓存</view>
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>
            <view class="listitem">
-                <u-icon name="../../static/image/set.png" size="44"></u-icon>
+                <u-icon name="/static/image/set.png" size="44"></u-icon>
                 <view class="title">设置</view>
                 <u-icon name="arrow-right" size="24" class="more"></u-icon>
            </view>

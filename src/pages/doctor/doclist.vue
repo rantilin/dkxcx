@@ -16,7 +16,7 @@
             label-size="24"
             label-color="#FFC44D"
             size="24"
-            name="../../static/image/give.png"
+            name="/static/image/give.png"
           ></u-icon>
         </view>
       </view>

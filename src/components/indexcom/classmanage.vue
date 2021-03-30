@@ -12,7 +12,7 @@
             </view>
           </view>
           <view class="icon">
-            <u-icon size="118" name="../../static/image/creadclass.png"></u-icon>
+            <u-icon size="118" name="/static/image/creadclass.png"></u-icon>
           </view>
         </view>
         <view class="item" @tap="addclass">
@@ -25,7 +25,7 @@
             </view>
           </view>
           <view class="icon">
-            <u-icon size="118" name="../../static/image/addclass.png"></u-icon>
+            <u-icon size="118" name="/static/image/addclass.png"></u-icon>
           </view>
         </view>
       </view>
@@ -40,7 +40,7 @@
         </view>
         <view class="command">
           <text class="crad" @tap='copy(item.app_watchword)'>科室口令:{{item.app_watchword}}</text>
-          <u-icon name="../../static/image/copy.png" size="20" @tap='copy(item.app_watchword)'></u-icon>
+          <u-icon name="/static/image/copy.png" size="20" @tap='copy(item.app_watchword)'></u-icon>
         </view>
         <view class="listbox">
           <view class="itembox">
@@ -69,7 +69,7 @@
             </view>
           </view>
           <view class="itembox">
-            <u-icon name="../../static/image/add.png" size="70"></u-icon>
+            <u-icon name="/static/image/add.png" size="70"></u-icon>
             <view class="textwo">
               邀请家长
             </view>

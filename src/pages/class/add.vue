@@ -1,9 +1,9 @@
 <template>
   <view>
     <view class="keyinput">
-      <u-input v-model="key" class="keytext" height="98" placeholder="请输入科室口令加入科室"></u-input>
+      <input v-model="key" class="keytext" placeholder="请输入科室口令加入科室" />
     </view>
-    <u-button class="buttom" :ripple="true" shape="circle" @click="contip">查找科室</u-button>
+    <view class="buttom"  @click="contip">查找科室</view>
     <view class="listclass" v-if="info">
       <view class="item">
         <u-avatar :src="info.user_avatar" size="88"></u-avatar>
@@ -16,7 +16,7 @@
             <text class="num">人数:{{info.people_num}}人</text>
           </view>
         </view>
-        <u-button class="addbutton" :ripple="true" shape="circle" @click="conmax">加入科室</u-button>
+        <view class="addbutton" @click="conmax">加入科室</view>
       </view>
     </view>
     <!-- 提示框 -->
@@ -102,11 +102,16 @@ export default {
     width: 100%;
     background: #ffffff;
     font-size: 32rpx;
+    height: 89rpx;
   }
 }
 .buttom {
   width: 686rpx;
   height: 88rpx;
+  margin: auto;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 88rpx;
   background: #0bc788;
   color: #ffffff;
 }
@@ -144,6 +149,8 @@ export default {
       height: 52rpx;
       font-size: 24rpx;
       color: #fff;
+      line-height: 52rpx;
+      border-radius: 30rpx;
       background: #0bc788;
     }
   }

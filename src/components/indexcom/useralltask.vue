@@ -26,7 +26,7 @@
                 </view>
               </view>
               <view class="bottom">
-                <u-icon size="32" @tap='giveFabulous(item.ID)' class="d-icon" name="../../static/image/give.png">
+                <u-icon size="32" @tap='giveFabulous(item.ID)' class="d-icon" name="/static/image/give.png">
                 </u-icon>
               </view>
             </view>

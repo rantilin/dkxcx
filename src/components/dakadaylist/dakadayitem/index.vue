@@ -3,9 +3,15 @@
 		<view class="xm_day" :class="[select?'active':'',item.timeStamp > nowtime?'dashed':'']" v-if=" type == 'date'">
 				<view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view>
 				<view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view>
+<<<<<<< HEAD
 				<!-- <view class="xm_badge" >
 					<u-icon  name="../../static/image/dakanull.png" size="20"></u-icon>
 				</view> -->
+=======
+				<view class="xm_badge" >
+					<u-icon  name="/static/image/dakanull.png" size="20"></u-icon>
+				</view>
+>>>>>>> b3b5ba52c0bb6c91cdee3868f36e8772821be773
 			<view class="week" :class="select?'active':''">{{item.week}}</view>
 		</view>
 		<view class="xm_day action" v-if="type == 'all'" @click="morecick">

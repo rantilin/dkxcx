@@ -26,7 +26,7 @@
 					</view>
 				</view>
 				<view class="bottom">
-					<u-icon size="32" class="d-icon" name="../../static/image/give.png"></u-icon>
+					<u-icon size="32" class="d-icon" name="/static/image/give.png"></u-icon>
 				</view>
 				<view class="comment">
 					<comments :give_clock_all='details.give_clock_all' :clock_private='details.clock_private'></comments>
