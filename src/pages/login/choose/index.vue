@@ -41,7 +41,8 @@
 export default {
   data() {
     return {
-      open_id: ''
+      open_id: '',
+			sessionKey:''
     }
   },
   computed: {
@@ -60,7 +61,8 @@ export default {
         code: code
       }
       _this.$api.login1(data, (res)=>{
-         _this.open_id = res.data.openid
+         _this.open_id = res.openid
+				 _this.sessionKey = res.session_key
       })
     })
     // #endif
@@ -107,11 +109,12 @@ export default {
         _this.$common.errorToShow('未授权')
       } else {
         var data = {
-          open_id: _this.open_id,
+          openid: _this.open_id,
           iv: e.detail.iv,
-          edata: e.detail.encryptedData,
-					signature: e.detail.signature,
-					rawData:e.detail.rawData
+          encryptedData: e.detail.encryptedData,
+					sessionKey:_this.sessionKey
+					// signature: e.detail.signature,
+					// rawData:e.detail.rawData
 				}
         //有推荐码的话，带上
         var invitecode = _this.$db.get('invitecode')

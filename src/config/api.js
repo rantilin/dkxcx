@@ -258,7 +258,10 @@ export const uploadImage = (num, callback) => {
 	});
 }
 
-
+//小程序解析code
+export const login1 = (data, callback) => post('/mobile/index.php?act=wx_auto_xcx&op=login', data, callback);
+//小程序登录
+export const login2 = (data, callback) => post('/mobile/index.php?act=wx_auto_xcx&op=getWxLogin', data, callback);
 //获取用户key
 export const user = (data, callback)=>post('/mobile/index.php?act=member_info&op=index', data, callback);
 //创建科室
