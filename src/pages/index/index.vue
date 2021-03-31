@@ -26,7 +26,7 @@
       </template>
 
       <template v-if="switchindex == false && current==0 && status == 2">
-		  <defaultPage v-if="signTaskList.length==0" :status='4' :text='"暂无数据"' :color="'#999'"></defaultPage>
+		    <defaultPage v-if="signTaskList.length==0" :status='4' :text='"暂无数据"' :color="'#999'"></defaultPage>
         <usermytask :signTaskList="signTaskList"></usermytask>
       </template>
       <!-- 用户端结束 -->
@@ -134,7 +134,7 @@ export default {
       isscreen: false,
       indexOfChecked: 0,
       status: 0, //2用户，1医生
-      switchindex: this.status == 2,
+      switchindex: 1,
       docmyclass: [],
       classify: [], //科室分类
       classid: 0, //默认科室id

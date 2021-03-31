@@ -4,7 +4,7 @@
       <view class="title" v-if="doctodaylist.length > 0 ">
         今天
       </view>
-      <view class="task" @click="docedit(item.ID, item.user_id, item.department_user_id)" v-for="(item, index) in doctodaylist" :key="index">
+      <view class="task" v-for="(item, index) in doctodaylist" :key="index" @tap='nav(item)'>
         <view class="onetitle">
           <u-avatar :src="item.user_avatar" class="portrait" size="76"></u-avatar>
           <view class="introduce">
@@ -57,13 +57,13 @@
           </view>
           <view class="box2">
             <div class="status" :class="item.issue_name=='已结束'?'on':''">{{item.issue_name}}</div>
-            <u-icon name="more-dot-fill" color="#666666" size="28"></u-icon>
+            <u-icon name="more-dot-fill" color="#666666" size="28"  @click="docedit(item.ID, item.user_id, item.department_user_id)"></u-icon>
           </view>
         </view>
       </view>
     </view>
 
-    <view class="assignment" @click="docedit(item.ID, item.user_id, item.department_user_id)" v-for="(item, index) in dotaskclist" :key="index">
+    <view class="assignment" v-for="(item, index) in dotaskclist" :key="index" @tap='nav(item)'>
       <view class="title">
         {{item.issue_time | timeToDate }}
       </view>
@@ -120,7 +120,7 @@
           </view>
           <view class="box2">
             <div class="status" :class="item.issue_name=='已结束'?'on':''">{{item.issue_name}}</div>
-            <u-icon name="more-dot-fill" color="#666666" size="28"></u-icon>
+            <u-icon name="more-dot-fill" color="#666666" size="28" @click="docedit(item.ID, item.user_id, item.department_user_id)" ></u-icon>
           </view>
         </view>
       </view>
@@ -162,6 +162,12 @@ export default {
   },
   
   methods: {
+    nav(e){
+		console.log(e);
+      uni.navigateTo({
+        url:'/pages/task/docTaskIndex?department_id='+e.department_id+"&task_id="+e.ID+"&doc="+true
+      })
+    },
     docedit(id, user, systemid) {
       if(systemid == this.$db.get("user").ID || user == this.$db.get("user").ID){
           this.docbottom = true;
