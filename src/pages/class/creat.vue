@@ -29,6 +29,7 @@
       :show-cancel-button="true" confirm-text="邀请家长" cancel-text="邀请医生" confirm-color="#0BC788" cancel-color="#FFBA4A"
       @confirm="confirm" @cancel="cancel">
     </u-modal>
+    
   </view>
 </template>
 <script>
@@ -64,8 +65,8 @@ export default {
         },
         (res) => {
           if (res.code == 200) {
-            _this.config.iscread = true
             _this.app_watchword = res.datas.app_watchword
+            _this.config.iscread = true
           } else {
             _this.$common.errorToShow(res.datas.error)
           }
@@ -78,24 +79,14 @@ export default {
       }
     },
     confirm() {
-      //邀请家长
-      this.$u.mpShare = {
-        title: '邀请您加入' + this.classt, // 默认为小程序名称，可自定义
-        path: `/pages/share/index?type=2&&word=${app_watchword}&&title=${this.classt}`, // 默认为当前页面路径，一般无需修改，QQ小程序不支持
-        // 分享图标，路径可以是本地文件路径、代码包文件路径或者网络图片路径。
-        // 支持PNG及JPG，默认为当前页面的截图
-        imageUrl: '',
-      }
+        uni.navigateTo({
+         url: `/pages/share/wxshare?code=${this.app_watchword}&type=2&title=${this.classt}`,
+      })
     },
     cancel() {
-      //邀请医生
-       this.$u.mpShare = {
-        title: '邀请您加入' + this.classt, // 默认为小程序名称，可自定义
-        path: `/pages/share/index?type=2&&word=${app_watchword}&&title=${this.classt}`, // 默认为当前页面路径，一般无需修改，QQ小程序不支持
-        // 分享图标，路径可以是本地文件路径、代码包文件路径或者网络图片路径。
-        // 支持PNG及JPG，默认为当前页面的截图
-        imageUrl: '',
-      }
+      uni.navigateTo({
+         url: `/pages/share/wxshare?code=${this.app_watchword}&type=1&title=${this.classt}`,
+      })
     },
   },
 }

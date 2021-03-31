@@ -163,6 +163,12 @@
       }
     },
     {
+      "path": "pages/share/wxshare",
+      "style": {
+        "navigationBarTitleText": "分享"
+      }
+    },
+    {
 			"path": "pages/news/newsDetail",
 			"style": {
 				"navigationBarTitleText": "消息"

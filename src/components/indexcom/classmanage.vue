@@ -68,7 +68,7 @@
               加入率
             </view>
           </view>
-          <view class="itembox">
+          <view class="itembox" @tap="goshare(item.app_watchword, 2, item.app_name)">
             <u-icon name="/static/image/add.png" size="70"></u-icon>
             <view class="textwo">
               邀请家长
@@ -147,6 +147,11 @@ export default {
           })
         },
       });
+    },
+    goshare(code,type,title){
+      uni.navigateTo({
+         url: `/pages/share/wxshare?code=${code}&type=${type}&title=${title}`,
+      })
     }
   },
   filters: {
