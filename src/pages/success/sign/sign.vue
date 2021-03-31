@@ -1,17 +1,17 @@
 <template>
 	<view class="sign-warp">
 		<view class="head">
-			<u-icon class="head-icon" name="arrow-left" color="#fff" size="32"></u-icon>
+			<u-icon class="head-icon" name="arrow-left" color="#fff" size="32" @tap='back'></u-icon>
 			<view class="title">
 				打卡小程序
 			</view>
 		</view>
 		<image class="bgImg" src="../../../static/image/signBg.png" mode=""></image>
 		<view class="tips">
-			已经连续坚持打卡 1 天
+			已经连续坚持打卡 {{info.clock_day}} 天
 		</view>
 		<view class="tips bottom">
-			今日已获取基础积分80
+			今日已获取基础积分{{info.points}}
 		</view>
 		<view class="top-img">
 			<image src="../../../static/image/success.png" mode=""></image>
@@ -20,9 +20,9 @@
 			</view>
 		</view>
 		<view class="sign-tip">
-			连续打卡7天可额外获得100积分
+			连续打卡{{info.task_days}}天可额外获得{{info.task_reward}}积分
 		</view>
-		<view class="tip-more">
+		<!-- <view class="tip-more">
 			<view class="shu-title">
 				<view class="shu"></view>
 				<view class="tip">积分兑换</view>
@@ -40,7 +40,7 @@
 				<view class="foot">
 					积分：1000
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -49,11 +49,17 @@
 	export default {
 		data() {
 			return {
-
+				info:{}
 			}
 		},
+		onLoad(o) {
+			console.log(JSON.parse(o.info));
+			this.info = JSON.parse(o.info)
+		},
 		methods: {
-
+			back(){
+				uni.navigateBack(1)
+			}
 		}
 	}
 </script>

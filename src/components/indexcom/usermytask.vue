@@ -56,6 +56,7 @@ export default {
   },
   methods:{
     gotask(e,type) {
+		
 	  let task_id=0
 	  if(e.task_id){
 		task_id = e.task_id

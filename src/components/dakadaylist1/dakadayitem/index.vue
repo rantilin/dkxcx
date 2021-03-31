@@ -1,43 +1,56 @@
 <template>
 	<view class="xm-dakaday_item">
 		<view class="xm_day" :class="[select?'active':'',item.timeStamp > nowtime?'dashed':'']" v-if=" type == 'date'">
-				<view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view>
-				<view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view>
-				<!-- <view class="xm_badge" >
+			<!-- <view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view> -->
+			<!-- <view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view> -->
+			<!-- <view class="xm_badge" >
 					<u-icon  name="../../static/image/dakanull.png" size="20"></u-icon>
 				</view> -->
+			<template>
+				<u-circle-progress active-color="#0BC788" inactive-color='rgba(0,0,0,0)' bg-color='rgba(0,0,0,0)' :percent="num" width="100" :border-width='4'>
+					<view class="u-progress-content">
+						<!-- <view class="u-progress-dot"></view> -->
+						<!-- <text class='u-progress-info'>查找中</text> -->
+						<view class="u-progress-info" v-if="num!=0">
+							{{num}}%
+						</view>
+					</view>
+				</u-circle-progress>
+			</template>
 			<view class="week" :class="select?'active':''">{{item.week}}</view>
 		</view>
 		<view class="xm_day action" v-if="type == 'all'" @click="morecick">
-        {{action?'收起':'展开'}}
-    </view>
-		<!-- <template v-if="type=='date'">
-        <view class="xm_status" >
+			{{action?'收起':'展开'}}
+		</view>
+		<template v-if="type=='date'">
+			<!-- <view class="xm_status" >
 					{{item.timeStamp > nowtime?'待打卡':'缺卡'}}
-				</view>
-		</template> -->
-		
+				</view> -->
+			<view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月{{item.date.day}}</view>
+		</template>
 	</view>
 </template>
 <script>
 	export default {
 		props: {
-			 item:'',
-			 type:'',
-			 select:false
+			item: '',
+			type: '',
+			select: false,
+			num:0
 		},
 		data() {
 			return {
 				action: false,
 				nowtime: new Date().getTime(),
+				
 			}
 		},
 		methods: {
-			morecick(){
-				if(this.action){
+			morecick() {
+				if (this.action) {
 					this.action = false;
 					this.$emit('more', false);
-				}else{
+				} else {
 					this.action = true;
 					this.$emit('more', true);
 				}
@@ -45,8 +58,26 @@
 		}
 	}
 </script>
-<style scoped>
-.xm-dakaday_item {
+<style lang="scss" scoped>
+	.u-progress-content {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.u-progress-dot {
+			width: 16rpx;
+			height: 16rpx;
+			border-radius: 50%;
+			background-color: #fb9126;
+		}
+		
+		.u-progress-info {
+			font-size: 28rpx;
+			padding-left: 16rpx;
+			letter-spacing: 2rpx
+		}
+	.xm-dakaday_item {
 		width: 106rpx;
 	}
 
@@ -129,9 +160,9 @@
 	}
 
 	.xm_day.active {
-		border-color: #0BC788;
-		background-color: #0BC788;
-		color: #fff;
+		// border-color: #0BC788;
+		// background-color: #0BC788;
+		// color: #fff;
 	}
 
 	.xm_day.active .xm_daka-theme_1 {
@@ -168,5 +199,4 @@
 		color: #fff;
 		border-color: #fff;
 	}
-
 </style>

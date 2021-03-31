@@ -2,7 +2,7 @@
 	<view>
 		<view class="dakalist">
 			<view v-for="(item,index) in dateArr" :key="index" @click.stop="selectDateEvent(index, item)">
-				<dakadayitem class="ldate" :select="dateActive == index" :item="item" type="date" v-show=" index < num">
+				<dakadayitem class="ldate" :num='dateActive == index?rate:0' :select="dateActive == index" :item="item" type="date" v-show=" index < num">
 				</dakadayitem>
 			</view>
 			<dakadayitem class="ldate" type="all" @more="morecick"></dakadayitem>
@@ -44,6 +44,10 @@
 				type: String,
 				default: ''
 			},
+			rate:{
+				type:Number,
+				default: 0
+			}
 		},
 		data() {
 			return {

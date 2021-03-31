@@ -45,9 +45,9 @@
 				</view>
 			</view>
 			<view class="dakatitle" v-if="headInfo.today>0&&headInfo.today<=headInfo.days+1">
-				打卡第{{headInfo.today}}/{{headInfo.days+1}}天
+				打卡第{{headInfo.day}}/{{headInfo.days+1}}天
 			</view>
-			<dakadaylist @func='getComponent' :department_id='info.department_id' :task_id='info.task_id'
+			<dakadaylist @func='getComponent' :rate='rate' :department_id='info.department_id' :task_id='info.task_id'
 				:startTime='headInfo.start_time' :endTime='headInfo.end_time'></dakadaylist>
 
 			<view class="common" v-for="(item,index) in clock_info" :key='index'>
@@ -161,7 +161,7 @@
 		timeToDate,
 		getTime2Time
 	} from "../../config/common.js";
-	import dakadaylist from "@/components/dakadaylist/index";
+	import dakadaylist from "@/components/dakadaylist1/index";
 	import comments from "@/components/comment/index";
 	export default {
 		components: {
@@ -191,7 +191,8 @@
 				task_id: "",
 				department_id: "",
 				buttonStatus: 0,
-				isDoc:false
+				isDoc:false,
+				rate:0
 			};
 		},
 		onLoad(o) {
@@ -200,15 +201,6 @@
 				this.current = 1;
 			} else {
 				this.current = 0;
-			}
-			if(o.doc){
-				this.isDoc = true
-				this.list=[{
-						name: "已打卡",
-					},
-					{
-						name: "未打卡",
-					}]
 			}
 			let time = timeToDate(new Date().getTime(), true)
 			this.department_id = o.department_id
@@ -225,30 +217,6 @@
 			getComponent(e, item) {
 				this.clock_info = e;
 				const stamp1 = new Date(new Date().toLocaleDateString())
-				if (this.status != 1 && this.headInfo.today <= this.headInfo.days + 1 && this.headInfo.today >
-					0 && this.clock_info.length > 0) {
-					this.buttonStatus = 1
-				}
-				if (this.headInfo.today > this.headInfo.days + 1 || this.status == 1 || this.headInfo.today <
-					0) {
-					this.buttonStatus = 2
-				}
-				if (this.clock_info.length == 0 && this.status != 1 && this.headInfo.today <= this.headInfo
-					.days + 1 && this.headInfo.today > 0) {
-					this.buttonStatus = 3
-				}
-				if (item.timeStamp < stamp1 && this.clock_info.length == 0 && this.status != 1) {
-					this.buttonStatus = 4
-					console.log(this.buttonStatus, 7878);
-				}
-				// for (let item of this.clock_info) {
-				//   if (item.type_status == 1) {
-				//     this.doc = item.user_name;
-				//   } else {
-				//     this.par = item.user_name;
-				//   }
-				// }
-				// console.log(this.par);
 			},
 			init() {
 				let that = this;
@@ -266,7 +234,14 @@
 					}
 					that.other_info = res.datas.other_info;
 					that.clock_info = res.datas.clock_info;
-					console.log(that.clock_info,546546);
+					var str = res.datas.rate
+					that.rate = Number(str.split("%").join(""));
+					that.list=[{
+							name: "已打卡("+that.clock_info.length+")",
+						},
+						{
+							name: "未打卡("+that.other_info.length+")",
+						}]
 					that.getTaskInfo()
 				});
 
@@ -275,6 +250,7 @@
 				let data = {
 					key: this.info.key,
 					task_id: this.info.task_id,
+					clock_time:parseInt((new Date().getTime())/ 1000)
 				};
 				this.$api.getTaskInfoTitle(data, (res) => {
 					res.datas.days = getTime2Time(
@@ -297,20 +273,6 @@
 						3
 					);
 					this.headInfo = res.datas;
-					if (this.status != 1 && this.headInfo.today <= this.headInfo.days + 1 && this.headInfo.today >
-						0 && this.clock_info.length > 0) {
-						this.buttonStatus = 1
-					}
-					if (this.headInfo.today > this.headInfo.days + 1 || this.status == 1 || this.headInfo.today <
-						0) {
-						this.buttonStatus = 2
-					}
-					if (this.clock_info.length == 0 && this.status != 1 && this.headInfo.today <= this.headInfo
-						.days + 1 && this.headInfo.today > 0) {
-						this.buttonStatus = 3
-					}
-					console.log(this.status != 1 && this.headInfo.today <= this.headInfo.days + 1 && this.headInfo.today >
-						0 && this.clock_info.length > 0);
 					// if (item.timeStamp < stamp1 && this.clock_info.length == 0 && this.status != 1) {
 					// 	this.buttonStatus = 4
 					// 	console.log(this.buttonStatus, 7878);

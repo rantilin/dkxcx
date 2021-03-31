@@ -3,21 +3,21 @@
 		<scroll-view scroll-y="true">
 			<view class="list" v-for="(item,index) in list" :key='index'>
 				<view class="time">
-					{{item.time}}
+					{{item.private_time}}
 				</view>
-				<view class="doctor" v-if="item.type==1">
-					<u-avatar :src="item.avatar"></u-avatar>
+				<view class="doctor" v-if="item.type_status==1">
+					<u-avatar :src="item.user_avatar"></u-avatar>
 					<view class="doctor-conversation">
 						{{item.content}}
 						<image class="leftImg" src="../../static/image/left.png" mode=""></image>
 					</view>
 				</view>
-				<view class="parent" v-if="item.type==2">
+				<view class="parent" v-if="item.type_status==2">
 					<view class="parent-conversation">
 						{{item.content}}
 						<image class="rightImg" src="../../static/image/right.png" mode=""></image>
 					</view>
-					<u-avatar :src="item.avatar"></u-avatar>
+					<u-avatar :src="item.user_avatar"></u-avatar>
 				</view>
 			</view>
 		</scroll-view>
@@ -29,89 +29,75 @@
 </template>
 
 <script>
+	import {
+		formatDateTime
+	} from "../../config/common.js"
 	export default {
 		data() {
 			return {
-				list: [{
-						avatar: "../../static/image/doctor.png",
-						content: "您好，周太才家长记得去完成今日的的打开任务。",
-						time: "2021-03-20 10:48",
-						type: "1",
-					},
-					{
-						avatar: "../../static/image/patriarch.png",
-						content: "好的，一直在忙，稍后就去让小孩完成打卡训练。",
-						time: "2021-03-20 10:48",
-						type: "2",
-					},
-					{
-						avatar: "../../static/image/doctor.png",
-						content: "嗯",
-						time: "2021-03-20 10:48",
-						type: "1",
-					},
-					{
-						avatar: "../../static/image/patriarch.png",
-						content: "哦",
-						time: "2021-03-20 10:48",
-						type: "2",
-					},{
-						avatar: "../../static/image/doctor.png",
-						content: "嗯",
-						time: "2021-03-20 10:48",
-						type: "1",
-					},
-					{
-						avatar: "../../static/image/patriarch.png",
-						content: "哦",
-						time: "2021-03-20 10:48",
-						type: "2",
-					},{
-						avatar: "../../static/image/doctor.png",
-						content: "嗯",
-						time: "2021-03-20 10:48",
-						type: "1",
-					},
-					{
-						avatar: "../../static/image/patriarch.png",
-						content: "哦",
-						time: "2021-03-20 10:48",
-						type: "2",
-					},{
-						avatar: "../../static/image/doctor.png",
-						content: "嗯",
-						time: "2021-03-20 10:48",
-						type: "1",
-					},
-					{
-						avatar: "../../static/image/patriarch.png",
-						content: "哦",
-						time: "2021-03-20 10:48",
-						type: "2",
-					},
-				],
-				ins:''
+				list: [],
+				ins: '',
+				send_id: 0,
+				msgList: []
 			};
 		},
-		onLoad() {
+		onLoad(o) {
+			this.send_id = o.id
+			let title = o.name + (o.type == 1 ? '医生' : '家长')
 			uni.setNavigationBarTitle({
-				title: "设置标题",
+				title: title
 			});
+			this.init()
 		},
 		updated() {
 			uni.pageScrollTo({
-			    scrollTop: 99999999999
+				scrollTop: 99999999999
 			})
 		},
 		methods: {
+			init() {
+				let that = this
+				let data = {
+					key: this.$db.get("key"),
+					send_id: this.send_id,
+					receive_id: this.$db.get("user").ID
+				}
+				this.$api.notice_detail(data, (res => {
+					console.log(res);
+					if (res.code == 200) {
+						for (let item of res.datas) {
+							item.private_time = formatDateTime(Number(item.private_time) * 1000)
+							if (that.$db.get("user").type_status != item.type_status && item.message_status ==
+								1) {
+								that.msgList.push(item.ID)
+							}
+						}
+						that.msgList = that.msgList.join()
+						that.$api.edit_private({
+							key: that.$db.get("key"),
+							id_arr: that.msgList
+						}, res => {})
+						that.list = res.datas
+					}
+				}))
+			},
 			send() {
-				this.list.push({
-					avatar: "../../static/image/patriarch.png",
-					content: this.ins,
-					time: "2021-03-20 10:48",
-					type: "2",
+				let data = {
+					key: this.$db.get("key"),
+					send_id: this.$db.get("user").ID,
+					receive_id: this.send_id,
+					content:this.ins
+				}
+				this.$api.depart_private(data,res=>{
+					console.log(res);
 				})
-				this.ins=''
+				this.list.push({
+					user_avatar: this.$db.get("user").user_avatar?'this.$db.get("user").user_avatar':'http://172.168.50.20:3333/data/upload/shop/common/parent.png',
+					content: this.ins,
+					private_time: formatDateTime(new Date()),
+					type_status: "2",
+				})
+				this.ins = ''
 			}
 		}
 	};

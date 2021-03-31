@@ -171,11 +171,20 @@
     {
 			"path": "pages/news/newsDetail",
 			"style": {
-				"navigationBarTitleText": "消息"
+				"navigationBarTitleText": "消息详情"
 			}
 
 		}
-  ],
+      ,{
+            "path" : "pages/task/docTaskIndex",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "打卡详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "健康小管家",
