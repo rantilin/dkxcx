@@ -182,7 +182,7 @@ export default {
   //分享
   onShareAppMessage() {
     return {
-      title: '医教宝健康管家',
+      title: '健康小管家',
       imageUrl:
         'https://yy.xnetkfyy.cn/upload/images/202134/2103041039260007.jpg',
       path: this.shareUrl,

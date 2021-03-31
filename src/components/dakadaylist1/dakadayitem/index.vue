@@ -4,7 +4,7 @@
 			<!-- <view class="xm_daka-month xm_daka-theme_1">{{item.date.month}}月</view> -->
 			<!-- <view class="xm_daka-day xm_daka-theme_1" >{{item.date.day}}</view> -->
 			<!-- <view class="xm_badge" >
-					<u-icon  name="../../static/image/dakanull.png" size="20"></u-icon>
+					<u-icon  name="/static/image/dakanull.png" size="20"></u-icon>
 				</view> -->
 			<template>
 				<u-circle-progress active-color="#0BC788" inactive-color='rgba(0,0,0,0)' bg-color='rgba(0,0,0,0)' :percent="num" width="100" :border-width='4'>

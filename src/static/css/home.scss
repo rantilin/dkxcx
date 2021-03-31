@@ -1,11 +1,12 @@
 .topnav {
   width: 100%;
-  height: 180rpx;
+  min-height: 180rpx;
   background: #fff;
 
   .user {
     width: 100%;
     padding: 0 32rpx;
+    margin-top: 50rpx;
     display: flex;
     align-items: center;
     height: 104rpx;
@@ -45,7 +46,7 @@
 
 .contentvm {
   width: 100%;
-  height: 78vh;
+  height: 85vh;
 
 }
 .pop-department {
@@ -172,7 +173,7 @@
 
 .fixed{
   position: fixed;
-  bottom: 70rpx;
+  bottom: 10rpx;
   left: 50%;
   width: 88rpx;
   height: 88rpx;

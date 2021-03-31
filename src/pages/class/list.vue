@@ -42,8 +42,7 @@ export default {
       parentnum: 0,
       current: 0,
       scrollTop: 0,
-			indexList: [
-			],
+			indexList: [],
       doctor: [],
       parent: [],
       listdata: []
@@ -113,9 +112,6 @@ export default {
   width: 100%;
   height: 94rpx;
   background: #fff;
-  position: fixed;
-  top:88rpx;
-  z-index: 999;
   .nav {
     width: 45%;
     margin-left: 32rpx;
@@ -125,9 +121,8 @@ export default {
   margin-top: 100rpx;
 }
 .list-cell {
-  display: flex;
   box-sizing: border-box;
-  width: 686rpx;
+  width: 100%;
   margin: 10rpx auto;
   padding: 0 24rpx;
   overflow: hidden;

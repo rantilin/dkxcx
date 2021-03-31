@@ -44,7 +44,7 @@
 						{{item.private_num}}
 					</view>
 				</view>
-			</view> -->
+			</view>
 		</view>
 	</view>
 </template>

@@ -20,11 +20,11 @@
 				<u-image :src="item.fileid_route" width="206" height="186" class="item"></u-image>
 			</view>
 			<!-- <view class="textnode">
-				<u-icon name="../../static/image/post.png" size="28"></u-icon>
+				<u-icon name="/static/image/post.png" size="28"></u-icon>
 				<text>提交方式: 图片+文字</text>
 			</view> -->
 			<view class="textnode">
-				<u-icon name="../../static/image/time.png" size="28"></u-icon>
+				<u-icon name="/static/image/time.png" size="28"></u-icon>
 				<text>时间周期: {{headInfo.start_time1}}-{{headInfo.end_time1}}</text>
 			</view>
 			<view class="bottom" @click="taskmore">
@@ -76,7 +76,7 @@
 							</view>
 						</view>
 						<view class="bottom">
-							<u-icon size="32" class="d-icon" name="../../static/image/give.png"></u-icon>
+							<u-icon size="32" class="d-icon" name="/static/image/give.png"></u-icon>
 						</view>
 						<view class="comment">
 							<comments :comList='item.clock_private' :list='item1.give_clock_all'
@@ -111,7 +111,7 @@
 							</view>
 						</view>
 						<view class="bottom">
-							<u-icon size="32" class="d-icon" name="../../static/image/give.png"></u-icon>
+							<u-icon size="32" class="d-icon" name="/static/image/give.png"></u-icon>
 						</view>
 						<view class="comment">
 							<comments :comList='item.clock_private' :list='item.give_clock_all'
@@ -128,7 +128,7 @@
 		<view class="bottomfix">
 			<view class="left" @tap='nav'>
 				<view class="iconsamll">
-					<u-icon name="../../static/image/mycard.png" size="40"></u-icon>
+					<u-icon name="/static/image/mycard.png" size="40"></u-icon>
 				</view>
 				<view class="name">我的打卡</view>
 			</view>
@@ -148,7 +148,7 @@
 			</view>
 			<view class="right">
 				<view class="iconsamll">
-					<u-icon name="../../static/image/sharecard.png" size="40"></u-icon>
+					<u-icon name="/static/image/sharecard.png" size="40"></u-icon>
 				</view>
 				<view class="name">分享家长</view>
 			</view>

@@ -13,7 +13,7 @@ export default {
   onLoad(e) {
      this.initData()
      if(e){
-       this.app_watchword == e.code
+       this.app_watchword = e.code
        this.idtpye = e.type
        if(this.idtpye == 1){
           this.useradd()
@@ -74,6 +74,15 @@ export default {
           }, 1000)
 
           return
+        }else{
+          uni.showToast({
+            title: res.datas.error,
+          })
+          setTimeout(function () {
+            uni.switchTab({  
+                url: '/pages/index/index'  
+            });  
+          }, 1000)
         }
       })
     },
@@ -94,9 +103,18 @@ export default {
                 url: '/pages/index/index'  
             });  
           }, 1000)
-
           return
+        }else{
+          uni.showToast({
+            title: res.datas.error,
+          })
+          setTimeout(function () {
+            uni.switchTab({  
+                url: '/pages/index/index'  
+            });  
+          }, 1000)
         }
+
       })
     },
   },

@@ -152,6 +152,7 @@ export default {
       line-height: 52rpx;
       border-radius: 30rpx;
       background: #0bc788;
+      text-align: center;
     }
   }
 }

@@ -227,9 +227,8 @@ export default {
       var M =
         (date.getMonth() + 1 < 10
           ? "0" + (date.getMonth() + 1)
-          : date.getMonth() + 1) + "-";
-      var D =
-        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
+          : date.getMonth() + 1) + "/";
+      var D = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
 
       return M + D;
     },
@@ -261,7 +260,6 @@ export default {
       display: flex;
 
       .portrait {
-        width: 38rpx;
         margin: 10rpx 24rpx 0 0;
       }
 

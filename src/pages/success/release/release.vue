@@ -6,9 +6,9 @@
 				发布成功
 			</view>
 		</view>
-		<view class="button">
+		<button class="button">
 			分享到家长
-		</view>
+		</button>
 		<view class="back" @tep="back">
 			返回首页
 		</view>
@@ -19,16 +19,25 @@
 	export default {
 		data() {
 			return {
-				
+				shareUrl:'/pages/index/index'
 			}
 		},
 		methods: {
 			 back(){
-         uni.navigateTo({
+         uni.switchTab({
 					 url:'/pages/index/index'
 				 })
 			 }
-		}
+		},
+    //分享
+  onShareAppMessage() {
+    return {
+      title: '健康小管家',
+      imageUrl:
+        'https://yy.xnetkfyy.cn/upload/images/202134/2103041039260007.jpg',
+      path: this.shareUrl,
+    }
+  }
 	}
 </script>
 

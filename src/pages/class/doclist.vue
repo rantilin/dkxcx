@@ -1,8 +1,5 @@
 <template>
   <view>
-    <view class="">
-      
-    </view>
     <view class="head">
       <u-tabs
         :list="list"
@@ -122,26 +119,20 @@ export default {
 </script>
 <style lang="scss" scoped>
 .head {
-  width: 686rpx;
+  width: 100%;
   height: 94rpx;
   background: #fff;
-  margin: auto;
-  z-index: 999;
   .nav {
     width: 45%;
     margin-left: 32rpx;
   }
 }
-.contentvm{
-  width: 100%;
-  height: 80vh;
-}
 .ulist{
+  margin-top: 100rpx;
 }
 .list-cell {
-  display: flex;
   box-sizing: border-box;
-  width: 686rpx;
+  width: 100%;
   margin: 10rpx auto;
   padding: 0 24rpx;
   overflow: hidden;
