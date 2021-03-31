@@ -15,7 +15,7 @@
         bar-height="6"
         @change="change"
       ></u-tabs>
-    </view>华熙美学8888
+    </view>
   <scroll-view class="contentvm" scroll-y>
     <u-index-list :scrollTop="scrollTop" offset-top="170" class="ulist">
       <view
@@ -77,11 +77,11 @@ export default {
       this.current = index
       if(index == 0){
         this.indexList = this.baselist(this.parent)
-        this.listdata=this.parent
+        this.listdata= this.parent
       }
       if(index == 1){
         this.indexList = this.baselist(this.doctor)
-         this.listdata=this.doctor
+         this.listdata= this.doctor
       }
     },
     getclass(id){
@@ -91,10 +91,18 @@ export default {
          ID: id
       },res=>{
          if(res.code == 200){
-             _this.doctor = res.datas.depart_num.doctor
              _this.doctornum = res.datas.depart_num.doctor_num
-             _this.parent = res.datas.depart_num.parent
-             _this.parentnum = res.datas.depart_num.parent_num
+             if(_this.doctornum == 0){
+                  _this.doctor = []
+             }else{
+                 _this.doctor = res.datas.depart_num.doctor
+             }
+              _this.parentnum = res.datas.depart_num.parent_num
+             if(_this.parentnum == 0){
+                  _this.parent = []
+             }else{
+                 _this.parent = res.datas.depart_num.parent
+             }
              _this.indexList = _this.baselist(_this.parent)
              _this.listdata = _this.parent
          }else{

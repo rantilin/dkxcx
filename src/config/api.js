@@ -318,6 +318,10 @@ export const getParentClass = (data, callback)=>post('/mobile/index.php?act=depa
 export const fabulous = (data, callback)=>post('/mobile/index.php?act=task&op=clock_give', data, callback);
 //查找科室
 export const lookup = (data, callback)=>post('/mobile/index.php?act=parent&op=add_depart', data, callback);
+//用户分享加入科室
+export const adduser = (data, callback)=>post('/mobile/index.php?act=parent&op=add_depart_share', data, callback);
+//医生分享加入科室
+export const adddoc = (data, callback)=>post('/mobile/index.php?act=department&op=add_depart', data, callback);
 //打卡记录详情
 export const parentSignDetail = (data, callback)=>post('/mobile/index.php?act=task&op=doctor_clock_info', data, callback);
 //查看任务信息

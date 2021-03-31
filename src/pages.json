@@ -7,7 +7,7 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "打卡小程序",
+        "navigationBarTitleText": "健康小管家",
         "navigationStyle": "custom"
       }
     },
@@ -155,7 +155,14 @@
 				"navigationBarTitleText": "科室转让"
 			}
 
-		}, {
+		},
+    {
+      "path": "pages/share/index",
+      "style": {
+        "navigationBarTitleText": "分享"
+      }
+    },
+    {
 			"path": "pages/news/newsDetail",
 			"style": {
 				"navigationBarTitleText": "消息"
@@ -165,7 +172,7 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "打卡小程序",
+    "navigationBarTitleText": "健康小管家",
     "navigationBarBackgroundColor": "#fff",
     "backgroundColor": "#f8f8f8"
   },
@@ -179,12 +186,6 @@
         "text": "首页",
         "iconPath": "static/image/icon-tabbar-home2.png",
         "selectedIconPath": "static/image/icon-tabbar-home.png"
-      },
-      {
-        "pagePath": "pages/health/index",
-        "text": "健康",
-        "iconPath": "static/image/icon-tabbar-2.png",
-        "selectedIconPath": "static/image/icon-tabbar-2-on.png"
       },
       {
 				"pagePath": "pages/news/news",

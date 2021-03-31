@@ -17,7 +17,8 @@ Vue.prototype.$common = Common;
 Vue.prototype.$db = Db;
 Vue.prototype.$config = Config;
 Vue.prototype.$store = store;
-
+let mpShare = require('uview-ui/libs/mixin/mpShare.js');
+Vue.mixin(mpShare)
 
 App.mpType = 'app'
 

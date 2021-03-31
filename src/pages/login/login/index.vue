@@ -7,11 +7,11 @@
       <view class="headline2">加入健康打卡小程序，提高家长与医生的互动交流</view>
     </view>
     <view class="tebidentity">
-      <view class="item" :class="status == 2 ?'':'on'" @click="idstats(2)">
+      <view class="item" :class="status == 2 ?'':'on'" @tap="idstats(2)">
         <image class="iconimg" src="../../../static/image/doctor.png"></image>
         <text>我是家长</text>
       </view>
-      <view class="item" :class="status == 1 ?'':'on'" @click="idstats(1)">
+      <view class="item" :class="status == 1 ?'':'on'" @tap="idstats(1)">
         <image class="iconimg" src="../../../static/image/patriarch.png"></image>
         <text>我是医生</text>
       </view>
@@ -111,9 +111,9 @@ export default {
        this.$api.getphone({
           iv: e.detail.iv,
           encryptedData: e.detail.encryptedData,
-					sessionKey: _this.sessionKey
+					sessionKey: this.sessionKey
        },res=>{
-          console.log(res)
+          this.phone = res.datas.phoneNumber
        })
     },
   },
